@@ -222,10 +222,14 @@ let select_operation_sse2 ~dbg op args =
     sse_or_avx cvtdq2ps vcvtdq2ps_X_Xm128 args
   | "caml_sse2_cvt_float64x2_int32x2" ->
     sse_or_avx cvtpd2dq vcvtpd2dq_X_Xm128 args
+  | "caml_sse2_cvtt_float64x2_int32x2" ->
+    sse_or_avx cvttpd2dq vcvttpd2dq_X_Xm128 args
   | "caml_sse2_cvt_float64x2_float32x2" ->
     sse_or_avx cvtpd2ps vcvtpd2ps_X_Xm128 args
   | "caml_sse2_cvt_float32x4_int32x4" ->
     sse_or_avx cvtps2dq vcvtps2dq_X_Xm128 args
+  | "caml_sse2_cvtt_float32x4_int32x4" ->
+    sse_or_avx cvttps2dq vcvttps2dq_X_Xm128 args
   | "caml_sse2_cvt_float32x4_float64x2" ->
     sse_or_avx cvtps2pd vcvtps2pd_X_Xm64 args
   | "caml_sse2_cvt_int16x8_int8x16_saturating" ->
@@ -303,6 +307,8 @@ let select_operation_sse2 ~dbg op args =
   | "caml_sse2_int16x8_mul_low" -> sse_or_avx pmullw vpmullw_X_X_Xm128 args
   | "caml_sse2_int16x8_mul_hadd_int32x4" ->
     sse_or_avx pmaddwd vpmaddwd_X_X_Xm128 args
+  | "caml_sse2_int32x4_mul_even_unsigned" ->
+    sse_or_avx pmuludq_X_Xm128 vpmuludq_X_X_Xm128 args
   | _ -> None
 
 let select_operation_sse3 ~dbg:_ op args =
@@ -358,6 +364,8 @@ let select_operation_ssse3 ~dbg:_ op args =
       sse_or_avx palignr_X_Xm128 vpalignr_X_X_Xm128 ~i args
     | "caml_ssse3_int8x16_mul_unsigned_hadd_saturating_int16x8" ->
       sse_or_avx pmaddubsw_X_Xm128 vpmaddubsw_X_X_Xm128 args
+    | "caml_ssse3_int16x8_mul_round" ->
+      sse_or_avx pmulhrsw_X_Xm128 vpmulhrsw_X_X_Xm128 args
     | _ -> None
 
 let select_operation_sse41 ~dbg op args =
@@ -510,7 +518,11 @@ let select_operation_sse41 ~dbg op args =
       sse_or_avx mpsadbw vmpsadbw_X_X_Xm128 ~i args
     | "caml_sse41_int16x8_minpos_unsigned" ->
       sse_or_avx phminposuw vphminposuw args
+    | "caml_sse41_int32x4_mul_even" -> sse_or_avx pmuldq vpmuldq_X_X_Xm128 args
     | "caml_sse41_int32x4_mul_low" -> sse_or_avx pmulld vpmulld_X_X_Xm128 args
+    | "caml_sse41_vec128_testz" -> seq_or_avx Seq.ptestz Seq.vptestz args
+    | "caml_sse41_vec128_testc" -> seq_or_avx Seq.ptestc Seq.vptestc args
+    | "caml_sse41_vec128_testnzc" -> seq_or_avx Seq.ptestnzc Seq.vptestnzc args
     | _ -> None
 
 let select_operation_sse42 ~dbg:_ op args =
@@ -627,7 +639,8 @@ let pseudoregs_for_operation (simd : Simd.operation) arg res =
     | Sequence
         { id =
             ( Sqrtss | Sqrtsd | Roundss | Roundsd | Pcompare_string _
-            | Vpcompare_string _ );
+            | Vpcompare_string _ | Ptestz | Ptestc | Ptestnzc | Vptestz
+            | Vptestc | Vptestnzc );
           instr
         } ->
       instr
