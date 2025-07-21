@@ -350,8 +350,8 @@ module Type_shape = struct
     | ( Ts_tuple _,
         ( Product _
         | Base
-            ( Void | Bits32 | Bits64 | Float64 | Float32 | Word | Vec128
-            | Vec256 | Vec512 ) ) ) ->
+            ( Void | Bits8 | Bits16 | Bits32 | Bits64 | Float64 | Float32 | Word
+            | Vec128 | Vec256 | Vec512 ) ) ) ->
       Misc.fatal_errorf "tuple shape must have layout value, but has layout %a"
         Layout.format layout
     | Ts_unboxed_tuple shapes, Product lys
@@ -368,8 +368,8 @@ module Type_shape = struct
         (List.length shapes) (List.length lys)
     | ( Ts_unboxed_tuple _,
         Base
-          ( Void | Value | Float32 | Float64 | Word | Bits32 | Bits64 | Vec128
-          | Vec256 | Vec512 ) ) ->
+          ( Void | Value | Float32 | Float64 | Word | Bits8 | Bits16 | Bits32
+          | Bits64 | Vec128 | Vec256 | Vec512 ) ) ->
       Misc.fatal_errorf
         "unboxed tuple must have unboxed product layout, but has layout %a"
         Layout.format layout
@@ -556,6 +556,8 @@ module Type_decl_shape = struct
     | Types.Vec256 -> Layout.Base Vec256
     | Types.Vec512 -> Layout.Base Vec512
     | Types.Word -> Layout.Base Word
+    | Types.Bits8 -> Layout.Base Bits8
+    | Types.Bits16 -> Layout.Base Bits16
     | Types.Product args ->
       Layout.Product
         (Array.to_list (Array.map mixed_block_shape_to_layout args))
