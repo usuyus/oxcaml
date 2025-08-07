@@ -77,7 +77,7 @@ module F = struct
     fprintf ppf
       {|(rule
  ${enabled_if}
- (alias runtest-llvm)
+ (alias runtest-llvmize)
  (deps %a)
  (targets %s.corrected)
  (action
@@ -92,7 +92,7 @@ module F = struct
     fprintf ppf
       {|(rule
  ${enabled_if}
- (alias runtest-llvm)
+ (alias runtest-llvmize)
  (deps %s %s.corrected)
  (action
   (diff %s %s.corrected)))
@@ -138,29 +138,32 @@ let print_test ~extra_subst ~run ~tasks ~buf =
   let enabled_if =
     {|(enabled_if (and (= %{context_name} "main") (= %{architecture} "amd64")))|}
   in
-  let subst = function
-    | "ocamlopt" -> "%{bin:ocamlopt.opt}"
-    | "enabled_if" -> enabled_if
-    | "filter" -> "filter.sh"
-    | "llvm_path" -> "${LLVM_PATH:-clang}"
-    | "llvm_flags" ->
-      (* We pass -dno-asm-comments to avoid printing flaky identifiers in Cfg
-         instructions *)
-      (* CR yusumez: remove -disable-poll-insertion once we can emit poll
-         insertions *)
-      (* CR yusumez: find a better way to detect LLVM_PATH *)
-      "-llvm-backend -llvm-path ${LLVM_PATH:-clang} -keep-llvmir \
-       -dno-asm-comments -disable-poll-insertion"
-    | "common_flags" -> "-g -O3 -opaque -S -dump-into-file -dcmm -dcfg -dlinear"
-    | "stop_after_llvm_flags" ->
-      "-g -O3 -opaque -dump-into-file -dcmm -dcfg -stop-after llvmize"
-    | "c_flags" -> "-c -g -O3 -I %{project_root}/runtime"
-    | label -> (
-      match
-        List.find_opt (fun (label', _) -> String.equal label label') extra_subst
-      with
-      | Some (_, res) -> res
-      | None -> assert false)
+  (* Prioritise [extra_subst] *)
+  let subst label =
+    match
+      List.find_opt (fun (label', _) -> String.equal label label') extra_subst
+    with
+    | Some (_, res) -> res
+    | None -> (
+      match label with
+      | "ocamlopt" -> "%{bin:ocamlopt.opt}"
+      | "enabled_if" -> enabled_if
+      | "filter" -> "filter.sh"
+      | "llvm_path" -> "${OXCAML_CLANG}"
+      | "llvm_flags" ->
+        (* We pass -dno-asm-comments to avoid printing flaky identifiers in Cfg
+           instructions *)
+        (* CR yusumez: remove -disable-poll-insertion once we can emit poll
+           insertions *)
+        (* CR yusumez: find a better way to detect LLVM_PATH *)
+        "-llvm-backend -llvm-path ${OXCAML_CLANG} -keep-llvmir \
+         -dno-asm-comments -disable-poll-insertion"
+      | "common_flags" ->
+        "-g -O3 -opaque -S -dump-into-file -dcmm -dcfg -dlinear"
+      | "stop_after_llvm_flags" ->
+        "-g -O3 -opaque -dump-into-file -dcmm -dcfg -stop-after llvmize"
+      | "c_flags" -> "-c -g -O3 -I %{project_root}/runtime"
+      | _ -> assert false)
   in
   let rule_template =
     Format.asprintf "%a" (F.pp_rule_template ~run ~tasks) ()
