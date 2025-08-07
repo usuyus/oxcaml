@@ -453,7 +453,10 @@ val unbox_int :
 
 (** Used to prepare 32-bit integers on 64-bit platforms for a lsr operation *)
 val make_unsigned_int :
-  Primitive.unboxed_integer -> expression -> Debuginfo.t -> expression
+  Primitive.unboxed_or_untagged_integer ->
+  expression ->
+  Debuginfo.t ->
+  expression
 
 val unaligned_load_16 :
   ptr_out_of_heap:bool -> expression -> expression -> Debuginfo.t -> expression
@@ -583,7 +586,7 @@ val negint : unary_primitive
 val addr_array_length : unary_primitive
 
 (** Byte swap primitive Operates on Cmm integers (unboxed values) *)
-val bbswap : Primitive.unboxed_integer -> unary_primitive
+val bbswap : bswap_bitwidth -> unary_primitive
 
 type binary_primitive = expression -> expression -> Debuginfo.t -> expression
 

@@ -1916,7 +1916,7 @@ module Extended_machtype = struct
     | Punboxed_vector Unboxed_vec128 -> typ_vec128
     | Punboxed_vector Unboxed_vec256 -> typ_vec256
     | Punboxed_vector Unboxed_vec512 -> typ_vec512
-    | Punboxed_int _ ->
+    | Punboxed_or_untagged_integer _ ->
       (* Only 64-bit architectures, so this is always [typ_int] *)
       typ_any_int
     | Pvalue { raw_kind = Pintval; _ } -> typ_tagged_int
@@ -2126,8 +2126,7 @@ let make_mixed_alloc ~mode dbg ~tag ~value_prefix_size args args_memory_chunks =
           (* regular scanned part of a block *)
           match memory_chunk with
           | Word_int | Word_val -> ok ()
-          | Byte_unsigned | Byte_signed | Sixteen_unsigned | Sixteen_signed ->
-            error "mixed blocks"
+          | Byte_unsigned | Byte_signed | Sixteen_unsigned | Sixteen_signed
           | Thirtytwo_unsigned | Thirtytwo_signed | Single _ | Double
           | Onetwentyeight_unaligned | Onetwentyeight_aligned
           | Twofiftysix_unaligned | Twofiftysix_aligned | Fivetwelve_unaligned
@@ -2139,10 +2138,9 @@ let make_mixed_alloc ~mode dbg ~tag ~value_prefix_size args args_memory_chunks =
           | Word_int | Thirtytwo_unsigned | Thirtytwo_signed | Double
           | Onetwentyeight_unaligned | Onetwentyeight_aligned
           | Twofiftysix_unaligned | Twofiftysix_aligned | Fivetwelve_unaligned
-          | Fivetwelve_aligned | Single _ ->
+          | Fivetwelve_aligned | Single _ | Byte_unsigned | Byte_signed
+          | Sixteen_unsigned | Sixteen_signed ->
             ok ()
-          | Byte_unsigned | Byte_signed | Sixteen_unsigned | Sixteen_signed ->
-            error "mixed blocks"
           | Word_val -> error "the flat suffix of a mixed block")
       0 args_memory_chunks
   in
@@ -3681,44 +3679,35 @@ let addr_array_length arg dbg =
    to Arbitrary_effects and Has_coeffects, resp. Check if this can be improved
    (e.g., bswap). *)
 
-let bbswap bi arg dbg =
-  match (bi : Primitive.unboxed_integer) with
-  | Unboxed_int8 -> arg
-  | _ ->
-    let bitwidth : Cmm.bswap_bitwidth =
-      match (bi : Primitive.unboxed_integer) with
-      | Unboxed_nativeint -> if size_int = 4 then Thirtytwo else Sixtyfour
-      | Unboxed_int8 -> assert false
-      | Unboxed_int16 -> Sixteen
-      | Unboxed_int32 -> Thirtytwo
-      | Unboxed_int64 -> Sixtyfour
+let bbswap (bitwidth : Cmm.bswap_bitwidth) arg dbg =
+  let op = Cbswap { bitwidth } in
+  if Proc.operation_supported op
+     && not
+          ((match bitwidth with
+           | Sixtyfour -> true
+           | Sixteen | Thirtytwo -> false)
+          && size_int < 8)
+  then Cop (op, [arg], dbg)
+  else
+    let func, tyarg =
+      match bitwidth with
+      | Sixteen -> "caml_bswap16_direct", XInt16
+      | Thirtytwo -> "caml_int32_direct_bswap", XInt32
+      | Sixtyfour -> "caml_int64_direct_bswap", XInt64
     in
-    let op = Cbswap { bitwidth } in
-    if (bi = Primitive.Unboxed_int64 && size_int = 4)
-       || not (Proc.operation_supported op)
-    then
-      let func, tyarg =
-        match (bi : Primitive.unboxed_integer) with
-        | Unboxed_int8 -> assert false
-        | Unboxed_int16 -> "caml_bswap16_direct", XInt16
-        | Unboxed_int32 -> "caml_int32_direct_bswap", XInt32
-        | Unboxed_nativeint -> "caml_nativeint_direct_bswap", XInt
-        | Unboxed_int64 -> "caml_int64_direct_bswap", XInt64
-      in
-      Cop
-        ( Cextcall
-            { func;
-              builtin = false;
-              returns = true;
-              effects = Arbitrary_effects;
-              coeffects = Has_coeffects;
-              ty = typ_int;
-              alloc = false;
-              ty_args = [tyarg]
-            },
-          [arg],
-          dbg )
-    else Cop (op, [arg], dbg)
+    Cop
+      ( Cextcall
+          { func;
+            builtin = false;
+            returns = true;
+            effects = No_effects;
+            coeffects = No_coeffects;
+            ty = typ_int;
+            alloc = false;
+            ty_args = [tyarg]
+          },
+        [arg],
+        dbg )
 
 type binary_primitive = expression -> expression -> Debuginfo.t -> expression
 

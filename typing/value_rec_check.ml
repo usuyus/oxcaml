@@ -622,7 +622,7 @@ let array_mode exp elt_sort = match Typeopt.array_kind exp elt_sort with
   | Lambda.Paddrarray | Lambda.Pintarray ->
     (* non-generic, non-float arrays act as constructors *)
     Guard
-  | Lambda.Punboxedfloatarray _ | Lambda.Punboxedintarray _
+  | Lambda.Punboxedfloatarray _ | Lambda.Punboxedoruntaggedintarray _
   | Lambda.Punboxedvectorarray _
   | Lambda.Pgcscannableproductarray _ | Lambda.Pgcignorableproductarray _ ->
     Dereference
@@ -761,7 +761,8 @@ let rec expression : Typedtree.expression -> term_judg =
                 (match mixed_shape.(i) with
                  | Value | Float_boxed -> Guard
                  | Float64 | Float32 | Bits8 | Bits16 | Bits32 | Bits64
-                 | Vec128 | Vec256 | Vec512 | Word | Void | Product _ ->
+                 | Vec128 | Vec256 | Vec512 | Word | Untagged_immediate
+                 | Void | Product _ ->
                    Dereference))
       in
       let arg i e = expression e << arg_mode i in
@@ -788,7 +789,8 @@ let rec expression : Typedtree.expression -> term_judg =
             (match mixed_shape.(i) with
              | Value | Float_boxed -> Guard
              | Float64 | Float32 | Bits8 | Bits16 | Bits32 | Bits64
-             | Vec128 | Vec256 | Vec512 | Word | Void | Product _ ->
+             | Vec128 | Vec256 | Vec512 | Word | Untagged_immediate
+             | Void | Product _ ->
                Dereference)
         in
         let field (label, field_def) =
