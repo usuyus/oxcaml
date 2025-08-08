@@ -232,4 +232,9 @@ let () =
       [ Ocaml_default "exn_part1";
         Ocaml_llvm { filename = "exn_part2"; stop_after_llvmize = false };
         Output_ir { source = "exn_part2"; output = "exn_part2_ir" };
-        Ocaml_default "exn_part3" ]
+        Ocaml_default "exn_part3" ];
+  print_test ~extra_subst:[] ~buf ~run:(Some "tailcall")
+    ~tasks:
+      [ Ocaml_default "tailcall2";
+        Ocaml_llvm { filename = "tailcall"; stop_after_llvmize = false };
+        Output_ir { source = "tailcall"; output = "tailcall" ^ "_ir" } ]

@@ -89,7 +89,7 @@ L105:                                                ; preds = %L101
   %31 = load i64, ptr %4
   %32 = load ptr, ptr %ds
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %33 = call cc 104 { { ptr }, { i64 } } @camlData_decl__g_HIDE_STAMP(ptr %32, i64 %30, i64 %31)
+  %33 =  call cc 104 { { ptr }, { i64 } } @camlData_decl__g_HIDE_STAMP(ptr %32, i64 %30, i64 %31)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %34 = extractvalue { { ptr }, { i64 } } %33, 0, 0
   store ptr %34, ptr %ds
@@ -137,7 +137,7 @@ L112:                                                ; preds = %L1
   %17 = load i64, ptr %4
   %18 = load ptr, ptr %ds
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %19 = call cc 104 { { ptr }, { i64 } } @camlData_decl__f_HIDE_STAMP(ptr %18, i64 %17)
+  %19 =  call cc 104 { { ptr }, { i64 } } @camlData_decl__f_HIDE_STAMP(ptr %18, i64 %17)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %20 = extractvalue { { ptr }, { i64 } } %19, 0, 0
   store ptr %20, ptr %ds
@@ -154,7 +154,7 @@ L114:                                                ; preds = %L112
   %25 = load i64, ptr %4
   %26 = load ptr, ptr %ds
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %27 = call cc 104 { { ptr }, { i64 } } @camlData_decl__f_HIDE_STAMP(ptr %26, i64 %25)
+  %27 =  call cc 104 { { ptr }, { i64 } } @camlData_decl__f_HIDE_STAMP(ptr %26, i64 %25)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %28 = extractvalue { { ptr }, { i64 } } %27, 0, 0
   store ptr %28, ptr %ds
@@ -272,7 +272,7 @@ L122:                                                ; preds = %L1
   %66 = load i64, ptr %5
   %67 = load i64, ptr %6
   %68 = load i64, ptr %7
-  %69 = call cc 105 { i64 } @caml_c_call(ptr @caml_ml_output, i64 poison, i64 %65, i64 %66, i64 %67, i64 %68)
+  %69 =  call cc 105 { i64 } @caml_c_call(ptr @caml_ml_output, i64 poison, i64 %65, i64 %66, i64 %67, i64 %68)
   %70 = extractvalue { i64 } %69, 0
   store i64 %70, ptr %2
   br label %L124
@@ -299,7 +299,7 @@ L124:                                                ; preds = %L122
   store i64 %81, ptr %5
   %82 = load i64, ptr %4
   %83 = load i64, ptr %5
-  %84 = call cc 105 { i64 } @caml_c_call(ptr @caml_ml_output_char, i64 poison, i64 %82, i64 %83)
+  %84 =  call cc 105 { i64 } @caml_c_call(ptr @caml_ml_output_char, i64 poison, i64 %82, i64 %83)
   %85 = extractvalue { i64 } %84, 0
   store i64 %85, ptr %2
   br label %L127
@@ -322,7 +322,7 @@ L127:                                                ; preds = %L124
   %95 = load i64, ptr %25
   store i64 %95, ptr %4
   %96 = load i64, ptr %4
-  %97 = call cc 105 { i64 } @caml_c_call(ptr @caml_ml_flush, i64 poison, i64 %96)
+  %97 =  call cc 105 { i64 } @caml_c_call(ptr @caml_ml_flush, i64 poison, i64 %96)
   %98 = extractvalue { i64 } %97, 0
   store i64 %98, ptr %2
   br label %L130
@@ -339,7 +339,7 @@ L130:                                                ; preds = %L127
   store i64 %102, ptr %5
   %103 = load i64, ptr %4
   %104 = load i64, ptr %5
-  %105 = call cc 105 { i64 } @caml_c_call(ptr @caml_format_float32, i64 poison, i64 %103, i64 %104)
+  %105 =  call cc 105 { i64 } @caml_c_call(ptr @caml_format_float32, i64 poison, i64 %103, i64 %104)
   %106 = extractvalue { i64 } %105, 0
   store i64 %106, ptr %2
   br label %L133
@@ -362,7 +362,7 @@ L133:                                                ; preds = %L130
   %114 = load i64, ptr %4
   %115 = load ptr, ptr %ds
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %116 = call cc 104 { { ptr }, { i64 } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %115, i64 %112, i64 %113, i64 %114)
+  %116 =  call cc 104 { { ptr }, { i64 } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %115, i64 %112, i64 %113, i64 %114)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %117 = extractvalue { { ptr }, { i64 } } %116, 0, 0
   store ptr %117, ptr %ds
@@ -386,7 +386,7 @@ L134:                                                ; preds = %L133
   %126 = load i64, ptr %4
   %127 = load ptr, ptr %ds
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %128 = call cc 104 { { ptr }, { i64 } } @caml_apply2(ptr %127, i64 %124, i64 %125, i64 %126)
+  %128 =  call cc 104 { { ptr }, { i64 } } @caml_apply2(ptr %127, i64 %124, i64 %125, i64 %126)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %129 = extractvalue { { ptr }, { i64 } } %128, 0, 0
   store ptr %129, ptr %ds
@@ -404,7 +404,7 @@ L135:                                                ; preds = %L134
   %134 = load i64, ptr %2
   %135 = load ptr, ptr %ds
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %136 = call cc 104 { { ptr }, { i64 } } @camlData_decl__f_HIDE_STAMP(ptr %135, i64 %134)
+  %136 =  call cc 104 { { ptr }, { i64 } } @camlData_decl__f_HIDE_STAMP(ptr %135, i64 %134)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %137 = extractvalue { { ptr }, { i64 } } %136, 0, 0
   store ptr %137, ptr %ds
@@ -430,7 +430,7 @@ L136:                                                ; preds = %L135
   %146 = load i64, ptr %4
   %147 = load ptr, ptr %ds
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %148 = call cc 104 { { ptr }, { i64 } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %147, i64 %144, i64 %145, i64 %146)
+  %148 =  call cc 104 { { ptr }, { i64 } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %147, i64 %144, i64 %145, i64 %146)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %149 = extractvalue { { ptr }, { i64 } } %148, 0, 0
   store ptr %149, ptr %ds
@@ -457,7 +457,7 @@ L137:                                                ; preds = %L136
   %162 = load i64, ptr %48
   %163 = inttoptr i64 %162 to ptr
   call void asm sideeffect "push %rbp", "~{rsp}"()
-  %164 = call cc 104 { { ptr }, { i64 } } %163(ptr %161, i64 %159, i64 %160)
+  %164 =  call cc 104 { { ptr }, { i64 } } %163(ptr %161, i64 %159, i64 %160)
   call void asm sideeffect "pop %rbp", "~{rsp}"()
   %165 = extractvalue { { ptr }, { i64 } } %164, 0, 0
   store ptr %165, ptr %ds

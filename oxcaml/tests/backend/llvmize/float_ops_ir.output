@@ -194,7 +194,7 @@ L121:                                                ; preds = %L1
   %7 = load double, ptr %4
   store double %7, ptr %5
   %8 = load double, ptr %5
-  %9 = call  double @llvm.fabs.f64(double %8)
+  %9 =  call  double @llvm.fabs.f64(double %8)
   store double %9, ptr %5
   %10 = load double, ptr %5
   store double %10, ptr %3
