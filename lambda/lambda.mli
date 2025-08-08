@@ -153,6 +153,14 @@ type primitive =
   | Punboxed_product_field of int * (layout list)
       (* the [layout list] is the layout of the whole product *)
   | Parray_element_size_in_bytes of array_kind
+  (* Block indices *)
+  | Pmake_idx_field of int
+  | Pmake_idx_mixed_field of mixed_block_shape * int * int list
+    (** The lone int is the index into the mixed_block_shape, the int list is
+        the path into that mixed_block_element *)
+  | Pmake_idx_array of
+      array_kind * array_index_kind * unit mixed_block_element * int list
+  | Pidx_deepen of unit mixed_block_element * int list
   (* Context switches *)
   | Prunstack
   | Pperform
@@ -362,6 +370,8 @@ type primitive =
   | Ppoll
   (* Arch-specific pause. Without poll insertion, also acts as a [Ppoll]. *)
   | Pcpu_relax
+  | Pget_idx of layout * Asttypes.mutable_flag
+  | Pset_idx of layout * modify_mode
 
 (** This is the same as [Primitive.native_repr] but with [Repr_poly]
     compiled away. *)
@@ -1207,6 +1217,14 @@ val mod_setfield: int -> primitive
 
 val structured_constant_layout : structured_constant -> layout
 
+val mixed_block_element_of_layout : layout -> unit mixed_block_element
+
+val mixed_block_element_leaves
+  : 'a mixed_block_element -> 'a mixed_block_element list
+
+(** Whether there exists a non-value before a value *)
+val will_be_reordered : _ mixed_block_element -> bool
+
 val primitive_result_layout : primitive -> layout
 
 val array_ref_kind_result_layout: array_ref_kind -> layout
@@ -1243,6 +1261,9 @@ val primitive_can_raise : primitive -> bool
 val count_initializers_array_kind : array_kind -> int
 val ignorable_product_element_kind_involves_int :
   ignorable_product_element_kind -> bool
+
+(** This function currently assumes a 64-bit target. *)
+val array_element_size_in_bytes : array_kind -> int
 
 (** Construction helpers *)
 

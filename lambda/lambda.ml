@@ -167,6 +167,12 @@ type primitive =
   | Pmake_unboxed_product of layout list
   | Punboxed_product_field of int * layout list
   | Parray_element_size_in_bytes of array_kind
+  (* Block indices *)
+  | Pmake_idx_field of int
+  | Pmake_idx_mixed_field of mixed_block_shape * int * int list
+  | Pmake_idx_array of
+      array_kind * array_index_kind * unit mixed_block_element * int list
+  | Pidx_deepen of unit mixed_block_element * int list
   (* Context switches *)
   | Prunstack
   | Pperform
@@ -345,6 +351,8 @@ type primitive =
   (* Poll for runtime actions *)
   | Ppoll
   | Pcpu_relax
+  | Pget_idx of layout * Asttypes.mutable_flag
+  | Pset_idx of layout * modify_mode
 
 and extern_repr =
   | Same_as_ocaml_repr of Jkind.Sort.Const.t
@@ -2037,7 +2045,13 @@ let primitive_may_allocate : primitive -> locality_mode option = function
   | Pdls_get
   | Preinterpret_unboxed_int64_as_tagged_int63
   | Parray_element_size_in_bytes _
-  | Ppeek _ | Ppoke _ -> None
+  | Pget_idx _ | Pset_idx _
+  | Ppeek _ | Ppoke _ ->
+    None
+  | Pmake_idx_field _
+  | Pmake_idx_mixed_field _
+  | Pmake_idx_array _
+  | Pidx_deepen _
   | Preinterpret_tagged_int63_as_unboxed_int64 ->
     if !Clflags.native_code then None
     else
@@ -2189,7 +2203,11 @@ let primitive_can_raise prim =
   | Pdls_get | Ppoll | Pcpu_relax
   | Preinterpret_tagged_int63_as_unboxed_int64
   | Preinterpret_unboxed_int64_as_tagged_int63
-  | Parray_element_size_in_bytes _ | Ppeek _ | Ppoke _ ->
+  | Parray_element_size_in_bytes _
+  | Pmake_idx_field _ | Pmake_idx_mixed_field _ | Pmake_idx_array _
+  | Pidx_deepen _
+  | Pget_idx _ | Pset_idx _
+  | Ppeek _ | Ppoke _ ->
     false
 
 let constant_layout: constant -> layout = function
@@ -2297,6 +2315,50 @@ let layout_of_mixed_block_shape
   in
   layout_of_mixed_block_element (project_from_mixed_block_shape shape ~path)
 
+let rec mixed_block_element_of_layout (layout : layout) :
+    unit mixed_block_element =
+  match layout with
+  | Punboxed_product layouts ->
+    Product (List.map mixed_block_element_of_layout layouts |> Array.of_list)
+  | Ptop | Pbottom -> Misc.fatal_error "Pidxdeepen"
+  | Pvalue value_kind -> Value value_kind
+  | Punboxed_float Unboxed_float64 -> Float64
+  | Punboxed_float Unboxed_float32 -> Float32
+  | Punboxed_or_untagged_integer Unboxed_int64 -> Bits64
+  | Punboxed_or_untagged_integer Unboxed_int32 -> Bits32
+  | Punboxed_or_untagged_integer Untagged_int16 -> Bits16
+  | Punboxed_or_untagged_integer Untagged_int8 -> Bits8
+  | Punboxed_or_untagged_integer Unboxed_nativeint -> Word
+  | Punboxed_vector Unboxed_vec128 -> Vec128
+  | Punboxed_vector Unboxed_vec256 -> Vec256
+  | Punboxed_vector Unboxed_vec512 -> Vec512
+  | Punboxed_or_untagged_integer Untagged_int -> Untagged_immediate
+
+let rec mixed_block_element_leaves (el : _ mixed_block_element)
+  : _ mixed_block_element list =
+  match el with
+  | Product els ->
+    List.concat_map mixed_block_element_leaves (Array.to_list els)
+  | Value _ | Float_boxed _ | Float64 | Float32 | Bits8 | Bits16 | Bits32
+  | Bits64 | Word | Vec128 | Vec256 | Vec512 | Untagged_immediate ->
+    [el]
+
+type will_be_reordered_acc = { seen_flat : bool; last_value_after_flat : bool }
+let will_be_reordered (mbe : _ mixed_block_element) =
+  let acc =
+    List.fold_left
+      (fun acc el ->
+        match el with
+        | Product _ -> assert false
+        | Value _ -> { acc with last_value_after_flat = acc.seen_flat }
+        | Float_boxed _ | Float64 | Float32 | Bits8 | Bits16 | Bits32 | Bits64
+        | Word | Vec128 |  Vec256 | Vec512 | Untagged_immediate ->
+          { acc with seen_flat = true })
+      { seen_flat = false; last_value_after_flat = false }
+      (mixed_block_element_leaves mbe)
+  in
+  acc.last_value_after_flat
+
 let primitive_result_layout (p : primitive) =
   assert !Clflags.native_code;
   match p with
@@ -2350,6 +2412,9 @@ let primitive_result_layout (p : primitive) =
   | Punboxed_product_field (field, layouts) -> (Array.of_list layouts).(field)
   | Pmake_unboxed_product layouts -> layout_unboxed_product layouts
   | Parray_element_size_in_bytes _ -> layout_int
+  | Pmake_idx_field _ | Pmake_idx_mixed_field _ | Pmake_idx_array _
+  | Pidx_deepen _ ->
+    Punboxed_or_untagged_integer Unboxed_int64
   | Pfloatfield _ -> layout_boxed_float Boxed_float64
   | Pufloatfield _ -> Punboxed_float Unboxed_float64
   | Pbox_vector (v, _) -> layout_boxed_vector v
@@ -2486,6 +2551,8 @@ let primitive_result_layout (p : primitive) =
       | Ppp_unboxed_nativeint -> layout_unboxed_nativeint
     )
   | Ppoke _ -> layout_unit
+  | Pget_idx (layout, _) -> layout
+  | Pset_idx _ -> layout_unit
 
 let compute_expr_layout free_vars_kind lam =
   let rec compute_expr_layout kinds = function
@@ -2693,6 +2760,28 @@ let count_initializers_array_kind (lambda_array_kind : array_kind) =
       (fun acc ignorable -> acc + count_initializers_ignorable ignorable)
       0 ignorables
 
+(* CR mshinwell: This function might need revisiting for JSIR and any
+   Flambda 2 -> WASM backend *)
+let array_element_size_in_bytes (array_kind : array_kind) =
+  match array_kind with
+  | Pgenarray | Paddrarray | Pintarray | Pfloatarray -> 8
+  | Punboxedfloatarray Unboxed_float32 ->
+    (* float32# arrays are packed *)
+    4
+  | Punboxedfloatarray Unboxed_float64 -> 8
+  | Punboxedoruntaggedintarray (Untagged_int8 | Untagged_int16 | Untagged_int)
+    ->
+    Misc.unboxed_small_int_arrays_are_not_implemented ()
+  | Punboxedoruntaggedintarray Unboxed_int32 ->
+    (* int32# arrays are packed *)
+    4
+  | Punboxedoruntaggedintarray (Unboxed_int64 | Unboxed_nativeint) -> 8
+  | Punboxedvectorarray Unboxed_vec128 -> 16
+  | Punboxedvectorarray Unboxed_vec256 -> 32
+  | Punboxedvectorarray Unboxed_vec512 -> 64
+  | Pgcscannableproductarray _ | Pgcignorableproductarray _ ->
+    (* All elements of unboxed product arrays are currently 8 bytes wide. *)
+    count_initializers_array_kind array_kind * 8
 let rec ignorable_product_element_kind_involves_int
     (kind : ignorable_product_element_kind) =
   match kind with

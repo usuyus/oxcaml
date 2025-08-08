@@ -516,6 +516,57 @@ let rec comp_expr (exp : Lambda.lambda) : Blambda.blambda =
         let element_size = Prim (Lsrint, [word_size; tagged_immediate 3]) in
         Sequence (comp_expr arg, element_size)
       | [] | _ :: _ :: _ -> wrong_arity ~expected:1)
+    | Pget_idx _ -> binary (Ccall "caml_unsafe_get_idx_bytecode")
+    | Pset_idx _ -> ternary (Ccall "caml_unsafe_set_idx_bytecode")
+    | Pmake_idx_field pos ->
+      Const (Const_block (0, [Const_base (Const_int pos)]))
+    | Pmake_idx_mixed_field (_, pos, path) ->
+      let path_consts =
+        List.map (fun x -> Const_base (Const_int x)) (pos :: path)
+      in
+      Const (Const_block (0, path_consts))
+    | Pmake_idx_array (_, ik, _, path) -> (
+      (* Make a block containing [ to_int index ] ++ path.
+         See [jane/doc/extensions/_03-unboxed-types/03-block-indices.md]. *)
+      match args with
+      | [index] ->
+        let index =
+          match ik with
+          | Ptagged_int_index -> comp_expr index
+          | Punboxed_or_untagged_integer_index
+              (Untagged_int8 | Untagged_int16 | Untagged_int) ->
+            (* [int8#]/[int16#] are already tagged ints on bytecode, so this
+               case is likely implemented by [comp_expr index]. But this should
+               be unreachable as the frontend doesn't support these indices. *)
+            Misc.fatal_error
+              "Array block indices with small int indices not expected"
+            (* CR mshinwell: this is probably ok for now, but it seems like
+               these conversions could silently overflow *)
+          | Punboxed_or_untagged_integer_index Unboxed_int64 ->
+            unary (Ccall "caml_int64_to_int")
+          | Punboxed_or_untagged_integer_index Unboxed_int32 ->
+            unary (Ccall "caml_int32_to_int")
+          | Punboxed_or_untagged_integer_index Unboxed_nativeint ->
+            unary (Ccall "caml_nativeint_to_int")
+        in
+        let path =
+          List.map (fun pos -> Const (Const_base (Const_int pos))) path
+        in
+        Blambda.Prim (Makeblock { tag = 0 }, index :: path)
+      | [] | _ :: _ :: _ -> wrong_arity ~expected:1)
+    | Pidx_deepen (_, path) -> (
+      (* In bytecode, an index is a block storing a series of positions; deepening
+         an index "appends" to the end (by making a new block) *)
+      match args with
+      | [path_prefix] ->
+        let path_prefix = comp_expr path_prefix in
+        let path_suffix_consts =
+          List.map (fun x -> Const_base (Const_int x)) path
+        in
+        let path_suffix = Const (Const_block (0, path_suffix_consts)) in
+        Blambda.Prim
+          (Ccall "caml_deepen_idx_bytecode", [path_prefix; path_suffix])
+      | [] | _ :: _ :: _ -> wrong_arity ~expected:1)
     | Pfield_computed _sem -> binary Getvectitem
     | Psetfield (n, _ptr, _init) -> binary (Setfield n)
     | Psetfield_computed (_ptr, _init) -> ternary Setvectitem

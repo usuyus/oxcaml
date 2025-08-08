@@ -40,6 +40,8 @@ end
 
 val arch_bits : int
 
+val log2_size_addr : int
+
 type arity =
   { function_kind : Lambda.function_kind;
     params_layout : Lambda.layout list;
@@ -966,6 +968,11 @@ val store :
   addr:expression ->
   new_value:expression ->
   expression
+
+val caml_modify : dbg:Debuginfo.t -> expression -> expression -> expression
+
+val caml_modify_local :
+  dbg:Debuginfo.t -> expression -> expression -> expression -> expression
 
 (** [direct_call ty f_code args] creates a direct call to the function code
     [f_code] with arguments [args], with a return value of type [ty].

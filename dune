@@ -255,6 +255,7 @@
   lambda
   matching
   mixed_block_shape
+  mixed_product_bytes
   printlambda
   runtimedef
   runtimetags
