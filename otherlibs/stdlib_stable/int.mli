@@ -12,166 +12,182 @@
 (*                                                                        *)
 (**************************************************************************)
 
-(** Signed 8-bit integer values.
+(** Signed integer values.
 
-    These integers are {8} bits wide and use two's complement representation.
-    All operations are taken modulo 2{^8}. They do not fail on overflow. *)
+    These integers are {!Sys.int_size} bits wide
+    and use two's complement representation.
+    All operations are taken modulo 2{^[Sys.int_size]}.
+    They do not fail on overflow. *)
 
-(** {1:ints 8-bit Integers} *)
+(** {1:ints Integers} *)
 
-(** The type for 8-bit integer values. *)
-type t = int8 [@@immediate]
+type t = int [@@immediate]
+(** The type for integer values. *)
 
-(** The number of bits in an integer of type {!int8}. *)
 val size : int
+(** The number of bits in an integer of type {!int}. *)
 
-(** The 8-bit integer 0. *)
-val zero : int8
+val zero : int
+(** The integer 0. *)
 
-(** The 8-bit integer 1. *)
-val one : int8
+val one : int
+(** The integer 1. *)
 
-(** The 8-bit integer -1. *)
-val minus_one : int8
+val minus_one : int
+(** The integer -1. *)
 
+external neg : int -> int = "%int_neg"
 (** Unary negation. *)
-external neg : int8 -> int8 = "%int8_neg"
 
+external add : int -> int -> int = "%int_add"
 (** Addition. *)
-external add : int8 -> int8 -> int8 = "%int8_add"
 
+external sub : int -> int -> int = "%int_sub"
 (** Subtraction. *)
-external sub : int8 -> int8 -> int8 = "%int8_sub"
 
+external mul : int -> int -> int = "%int_mul"
 (** Multiplication. *)
-external mul : int8 -> int8 -> int8 = "%int8_mul"
 
+external div : int -> int -> int = "%int_div"
 (** Integer division. This division rounds the real quotient of
     its arguments towards zero, as specified for {!Stdlib.(/)}.
     @raise Division_by_zero if the second argument is zero. *)
-external div : int8 -> int8 -> int8 = "%int8_div"
 
+val unsigned_div : int -> int -> int
 (** Same as {!div}, except that arguments and result are interpreted as {e
     unsigned} integers. *)
-val unsigned_div : int8 -> int8 -> int8
 
+external rem : int -> int -> int = "%int_mod"
 (** Integer remainder. If [y] is not zero, [rem x y = sub x (mul (div x y)
     y)]. If [y] is zero, [rem x y] raises [Division_by_zero]. *)
-external rem : int8 -> int8 -> int8 = "%int8_mod"
 
+val unsigned_rem : int -> int -> int
 (** Same as {!rem}, except that arguments and result are interpreted as {e
     unsigned} integers. *)
-val unsigned_rem : int8 -> int8 -> int8
 
+external succ : int -> int = "%int_succ"
 (** [succ x] is [add x 1]. *)
-external succ : int8 -> int8 = "%int8_succ"
 
+external pred : int -> int = "%int_pred"
 (** [pred x] is [sub x 1]. *)
-external pred : int8 -> int8 = "%int8_pred"
 
+val abs : int -> int
 (** [abs x] is the absolute value of [x]. That is [x] if [x] is positive and
     [neg x] if [x] is negative. {b Warning.} This may be negative if the
     argument is {!min_int}. *)
-val abs : int8 -> int8
 
+val max_int : int
 (** [max_int] is the greatest representable integer,
     [2{^[size - 1]} - 1]. *)
-val max_int : int8
 
+val min_int : int
 (** [min_int] is the smallest representable integer,
     [-2{^[size - 1]}]. *)
-val min_int : int8
 
+external logand : int -> int -> int = "%int_and"
 (** Bitwise logical and. *)
-external logand : int8 -> int8 -> int8 = "%int8_and"
 
+external logor : int -> int -> int = "%int_or"
 (** Bitwise logical or. *)
-external logor : int8 -> int8 -> int8 = "%int8_or"
 
+external logxor : int -> int -> int = "%int_xor"
 (** Bitwise logical exclusive or. *)
-external logxor : int8 -> int8 -> int8 = "%int8_xor"
 
+val lognot : int -> int
 (** Bitwise logical negation. *)
-val lognot : int8 -> int8
 
+external shift_left : int -> int -> int = "%int_lsl"
 (** [shift_left x n] shifts [x] to the left by [n] bits. The result
     is unspecified if [n < 0] or [n >= ]{!size}. *)
-external shift_left : int8 -> int -> int8 = "%int8_lsl"
 
+external shift_right : int -> int -> int = "%int_asr"
 (** [shift_right x n] shifts [x] to the right by [n] bits. This is an
     arithmetic shift: the sign bit of [x] is replicated and inserted
     in the vacated bits. The result is unspecified if [n < 0] or
     [n >=]{!size}. *)
-external shift_right : int8 -> int -> int8 = "%int8_asr"
 
+external shift_right_logical : int -> int -> int = "%int_lsr"
 (** [shift_right x n] shifts [x] to the right by [n] bits. This is a
     logical shift: zeroes are inserted in the vacated bits regardless
     of the sign of [x]. The result is unspecified if [n < 0] or
     [n >=]{!size}. *)
-external shift_right_logical : int8 -> int -> int8 = "%int8_lsr"
 
 (** {1:preds Predicates and comparisons} *)
 
+external equal : int -> int -> bool = "%int_equal"
 (** [equal x y] is [true] if and only if [x = y]. *)
-external equal : int8 -> int8 -> bool = "%int8_equal"
 
+external compare : int -> int -> int = "%int_compare"
 (** [compare x y] is {!Stdlib.compare}[ x y] but more efficient. *)
-external compare : int8 -> int8 -> int = "%int8_compare"
 
-(** Same as {!compare}, except that arguments are interpreted as {e unsigned} integers. *)
-external unsigned_compare : int8 -> int8 -> int = "%int8_unsigned_compare"
+external unsigned_compare : int -> int -> int = "%int_unsigned_compare"
+(** Same as {!compare}, except that arguments are interpreted as {e unsigned}
+    integers.
 
+    In unsigned comparison, negative numbers are treated as large positive
+    values.  For example, [-1] is treated as the maximum unsigned value, so
+    [unsigned_compare (-1) 0 = 1] (greater than).
+
+    @return [0] if the arguments are equal, a negative integer if the first
+    argument is less than the second (when both are viewed as unsigned), and a
+    positive integer if the first is greater than the second (when both are
+    viewed as unsigned).
+
+    Examples:
+    - [unsigned_compare 0 1 = -1] (0 < 1 unsigned)
+    - [unsigned_compare (-1) 0 = 1] (-1 as unsigned is max_value > 0)
+    - [unsigned_compare max_int min_int = -1] (max_int < min_int when unsigned)
+*)
+
+val min : int -> int -> int
 (** Return the lesser of the two arguments. *)
-val min : int8 -> int8 -> int8
 
+val max : int -> int -> int
 (** Return the greater of the two arguments. *)
-val max : int8 -> int8 -> int8
 
 (** {1:convert Converting} *)
 
-(** [to_int x] is [x] as an {!int}. *)
-external to_int : int8 -> int = "%int_of_int8"
+external to_int : int -> int = "%identity"
+external of_int : int -> int = "%identity"
 
-(** [of_int x] truncates the representation of [x] to fit in {!int8}. *)
-external of_int : int -> int8 = "%int8_of_int"
+val unsigned_to_int : int -> int option
+(** Same as {!to_int}, but interprets the argument
+    as an {e unsigned} integer. *)
 
-(** Same as {!to_int}, but interprets the argument as an {e unsigned} integer. *)
-val unsigned_to_int : int8 -> int
-
+external to_float : int -> float = "%float_of_int"
 (** [to_float x] is [x] as a floating point number. *)
-external to_float : int8 -> float = "%float_of_int8"
 
+external of_float : float -> int = "%int_of_float"
 (** [of_float x] truncates [x] to an integer. The result is
     unspecified if the argument is [nan] or falls outside the range of
     representable integers. *)
-external of_float : float -> int8 = "%int8_of_float"
 
+val to_string : int -> string
 (** [to_string x] is the written representation of [x] in decimal. *)
-val to_string : int8 -> string
 
-(** Convert the given string to an 8-bit integer.
+external of_string : string -> int = "caml_int_of_string"
+(** Convert the given string to an integer.
     The string is read in decimal (by default, or if the string
     begins with [0u]) or in hexadecimal, octal or binary if the
     string begins with [0x], [0o] or [0b] respectively.
 
     The [0u] prefix reads the input as an unsigned integer in the range
-    [[0, 2*Int8.max_int+1]].  If the input exceeds {!Int8.max_int}
+    [[0, 2*Int.max_int+1]].  If the input exceeds {!Int.max_int}
     it is converted to the signed integer
-    [Int8.min_int + input - Int8.max_int - 1].
+    [Int.min_int + input - Int.max_int - 1].
 
     The [_] (underscore) character can appear anywhere in the string
     and is ignored.
     @raise Failure if the given string is not
     a valid representation of an integer, or if the integer represented
-    exceeds the range of integers representable in type [int8]. *)
-external of_string : string -> int8 = "caml_int8_of_string"
+    exceeds the range of integers representable in type [int]. *)
 
+val seeded_hash : int -> int -> int
 (** A seeded hash function for ints, with the same output value as
     {!Hashtbl.seeded_hash}. This function allows this module to be passed as
     argument to the functor {!Hashtbl.MakeSeeded}. *)
-val seeded_hash : int -> int8 -> int
 
+val hash : int -> int
 (** An unseeded hash function for ints, with the same output value as
     {!Hashtbl.hash}. This function allows this module to be passed as argument
     to the functor {!Hashtbl.Make}. *)
-val hash : int8 -> int
