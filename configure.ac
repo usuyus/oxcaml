@@ -98,7 +98,6 @@ AC_ARG_ENABLE([dev],
 
 AC_SUBST([prefix])
 AC_SUBST([middle_end])
-AC_SUBST([dune])
 
 coverage="$enable_coverage"
 AC_SUBST([coverage])
@@ -368,6 +367,7 @@ AC_SUBST([stack_allocation])
 AC_SUBST([poll_insertion])
 AC_SUBST([enable_multidomain])
 AC_SUBST([dune])
+AC_SUBST([objcopy])
 AC_SUBST([ocaml_bindir])
 AC_SUBST([ocaml_libdir])
 AC_SUBST([QS])
@@ -477,12 +477,6 @@ AC_ARG_VAR([ASPP], [which assembler (with preprocessor) to use])
 AC_ARG_VAR([PARTIALLD], [how to build partial (relocatable) object files])
 
 # Command-line arguments to configure
-
-AC_PATH_PROG([dune], [dune], [])
-AC_ARG_WITH([dune],
-  [AS_HELP_STRING([--with-dune],
-    [Path to dune executable (otherwise PATH is searched)])],
-  [dune=$with_dune])
 
 AC_ARG_ENABLE([debug-runtime],
   [AS_HELP_STRING([--disable-debug-runtime],
@@ -2655,6 +2649,25 @@ AS_IF([$native_compiler],
     OCAML_AS_COMPRESSION_SUPPORT
     OCAML_CC_COMPRESSION_SUPPORT
     OCAML_OBJCOPY_COMPRESSION_SUPPORT])])
+
+dnl Prefer llvm-objcopy. If llvm-objcopy is not found, use objcopy.
+dnl GNU objcopy 2.35.2 sometimes modifies .relro_padding and .init_array
+dnl sections incorrectly, llvm-copy does not.
+default_objcopy="llvm-objcopy objcopy"
+
+AS_IF([$native_compiler],
+  [AS_CASE([$system],
+    [macosx],[],
+    [AC_PATH_PROGS([objcopy], [$default_objcopy], [])
+     AS_IF([test x"$objcopy" = "x"],
+       [AC_MSG_ERROR([objcopy not found on PATH; install, or use --with-objcopy])])
+     AC_MSG_NOTICE([Using objcopy executable: $objcopy])])])
+
+AC_ARG_WITH([objcopy],
+  [AS_HELP_STRING([--with-objcopy],
+    [Path to objcopy executable (otherwise PATH is searched for 'llvm-objcopy' or
+    'objcopy')])],
+  [objcopy=$with_objcopy])
 
 ## Frame pointers
 
