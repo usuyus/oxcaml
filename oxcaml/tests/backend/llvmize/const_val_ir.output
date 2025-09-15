@@ -1,16 +1,14 @@
 source_filename = "const_val.ml"
 
-@camlConst_val__data_begin = global {  } {  }, align 8, section ".data"
-define void @camlConst_val__code_begin() { unreachable }
+define   void @camlConst_val__code_begin()   {
+  unreachable
+}
 
-@camlConst_val__gc_roots = global { i64 } { i64 0 }, align 8, section ".data"
-@.header.camlConst_val = global { i64 } { i64 1792 }, align 8, section ".data"
-@camlConst_val = global { i64 } { i64 75 }, align 8, section ".data"
-define  cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlConst_val__entry(ptr %0, ptr %1) noinline gc "statepoint-example" {
-  %ds = alloca ptr
-  store ptr %0, ptr %ds
-  %alloc = alloca ptr
-  store ptr %1, ptr %alloc
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlConst_val__entry(i64 %0, i64 %1)  gc "statepoint-example" {
+  %ds = alloca i64
+  store i64 %0, ptr %ds
+  %alloc = alloca i64
+  store i64 %1, ptr %alloc
   %3 = alloca i64
   %4 = alloca ptr addrspace(1)
   %5 = alloca i64
@@ -18,31 +16,51 @@ define  cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlConst_val__entry(ptr 
   %7 = alloca i64
   br label %L1
 L1:
+
   br label %L104
-L104:                                                ; preds = %L1
-  store ptr @camlConst_val, ptr %5
-  %8 = load i64, ptr %5
-  store i64 %8, ptr %6
-  %9 = load i64, ptr %6
-  %10 = inttoptr i64 %9 to ptr addrspace(1)
-  store ptr addrspace(1) %10, ptr %4
+L104:
+
+  %8 = ptrtoint ptr @camlConst_val to i64
+  store i64 %8, ptr %5
+
+  %9 = load i64, ptr %5
+  store i64 %9, ptr %6
+
+  %10 = load i64, ptr %6
+  %11 = inttoptr i64 %10 to ptr addrspace(1)
+  store ptr addrspace(1) %11, ptr %4
+
   store i64 1, ptr %7
-  %11 = load i64, ptr %7
-  store i64 %11, ptr %3
-  %12 = extractvalue { { { ptr, ptr }, { ptr addrspace(1) } } } poison, 0
-  %13 = load ptr, ptr %ds
-  %14 = insertvalue { { ptr, ptr }, { ptr addrspace(1) } } %12, ptr %13, 0, 0
-  %15 = load ptr, ptr %alloc
-  %16 = insertvalue { { ptr, ptr }, { ptr addrspace(1) } } %14, ptr %15, 0, 1
-  %17 = load i64, ptr %3
-  %18 = inttoptr i64 %17 to ptr addrspace(1)
-  %19 = insertvalue { { ptr, ptr }, { ptr addrspace(1) } } %16, ptr addrspace(1) %18, 1, 0
-  ret { { ptr, ptr }, { ptr addrspace(1) } } %19
+
+  %12 = load i64, ptr %7
+  store i64 %12, ptr %3
+
+
+  %13 = load ptr addrspace(1), ptr %3
+  %14 = load i64, ptr %ds
+  %15 = load i64, ptr %alloc
+  %16 = insertvalue { { i64, i64 }, { ptr addrspace(1) } } poison, i64 %14, 0, 0
+  %17 = insertvalue { { i64, i64 }, { ptr addrspace(1) } } %16, i64 %15, 0, 1
+  %18 = insertvalue { { i64, i64 }, { ptr addrspace(1) } } %17, ptr addrspace(1) %13, 1, 0
+  ret { { i64, i64 }, { ptr addrspace(1) } } %18
 }
 
-declare i64 @llvm.read_register.i64(metadata)
-declare void @llvm.write_register.i64(metadata, i64)
+define private cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline  {
+  %3 = call  i32 @llvm.eh.ocaml.try()
+  %4 = insertvalue { { i64, i64 }, { i32 } } poison, i32 %3, 1, 0
+  %5 = insertvalue { { i64, i64 }, { i32 } } %4, i64 %0, 0, 0
+  %6 = insertvalue { { i64, i64 }, { i32 } } %5, i64 %1, 0, 1
+  ret { { i64, i64 }, { i32 } } %6
+}
 
+define   void @camlConst_val__code_end()   {
+  unreachable
+}
 
-@camlConst_val__data_end = global {  } {  }, align 8, section ".data"
-define void @camlConst_val__code_end() { unreachable }
+@camlConst_val__data_begin = global {  } {  }, section ".data", align 8
+@camlConst_val__gc_roots = global { i64 } { i64 0 }, section ".data", align 8
+@header.camlConst_val = global i64 1792, section ".data", align 8
+@camlConst_val = global { i64 } { i64 75 }, section ".data", align 8
+@camlConst_val__data_end = global {  } {  }, section ".data", align 8
+
+declare i32 @llvm.eh.ocaml.try()
