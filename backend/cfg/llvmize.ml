@@ -542,7 +542,7 @@ module Llvm_ir = struct
       | Fdiv -> "fdiv"
       | Frem -> "frem"
       | Shl -> "shl"
-      | Lshr -> "lshl"
+      | Lshr -> "lshr"
       | Ashr -> "ashr"
       | And -> "and"
       | Or -> "or"
