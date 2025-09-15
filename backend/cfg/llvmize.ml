@@ -927,7 +927,7 @@ module Llvm_ir = struct
         ins_res "icmp %s %a, %a" (icmp_cond_to_string cond) Value.pp_t arg1
           Value.pp_value (Value.get_value arg2)
       | Fcmp { cond; arg1; arg2 } ->
-        ins_res "icmp %s %a, %a" (fcmp_cond_to_string cond) Value.pp_t arg1
+        ins_res "fcmp %s %a, %a" (fcmp_cond_to_string cond) Value.pp_t arg1
           Value.pp_value (Value.get_value arg2)
       | Extractelement { vector; index } ->
         ins_res "extractelement %a, %a" Value.pp_t vector Value.pp_t index
@@ -964,7 +964,7 @@ module Llvm_ir = struct
           ifnot
       | Call { func; args; res_type; attrs; cc; musttail } -> (
         let pp_call ppf () =
-          fprintf ppf "%acall %a %a %a(%a) %a" (pp_str_if "musttail") musttail
+          fprintf ppf "%acall %a %a %a(%a) %a" (pp_str_if "musttail ") musttail
             Calling_conventions.pp_t cc Type.Or_void.pp_t res_type Ident.pp_t
             func
             (pp_print_list ~pp_sep:pp_comma Value.pp_t)
@@ -1728,13 +1728,14 @@ let emit_terminator t (i : Cfg.terminator Cfg.instruction) =
   | Never -> fail "terminator.Never"
   | Always lbl -> br_label t lbl
   | Parity_test { ifso; ifnot } ->
+    (* ifso -> even / ifnot -> odd, so labels are flipped *)
+    let cond = odd_test t i in
     emit_ins_no_res t
-      (I.br_cond ~cond:(odd_test t i) ~ifso:(V.of_label ifso)
-         ~ifnot:(V.of_label ifnot))
+      (I.br_cond ~cond ~ifso:(V.of_label ifnot) ~ifnot:(V.of_label ifso))
   | Truth_test { ifso; ifnot } ->
+    let cond = test t Itruetest i in
     emit_ins_no_res t
-      (I.br_cond ~cond:(test t Itruetest i) ~ifso:(V.of_label ifso)
-         ~ifnot:(V.of_label ifnot))
+      (I.br_cond ~cond ~ifso:(V.of_label ifso) ~ifnot:(V.of_label ifnot))
   | Return -> return t i
   | Int_test { lt; eq; gt; is_signed; imm } ->
     let open struct

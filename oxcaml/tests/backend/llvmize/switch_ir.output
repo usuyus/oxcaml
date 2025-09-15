@@ -1,42 +1,14 @@
 source_filename = "switch.ml"
 
-@camlSwitch__data_begin = global {  } {  }, align 8, section ".data"
-define void @camlSwitch__code_begin() { unreachable }
+define   void @camlSwitch__code_begin()   {
+  unreachable
+}
 
-@camlSwitch__gc_roots = global { i64 } { i64 0 }, align 8, section ".data"
-@.header.camlSwitch = global { i64 } { i64 2816 }, align 8, section ".data"
-@camlSwitch = global { ptr, ptr } { ptr @camlSwitch__next_2, ptr @camlSwitch__test_next_3 }, align 8, section ".data"
-@.header.camlSwitch__test_next_3 = global { i64 } { i64 3063 }, align 8, section ".data"
-@camlSwitch__test_next_3 = global { ptr, i64 } { ptr @camlSwitch__test_next_HIDE_STAMP, i64 108086391056891909 }, align 8, section ".data"
-@.header.camlSwitch__next_2 = global { i64 } { i64 3063 }, align 8, section ".data"
-@camlSwitch__next_2 = global { ptr, i64 } { ptr @camlSwitch__next_HIDE_STAMP, i64 108086391056891909 }, align 8, section ".data"
-@.header.camlSwitch__const_block54 = global { i64 } { i64 2827 }, align 8, section ".data"
-@camlSwitch__const_block54 = global { ptr, ptr } { ptr @camlSwitch__immstring42, ptr @camlSwitch__const_block52 }, align 8, section ".data"
-@.header.camlSwitch__const_block52 = global { i64 } { i64 4868 }, align 8, section ".data"
-@camlSwitch__const_block52 = global { i64, i64, i64, ptr } { i64 1, i64 1, i64 1, ptr @camlSwitch__const_block50 }, align 8, section ".data"
-@.header.camlSwitch__const_block50 = global { i64 } { i64 2827 }, align 8, section ".data"
-@camlSwitch__const_block50 = global { ptr, ptr } { ptr @camlSwitch__immstring44, ptr @camlSwitch__const_block48 }, align 8, section ".data"
-@.header.camlSwitch__const_block48 = global { i64 } { i64 2818 }, align 8, section ".data"
-@camlSwitch__const_block48 = global { i64, ptr } { i64 1, ptr @camlSwitch__const_block46 }, align 8, section ".data"
-@.header.camlSwitch__const_block46 = global { i64 } { i64 2828 }, align 8, section ".data"
-@camlSwitch__const_block46 = global { i64, i64 } { i64 21, i64 1 }, align 8, section ".data"
-@.header.camlSwitch__immstring44 = global { i64 } { i64 2044 }, align 8, section ".data"
-@camlSwitch__immstring44 = global { [ 3 x i8 ], [ 4 x i8 ], i8 } { [ 3 x i8 ] c"\20\3d\20", [ 4 x i8 ] zeroinitializer, i8 4 }, align 8, section ".data"
-@.header.camlSwitch__immstring42 = global { i64 } { i64 2044 }, align 8, section ".data"
-@camlSwitch__immstring42 = global { [ 5 x i8 ], [ 2 x i8 ], i8 } { [ 5 x i8 ] c"\6e\65\78\74\20", [ 2 x i8 ] zeroinitializer, i8 2 }, align 8, section ".data"
-@.header.camlSwitch__immstring38 = global { i64 } { i64 3068 }, align 8, section ".data"
-@camlSwitch__immstring38 = global { [ 9 x i8 ], [ 6 x i8 ], i8 } { [ 9 x i8 ] c"\6e\6f\74\20\66\6f\75\6e\64", [ 6 x i8 ] zeroinitializer, i8 6 }, align 8, section ".data"
-@.header.camlSwitch__Pmakeblock20 = global { i64 } { i64 2816 }, align 8, section ".data"
-@camlSwitch__Pmakeblock20 = global { ptr, ptr } { ptr @caml_exn_Match_failure, ptr @camlSwitch__const_block17 }, align 8, section ".data"
-@.header.camlSwitch__const_block17 = global { i64 } { i64 3840 }, align 8, section ".data"
-@camlSwitch__const_block17 = global { ptr, i64, i64 } { ptr @camlSwitch__immstring15, i64 5, i64 5 }, align 8, section ".data"
-@.header.camlSwitch__immstring15 = global { i64 } { i64 3068 }, align 8, section ".data"
-@camlSwitch__immstring15 = global { [ 9 x i8 ], [ 6 x i8 ], i8 } { [ 9 x i8 ] c"\73\77\69\74\63\68\2e\6d\6c", [ 6 x i8 ] zeroinitializer, i8 6 }, align 8, section ".data"
-define  cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %0, ptr %1, i64 %2) noinline gc "statepoint-example" {
-  %ds = alloca ptr
-  store ptr %0, ptr %ds
-  %alloc = alloca ptr
-  store ptr %1, ptr %alloc
+define  cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+  %ds = alloca i64
+  store i64 %0, ptr %ds
+  %alloc = alloca i64
+  store i64 %1, ptr %alloc
   %4 = alloca i64
   store i64 %2, ptr %4
   %5 = alloca i64
@@ -56,198 +28,247 @@ define  cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %0, pt
   %19 = alloca i64
   br label %L1
 L1:
+
   br label %L101
-L101:                                                ; preds = %L1
+L101:
+
   %20 = load i64, ptr %4
   store i64 %20, ptr %5
+
   %21 = load i64, ptr %5
   store i64 %21, ptr %6
+
   %22 = load i64, ptr %6
   %23 = add i64 %22, -2
   store i64 %23, ptr %6
+
   %24 = load i64, ptr %6
   store i64 %24, ptr %7
+
   %25 = load i64, ptr %7
   %26 = icmp ult i64 %25, 17
-  br i1 %26, label %L106, label %27
-27:
-  %28 = load i64, ptr %7
-  %29 = icmp ugt i64 %28, 17
-  br i1 %29, label %L104, label %L106
-L104:                                                ; preds = %L101
-  store ptr @camlSwitch__Pmakeblock20, ptr %8
+  br i1 %26, label %L106, label %L129
+L129:
+  %27 = load i64, ptr %7
+  %28 = icmp ugt i64 %27, 17
+  br i1 %28, label %L104, label %L106
+L104:
+
+  %29 = ptrtoint ptr @camlSwitch__Pmakeblock20 to i64
+  store i64 %29, ptr %8
+
   %30 = load i64, ptr %8
   store i64 %30, ptr %4
+
   %31 = load i64, ptr %ds
   %32 = add i64 %31, 240
   %33 = inttoptr i64 %32 to ptr
   store i64 0, ptr %33
   %34 = load i64, ptr %4
-  %35 = load ptr, ptr %ds
-  %36 = load ptr, ptr %alloc
-  %37 =  call cc 104 { { ptr, ptr }, {  } } @caml_raise_exn(ptr %35, ptr %36, i64 %34) "statepoint-id"="0"
-  %38 = extractvalue { { ptr, ptr }, {  } } %37, 0, 0
-  store ptr %38, ptr %ds
-  %39 = extractvalue { { ptr, ptr }, {  } } %37, 0, 1
-  store ptr %39, ptr %alloc
+  %35 = load i64, ptr %ds
+  %36 = load i64, ptr %alloc
+  %37 = call cc 104 { { i64, i64 }, {  } } @caml_raise_exn(i64 %35, i64 %36, i64 %34) "statepoint-id"="0"
+  %38 = extractvalue { { i64, i64 }, {  } } %37, 0, 0
+  %39 = extractvalue { { i64, i64 }, {  } } %37, 0, 1
+  store i64 %38, ptr %ds
+  store i64 %39, ptr %alloc
   unreachable
-L106:                                                ; preds = %L101
+L106:
+
   %40 = load i64, ptr %7
   store i64 %40, ptr %9
+
   %41 = load i64, ptr %9
   %42 = ashr i64 %41, 1
   store i64 %42, ptr %9
+
   %43 = load i64, ptr %9
   store i64 %43, ptr %10
+
   %44 = load i64, ptr %10
-  switch i64 %44, label %45 [
-    i64 0, label %L109
+  switch i64 %44, label %L130 [
+
+  i64 0, label %L109
     i64 1, label %L111
     i64 2, label %L113
-    i64 3, label %L115
+
+  i64 3, label %L115
     i64 4, label %L117
     i64 5, label %L119
-    i64 6, label %L121
+
+  i64 6, label %L121
     i64 7, label %L123
-    i64 8, label %L125
+
+  i64 8, label %L125
   ]
-45:
+L130:
   unreachable
-L109:                                                ; preds = %L106
+L109:
+
   store i64 5, ptr %11
-  %46 = load i64, ptr %11
-  store i64 %46, ptr %4
-  %47 = extractvalue { { { ptr, ptr }, { i64 } } } poison, 0
-  %48 = load ptr, ptr %ds
-  %49 = insertvalue { { ptr, ptr }, { i64 } } %47, ptr %48, 0, 0
-  %50 = load ptr, ptr %alloc
-  %51 = insertvalue { { ptr, ptr }, { i64 } } %49, ptr %50, 0, 1
-  %52 = load i64, ptr %4
-  %53 = insertvalue { { ptr, ptr }, { i64 } } %51, i64 %52, 1, 0
-  ret { { ptr, ptr }, { i64 } } %53
-L111:                                                ; preds = %L106
-  store ptr @camlSwitch__Pmakeblock20, ptr %12
-  %54 = load i64, ptr %12
-  store i64 %54, ptr %4
-  %55 = load i64, ptr %ds
-  %56 = add i64 %55, 240
-  %57 = inttoptr i64 %56 to ptr
-  store i64 0, ptr %57
-  %58 = load i64, ptr %4
-  %59 = load ptr, ptr %ds
-  %60 = load ptr, ptr %alloc
-  %61 =  call cc 104 { { ptr, ptr }, {  } } @caml_raise_exn(ptr %59, ptr %60, i64 %58) "statepoint-id"="0"
-  %62 = extractvalue { { ptr, ptr }, {  } } %61, 0, 0
-  store ptr %62, ptr %ds
-  %63 = extractvalue { { ptr, ptr }, {  } } %61, 0, 1
-  store ptr %63, ptr %alloc
+
+  %45 = load i64, ptr %11
+  store i64 %45, ptr %4
+
+
+  %46 = load i64, ptr %4
+  %47 = load i64, ptr %ds
+  %48 = load i64, ptr %alloc
+  %49 = insertvalue { { i64, i64 }, { i64 } } poison, i64 %47, 0, 0
+  %50 = insertvalue { { i64, i64 }, { i64 } } %49, i64 %48, 0, 1
+  %51 = insertvalue { { i64, i64 }, { i64 } } %50, i64 %46, 1, 0
+  ret { { i64, i64 }, { i64 } } %51
+L111:
+
+  %52 = ptrtoint ptr @camlSwitch__Pmakeblock20 to i64
+  store i64 %52, ptr %12
+
+  %53 = load i64, ptr %12
+  store i64 %53, ptr %4
+
+  %54 = load i64, ptr %ds
+  %55 = add i64 %54, 240
+  %56 = inttoptr i64 %55 to ptr
+  store i64 0, ptr %56
+  %57 = load i64, ptr %4
+  %58 = load i64, ptr %ds
+  %59 = load i64, ptr %alloc
+  %60 = call cc 104 { { i64, i64 }, {  } } @caml_raise_exn(i64 %58, i64 %59, i64 %57) "statepoint-id"="0"
+  %61 = extractvalue { { i64, i64 }, {  } } %60, 0, 0
+  %62 = extractvalue { { i64, i64 }, {  } } %60, 0, 1
+  store i64 %61, ptr %ds
+  store i64 %62, ptr %alloc
   unreachable
-L113:                                                ; preds = %L106
+L113:
+
   store i64 9, ptr %13
-  %64 = load i64, ptr %13
-  store i64 %64, ptr %4
-  %65 = extractvalue { { { ptr, ptr }, { i64 } } } poison, 0
-  %66 = load ptr, ptr %ds
-  %67 = insertvalue { { ptr, ptr }, { i64 } } %65, ptr %66, 0, 0
-  %68 = load ptr, ptr %alloc
-  %69 = insertvalue { { ptr, ptr }, { i64 } } %67, ptr %68, 0, 1
-  %70 = load i64, ptr %4
-  %71 = insertvalue { { ptr, ptr }, { i64 } } %69, i64 %70, 1, 0
-  ret { { ptr, ptr }, { i64 } } %71
-L115:                                                ; preds = %L106
-  store ptr @camlSwitch__Pmakeblock20, ptr %14
-  %72 = load i64, ptr %14
-  store i64 %72, ptr %4
-  %73 = load i64, ptr %ds
-  %74 = add i64 %73, 240
-  %75 = inttoptr i64 %74 to ptr
-  store i64 0, ptr %75
-  %76 = load i64, ptr %4
-  %77 = load ptr, ptr %ds
-  %78 = load ptr, ptr %alloc
-  %79 =  call cc 104 { { ptr, ptr }, {  } } @caml_raise_exn(ptr %77, ptr %78, i64 %76) "statepoint-id"="0"
-  %80 = extractvalue { { ptr, ptr }, {  } } %79, 0, 0
-  store ptr %80, ptr %ds
-  %81 = extractvalue { { ptr, ptr }, {  } } %79, 0, 1
-  store ptr %81, ptr %alloc
+
+  %63 = load i64, ptr %13
+  store i64 %63, ptr %4
+
+
+  %64 = load i64, ptr %4
+  %65 = load i64, ptr %ds
+  %66 = load i64, ptr %alloc
+  %67 = insertvalue { { i64, i64 }, { i64 } } poison, i64 %65, 0, 0
+  %68 = insertvalue { { i64, i64 }, { i64 } } %67, i64 %66, 0, 1
+  %69 = insertvalue { { i64, i64 }, { i64 } } %68, i64 %64, 1, 0
+  ret { { i64, i64 }, { i64 } } %69
+L115:
+
+  %70 = ptrtoint ptr @camlSwitch__Pmakeblock20 to i64
+  store i64 %70, ptr %14
+
+  %71 = load i64, ptr %14
+  store i64 %71, ptr %4
+
+  %72 = load i64, ptr %ds
+  %73 = add i64 %72, 240
+  %74 = inttoptr i64 %73 to ptr
+  store i64 0, ptr %74
+  %75 = load i64, ptr %4
+  %76 = load i64, ptr %ds
+  %77 = load i64, ptr %alloc
+  %78 = call cc 104 { { i64, i64 }, {  } } @caml_raise_exn(i64 %76, i64 %77, i64 %75) "statepoint-id"="0"
+  %79 = extractvalue { { i64, i64 }, {  } } %78, 0, 0
+  %80 = extractvalue { { i64, i64 }, {  } } %78, 0, 1
+  store i64 %79, ptr %ds
+  store i64 %80, ptr %alloc
   unreachable
-L117:                                                ; preds = %L106
+L117:
+
   store i64 13, ptr %15
-  %82 = load i64, ptr %15
-  store i64 %82, ptr %4
-  %83 = extractvalue { { { ptr, ptr }, { i64 } } } poison, 0
-  %84 = load ptr, ptr %ds
-  %85 = insertvalue { { ptr, ptr }, { i64 } } %83, ptr %84, 0, 0
-  %86 = load ptr, ptr %alloc
-  %87 = insertvalue { { ptr, ptr }, { i64 } } %85, ptr %86, 0, 1
-  %88 = load i64, ptr %4
-  %89 = insertvalue { { ptr, ptr }, { i64 } } %87, i64 %88, 1, 0
-  ret { { ptr, ptr }, { i64 } } %89
-L119:                                                ; preds = %L106
-  store ptr @camlSwitch__Pmakeblock20, ptr %16
-  %90 = load i64, ptr %16
-  store i64 %90, ptr %4
-  %91 = load i64, ptr %ds
-  %92 = add i64 %91, 240
-  %93 = inttoptr i64 %92 to ptr
-  store i64 0, ptr %93
-  %94 = load i64, ptr %4
-  %95 = load ptr, ptr %ds
-  %96 = load ptr, ptr %alloc
-  %97 =  call cc 104 { { ptr, ptr }, {  } } @caml_raise_exn(ptr %95, ptr %96, i64 %94) "statepoint-id"="0"
-  %98 = extractvalue { { ptr, ptr }, {  } } %97, 0, 0
-  store ptr %98, ptr %ds
-  %99 = extractvalue { { ptr, ptr }, {  } } %97, 0, 1
-  store ptr %99, ptr %alloc
+
+  %81 = load i64, ptr %15
+  store i64 %81, ptr %4
+
+
+  %82 = load i64, ptr %4
+  %83 = load i64, ptr %ds
+  %84 = load i64, ptr %alloc
+  %85 = insertvalue { { i64, i64 }, { i64 } } poison, i64 %83, 0, 0
+  %86 = insertvalue { { i64, i64 }, { i64 } } %85, i64 %84, 0, 1
+  %87 = insertvalue { { i64, i64 }, { i64 } } %86, i64 %82, 1, 0
+  ret { { i64, i64 }, { i64 } } %87
+L119:
+
+  %88 = ptrtoint ptr @camlSwitch__Pmakeblock20 to i64
+  store i64 %88, ptr %16
+
+  %89 = load i64, ptr %16
+  store i64 %89, ptr %4
+
+  %90 = load i64, ptr %ds
+  %91 = add i64 %90, 240
+  %92 = inttoptr i64 %91 to ptr
+  store i64 0, ptr %92
+  %93 = load i64, ptr %4
+  %94 = load i64, ptr %ds
+  %95 = load i64, ptr %alloc
+  %96 = call cc 104 { { i64, i64 }, {  } } @caml_raise_exn(i64 %94, i64 %95, i64 %93) "statepoint-id"="0"
+  %97 = extractvalue { { i64, i64 }, {  } } %96, 0, 0
+  %98 = extractvalue { { i64, i64 }, {  } } %96, 0, 1
+  store i64 %97, ptr %ds
+  store i64 %98, ptr %alloc
   unreachable
-L121:                                                ; preds = %L106
+L121:
+
   store i64 17, ptr %17
-  %100 = load i64, ptr %17
-  store i64 %100, ptr %4
-  %101 = extractvalue { { { ptr, ptr }, { i64 } } } poison, 0
-  %102 = load ptr, ptr %ds
-  %103 = insertvalue { { ptr, ptr }, { i64 } } %101, ptr %102, 0, 0
-  %104 = load ptr, ptr %alloc
-  %105 = insertvalue { { ptr, ptr }, { i64 } } %103, ptr %104, 0, 1
-  %106 = load i64, ptr %4
-  %107 = insertvalue { { ptr, ptr }, { i64 } } %105, i64 %106, 1, 0
-  ret { { ptr, ptr }, { i64 } } %107
-L123:                                                ; preds = %L106
-  store ptr @camlSwitch__Pmakeblock20, ptr %18
-  %108 = load i64, ptr %18
-  store i64 %108, ptr %4
-  %109 = load i64, ptr %ds
-  %110 = add i64 %109, 240
-  %111 = inttoptr i64 %110 to ptr
-  store i64 0, ptr %111
-  %112 = load i64, ptr %4
-  %113 = load ptr, ptr %ds
-  %114 = load ptr, ptr %alloc
-  %115 =  call cc 104 { { ptr, ptr }, {  } } @caml_raise_exn(ptr %113, ptr %114, i64 %112) "statepoint-id"="0"
-  %116 = extractvalue { { ptr, ptr }, {  } } %115, 0, 0
-  store ptr %116, ptr %ds
-  %117 = extractvalue { { ptr, ptr }, {  } } %115, 0, 1
-  store ptr %117, ptr %alloc
+
+  %99 = load i64, ptr %17
+  store i64 %99, ptr %4
+
+
+  %100 = load i64, ptr %4
+  %101 = load i64, ptr %ds
+  %102 = load i64, ptr %alloc
+  %103 = insertvalue { { i64, i64 }, { i64 } } poison, i64 %101, 0, 0
+  %104 = insertvalue { { i64, i64 }, { i64 } } %103, i64 %102, 0, 1
+  %105 = insertvalue { { i64, i64 }, { i64 } } %104, i64 %100, 1, 0
+  ret { { i64, i64 }, { i64 } } %105
+L123:
+
+  %106 = ptrtoint ptr @camlSwitch__Pmakeblock20 to i64
+  store i64 %106, ptr %18
+
+  %107 = load i64, ptr %18
+  store i64 %107, ptr %4
+
+  %108 = load i64, ptr %ds
+  %109 = add i64 %108, 240
+  %110 = inttoptr i64 %109 to ptr
+  store i64 0, ptr %110
+  %111 = load i64, ptr %4
+  %112 = load i64, ptr %ds
+  %113 = load i64, ptr %alloc
+  %114 = call cc 104 { { i64, i64 }, {  } } @caml_raise_exn(i64 %112, i64 %113, i64 %111) "statepoint-id"="0"
+  %115 = extractvalue { { i64, i64 }, {  } } %114, 0, 0
+  %116 = extractvalue { { i64, i64 }, {  } } %114, 0, 1
+  store i64 %115, ptr %ds
+  store i64 %116, ptr %alloc
   unreachable
-L125:                                                ; preds = %L106
+L125:
+
   store i64 21, ptr %19
-  %118 = load i64, ptr %19
-  store i64 %118, ptr %4
-  %119 = extractvalue { { { ptr, ptr }, { i64 } } } poison, 0
-  %120 = load ptr, ptr %ds
-  %121 = insertvalue { { ptr, ptr }, { i64 } } %119, ptr %120, 0, 0
-  %122 = load ptr, ptr %alloc
-  %123 = insertvalue { { ptr, ptr }, { i64 } } %121, ptr %122, 0, 1
-  %124 = load i64, ptr %4
-  %125 = insertvalue { { ptr, ptr }, { i64 } } %123, i64 %124, 1, 0
-  ret { { ptr, ptr }, { i64 } } %125
+
+  %117 = load i64, ptr %19
+  store i64 %117, ptr %4
+
+
+  %118 = load i64, ptr %4
+  %119 = load i64, ptr %ds
+  %120 = load i64, ptr %alloc
+  %121 = insertvalue { { i64, i64 }, { i64 } } poison, i64 %119, 0, 0
+  %122 = insertvalue { { i64, i64 }, { i64 } } %121, i64 %120, 0, 1
+  %123 = insertvalue { { i64, i64 }, { i64 } } %122, i64 %118, 1, 0
+  ret { { i64, i64 }, { i64 } } %123
 }
 
-define  cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__test_next_HIDE_STAMP(ptr %0, ptr %1, i64 %2) noinline gc "statepoint-example" {
-  %ds = alloca ptr
-  store ptr %0, ptr %ds
-  %alloc = alloca ptr
-  store ptr %1, ptr %alloc
+define  cc 104 { { i64, i64 }, { i64 } } @camlSwitch__test_next_HIDE_STAMP(i64 %0, i64 %1, i64 %2) noinline gc "statepoint-example" {
+  %ds = alloca i64
+  store i64 %0, ptr %ds
+  %alloc = alloca i64
+  store i64 %1, ptr %alloc
   %4 = alloca i64
   store i64 %2, ptr %4
   %5 = alloca ptr addrspace(1)
@@ -278,189 +299,213 @@ define  cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__test_next_HIDE_STAMP(ptr %
   %30 = alloca ptr addrspace(1)
   br label %L1
 L1:
-  br label %L130
-L130:                                                ; preds = %L1
+
+  br label %L132
+L132:
+
   %31 = load i64, ptr %4
   store i64 %31, ptr %11
+
   %32 = load i64, ptr %ds
   %33 = add i64 %32, 64
   %34 = inttoptr i64 %33 to ptr
   %35 = load i64, ptr %34
   store i64 %35, ptr %13
+
   %36 = load i64, ptr %13
   store i64 %36, ptr %14
-  %37 = load ptr, ptr %ds
-  %38 = load ptr, ptr %alloc
-  %39 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %37, ptr %38) returns_twice "gc-leaf-function"="true"
-  %40 = extractvalue { { ptr, ptr }, { i32 } } %39, 0, 0
-  store ptr %40, ptr %ds
-  %41 = extractvalue { { ptr, ptr }, { i32 } } %39, 0, 1
-  store ptr %41, ptr %alloc
-  %42 = extractvalue { { ptr, ptr }, { i32 } } %39, 1, 0
-  br label %43
-43:
-  %44 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %45 = icmp eq i64 %44, 0
-  br i1 %45, label %46, label %L136
-46:
-  %47 =  call  ptr @llvm.stacksave()
-  %48 = alloca { i64, i64, i64, i64 }
-  %49 = load i64, ptr %ds
-  %50 = add i64 %49, 48
-  %51 = inttoptr i64 %50 to ptr
-  %52 = load i64, ptr %51
-  %53 = ptrtoint ptr %48 to i64
-  %54 = add i64 %53, 16
+
+  %37 = load i64, ptr %ds
+  %38 = load i64, ptr %alloc
+  %39 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %37, i64 %38) returns_twice "gc-leaf-function"="true"
+  %40 = extractvalue { { i64, i64 }, { i32 } } %39, 0, 0
+  %41 = extractvalue { { i64, i64 }, { i32 } } %39, 0, 1
+  store i64 %40, ptr %ds
+  store i64 %41, ptr %alloc
+  %42 = extractvalue { { i64, i64 }, { i32 } } %39, 1, 0
+  br label %L158
+L158:
+  %43 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %44 = icmp eq i64 %43, 0
+  br i1 %44, label %L159, label %L138
+L159:
+  %45 = call  ptr @llvm.stacksave()
+  %46 = alloca { i64, i64, i64, i64 }
+  %47 = ptrtoint ptr %46 to i64
+  %48 = add i64 %47, 16
+  %49 = inttoptr i64 %48 to ptr
+  %50 = ptrtoint ptr %46 to i64
+  %51 = add i64 %50, 8
+  %52 = inttoptr i64 %51 to ptr
+  %53 = load i64, ptr %ds
+  %54 = add i64 %53, 48
   %55 = inttoptr i64 %54 to ptr
-  %56 = ptrtoint ptr %48 to i64
-  %57 = add i64 %56, 8
-  %58 = inttoptr i64 %57 to ptr
-  %59 = ptrtoint ptr %48 to i64
-  %60 = add i64 %59, 0
-  %61 = inttoptr i64 %60 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %55)
-  store ptr blockaddress(@camlSwitch__test_next_HIDE_STAMP, %43), ptr %58
-  store i64 %52, ptr %61
-  store ptr %48, ptr %51
-  %62 = load i64, ptr %11
-  store i64 %62, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %63 = load ptr, ptr %ds
-  %64 = load ptr, ptr %alloc
+  %56 = load i64, ptr %55
+  store ptr %46, ptr %55
+  store ptr blockaddress(@camlSwitch__test_next_HIDE_STAMP, %L158), ptr %52
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %49)
+  store i64 %56, ptr %46
+
+  %57 = load i64, ptr %11
+  store i64 %57, ptr %4
+
+  %58 = load i64, ptr %4
+  %59 = load i64, ptr %ds
+  %60 = load i64, ptr %alloc
+  %61 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %59, i64 %60, i64 %58) "statepoint-id"="32"
+  %62 = extractvalue { { i64, i64 }, { i64 } } %61, 0, 0
+  %63 = extractvalue { { i64, i64 }, { i64 } } %61, 0, 1
+  store i64 %62, ptr %ds
+  store i64 %63, ptr %alloc
+  %64 = extractvalue { { i64, i64 }, { i64 } } %61, 1, 0
+  store i64 %64, ptr %4
+  br label %L146
+L146:
+
   %65 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %66 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %63, ptr %64, i64 %65) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %67 = extractvalue { { ptr, ptr }, { i64 } } %66, 0, 0
-  store ptr %67, ptr %ds
-  %68 = extractvalue { { ptr, ptr }, { i64 } } %66, 0, 1
-  store ptr %68, ptr %alloc
-  %69 = extractvalue { { ptr, ptr }, { i64 } } %66, 1, 0
-  store i64 %69, ptr %4
-  br label %L144
-L144:                                                ; preds = %L130
-  %70 = load i64, ptr %4
-  store i64 %70, ptr %16
-  %71 = load i64, ptr %16
-  store i64 %71, ptr %17
-  store ptr @camlStdlib__Int__immstring64, ptr %18
-  %72 = load i64, ptr %18
-  store i64 %72, ptr %9
-  %73 = load i64, ptr %17
-  store i64 %73, ptr %10
-  %74 = load i64, ptr %9
-  %75 = load i64, ptr %10
-  %76 = load ptr, ptr %ds
-  %77 = load ptr, ptr %alloc
-  %78 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %76, ptr %77, ptr @caml_format_int, i64 poison, i64 %74, i64 %75) "statepoint-id"="32"
-  %79 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %78, 0, 0
-  store ptr %79, ptr %ds
-  %80 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %78, 0, 1
-  store ptr %80, ptr %alloc
-  %81 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %78, 1, 0
-  store ptr addrspace(1) %81, ptr %5
-  br label %L145
-L145:                                                ; preds = %L144
-  %82 = load ptr addrspace(1), ptr %5
-  store ptr addrspace(1) %82, ptr %19
-  %83 = load ptr addrspace(1), ptr %19
-  store ptr addrspace(1) %83, ptr %20
-  %84 = load ptr addrspace(1), ptr %20
-  store ptr addrspace(1) %84, ptr %21
-  %85 = load ptr addrspace(1), ptr %21
-  store ptr addrspace(1) %85, ptr %12
-  %86 = load i64, ptr %ds
-  %87 = add i64 %86, 48
-  %88 = inttoptr i64 %87 to ptr
-  %89 = load i64, ptr %48
-  store i64 %89, ptr %88
-   call  void @llvm.stackrestore(ptr %47)
-  br label %L151
-L136:                                                ; preds = %L130, %L144
-  call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %90 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %90, ptr %alloc
-  store i64 %44, ptr %4
-  %91 = load i64, ptr %4
-  %92 = inttoptr i64 %91 to ptr addrspace(1)
-  store ptr addrspace(1) %92, ptr %15
-  %93 = load i64, ptr %14
-  %94 = load i64, ptr %ds
-  %95 = add i64 %94, 64
-  %96 = inttoptr i64 %95 to ptr
-  store i64 %93, ptr %96
-  store i64 1, ptr %22
-  %97 = load i64, ptr %22
-  store i64 %97, ptr %23
-  store ptr @camlSwitch__immstring38, ptr %24
-  %98 = load i64, ptr %24
-  store i64 %98, ptr %25
-  %99 = load i64, ptr %25
-  %100 = inttoptr i64 %99 to ptr addrspace(1)
-  store ptr addrspace(1) %100, ptr %12
-  br label %L151
-L151:                                                ; preds = %L136, %L145
-  store ptr @camlSwitch__const_block54, ptr %26
-  store i64 1, ptr %27
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %28
-  %101 = load i64, ptr %28
-  store i64 %101, ptr %4
-  %102 = load i64, ptr %27
-  store i64 %102, ptr %7
-  %103 = load i64, ptr %26
-  store i64 %103, ptr %9
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %104 = load ptr, ptr %ds
-  %105 = load ptr, ptr %alloc
-  %106 = load i64, ptr %4
-  %107 = inttoptr i64 %106 to ptr addrspace(1)
-  %108 = load i64, ptr %7
-  %109 = inttoptr i64 %108 to ptr addrspace(1)
-  %110 = load i64, ptr %9
-  %111 = inttoptr i64 %110 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %112 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %104, ptr %105, ptr addrspace(1) %107, ptr addrspace(1) %109, ptr addrspace(1) %111) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %113 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %112, 0, 0
-  store ptr %113, ptr %ds
-  %114 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %112, 0, 1
-  store ptr %114, ptr %alloc
-  %115 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %112, 1, 0
-  store ptr addrspace(1) %115, ptr %5
+  store i64 %65, ptr %16
+
+  %66 = load i64, ptr %16
+  store i64 %66, ptr %17
+
+  %67 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %67, ptr %18
+
+  %68 = load i64, ptr %18
+  store i64 %68, ptr %9
+
+  %69 = load i64, ptr %17
+  store i64 %69, ptr %10
+
+  %70 = load i64, ptr %9
+  %71 = load i64, ptr %10
+  %72 = load i64, ptr %ds
+  %73 = load i64, ptr %alloc
+  %74 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %72, i64 %73, ptr @caml_format_int, i64 poison, i64 %70, i64 %71) "statepoint-id"="32"
+  %75 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %74, 0, 0
+  %76 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %74, 0, 1
+  store i64 %75, ptr %ds
+  store i64 %76, ptr %alloc
+  %77 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %74, 1, 0
+  store ptr addrspace(1) %77, ptr %5
+  br label %L147
+L147:
+
+  %78 = load ptr addrspace(1), ptr %5
+  store ptr addrspace(1) %78, ptr %19
+
+  %79 = load ptr addrspace(1), ptr %19
+  store ptr addrspace(1) %79, ptr %20
+
+  %80 = load ptr addrspace(1), ptr %20
+  store ptr addrspace(1) %80, ptr %21
+
+  %81 = load ptr addrspace(1), ptr %21
+  store ptr addrspace(1) %81, ptr %12
+
+  %82 = load i64, ptr %ds
+  %83 = add i64 %82, 48
+  %84 = inttoptr i64 %83 to ptr
+  %85 = load i64, ptr %46
+  store i64 %85, ptr %84
+  call  void @llvm.stackrestore(ptr %45)
+
   br label %L153
-L153:                                                ; preds = %L151
-  %116 = load ptr addrspace(1), ptr %5
-  store ptr addrspace(1) %116, ptr %29
-  %117 = load ptr addrspace(1), ptr %29
-  store ptr addrspace(1) %117, ptr %30
-  %118 = load i64, ptr %11
-  store i64 %118, ptr %4
-  %119 = load ptr addrspace(1), ptr %12
-  store ptr addrspace(1) %119, ptr %6
-  %120 = load ptr addrspace(1), ptr %30
-  store ptr addrspace(1) %120, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %121 = load ptr, ptr %ds
-  %122 = load ptr, ptr %alloc
-  %123 = load i64, ptr %4
-  %124 = inttoptr i64 %123 to ptr addrspace(1)
-  %125 = load ptr addrspace(1), ptr %6
-  %126 = load ptr addrspace(1), ptr %8
-  ; res_regs: []
-  %127 = musttail call cc 104 { { ptr, ptr }, { i64 } } @caml_apply2(ptr %121, ptr %122, ptr addrspace(1) %124, ptr addrspace(1) %125, ptr addrspace(1) %126) "statepoint-id"="8"
-  ret { { ptr, ptr }, { i64 } } %127
+L138:
+  call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
+  %86 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %86, ptr %alloc
+  store i64 %43, ptr %4
+
+  %87 = load i64, ptr %4
+  %88 = inttoptr i64 %87 to ptr addrspace(1)
+  store ptr addrspace(1) %88, ptr %15
+
+  %89 = load i64, ptr %ds
+  %90 = add i64 %89, 64
+  %91 = inttoptr i64 %90 to ptr
+  %92 = load i64, ptr %14
+  store i64 %92, ptr %91
+
+  store i64 1, ptr %22
+
+  %93 = load i64, ptr %22
+  store i64 %93, ptr %23
+
+  %94 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %94, ptr %24
+
+  %95 = load i64, ptr %24
+  store i64 %95, ptr %25
+
+  %96 = load i64, ptr %25
+  %97 = inttoptr i64 %96 to ptr addrspace(1)
+  store ptr addrspace(1) %97, ptr %12
+
+  br label %L153
+L153:
+
+  %98 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %98, ptr %26
+
+  store i64 1, ptr %27
+
+  %99 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %99, ptr %28
+
+  %100 = load i64, ptr %28
+  store i64 %100, ptr %4
+
+  %101 = load i64, ptr %27
+  store i64 %101, ptr %7
+
+  %102 = load i64, ptr %26
+  store i64 %102, ptr %9
+
+  %103 = load i64, ptr %4
+  %104 = load i64, ptr %7
+  %105 = load i64, ptr %9
+  %106 = load i64, ptr %ds
+  %107 = load i64, ptr %alloc
+  %108 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %106, i64 %107, i64 %103, i64 %104, i64 %105) "statepoint-id"="0"
+  %109 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %108, 0, 0
+  %110 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %108, 0, 1
+  store i64 %109, ptr %ds
+  store i64 %110, ptr %alloc
+  %111 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %108, 1, 0
+  store ptr addrspace(1) %111, ptr %5
+  br label %L155
+L155:
+
+  %112 = load ptr addrspace(1), ptr %5
+  store ptr addrspace(1) %112, ptr %29
+
+  %113 = load ptr addrspace(1), ptr %29
+  store ptr addrspace(1) %113, ptr %30
+
+  %114 = load i64, ptr %11
+  store i64 %114, ptr %4
+
+  %115 = load ptr addrspace(1), ptr %12
+  store ptr addrspace(1) %115, ptr %6
+
+  %116 = load ptr addrspace(1), ptr %30
+  store ptr addrspace(1) %116, ptr %8
+
+  %117 = load i64, ptr %4
+  %118 = load ptr addrspace(1), ptr %6
+  %119 = load ptr addrspace(1), ptr %8
+  %120 = load i64, ptr %ds
+  %121 = load i64, ptr %alloc
+  %122 = musttail call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %120, i64 %121, i64 %117, ptr addrspace(1) %118, ptr addrspace(1) %119) "statepoint-id"="0"
+  ret { { i64, i64 }, { i64 } } %122
 }
 
-define  cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlSwitch__entry(ptr %0, ptr %1) noinline gc "statepoint-example" {
-  %ds = alloca ptr
-  store ptr %0, ptr %ds
-  %alloc = alloca ptr
-  store ptr %1, ptr %alloc
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlSwitch__entry(i64 %0, i64 %1) noinline gc "statepoint-example" {
+  %ds = alloca i64
+  store i64 %0, ptr %ds
+  %alloc = alloca i64
+  store i64 %1, ptr %alloc
   %3 = alloca ptr addrspace(1)
   %4 = alloca i64
   %5 = alloca ptr addrspace(1)
@@ -658,1547 +703,1766 @@ define  cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlSwitch__entry(ptr %0,
   %197 = alloca i64
   br label %L1
 L1:
-  br label %L163
-L163:                                                ; preds = %L1
+
+  br label %L167
+L167:
+
   %198 = load i64, ptr %ds
   %199 = add i64 %198, 64
   %200 = inttoptr i64 %199 to ptr
   %201 = load i64, ptr %200
   store i64 %201, ptr %12
+
   %202 = load i64, ptr %12
   store i64 %202, ptr %13
-  %203 = load ptr, ptr %ds
-  %204 = load ptr, ptr %alloc
-  %205 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %203, ptr %204) returns_twice "gc-leaf-function"="true"
-  %206 = extractvalue { { ptr, ptr }, { i32 } } %205, 0, 0
-  store ptr %206, ptr %ds
-  %207 = extractvalue { { ptr, ptr }, { i32 } } %205, 0, 1
-  store ptr %207, ptr %alloc
-  %208 = extractvalue { { ptr, ptr }, { i32 } } %205, 1, 0
-  br label %209
-209:
-  %210 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %211 = icmp eq i64 %210, 0
-  br i1 %211, label %212, label %L166
-212:
-  %213 =  call  ptr @llvm.stacksave()
-  %214 = alloca { i64, i64, i64, i64 }
-  %215 = load i64, ptr %ds
-  %216 = add i64 %215, 48
-  %217 = inttoptr i64 %216 to ptr
-  %218 = load i64, ptr %217
-  %219 = ptrtoint ptr %214 to i64
-  %220 = add i64 %219, 16
+
+  %203 = load i64, ptr %ds
+  %204 = load i64, ptr %alloc
+  %205 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %203, i64 %204) returns_twice "gc-leaf-function"="true"
+  %206 = extractvalue { { i64, i64 }, { i32 } } %205, 0, 0
+  %207 = extractvalue { { i64, i64 }, { i32 } } %205, 0, 1
+  store i64 %206, ptr %ds
+  store i64 %207, ptr %alloc
+  %208 = extractvalue { { i64, i64 }, { i32 } } %205, 1, 0
+  br label %L361
+L361:
+  %209 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %210 = icmp eq i64 %209, 0
+  br i1 %210, label %L362, label %L170
+L362:
+  %211 = call  ptr @llvm.stacksave()
+  %212 = alloca { i64, i64, i64, i64 }
+  %213 = ptrtoint ptr %212 to i64
+  %214 = add i64 %213, 16
+  %215 = inttoptr i64 %214 to ptr
+  %216 = ptrtoint ptr %212 to i64
+  %217 = add i64 %216, 8
+  %218 = inttoptr i64 %217 to ptr
+  %219 = load i64, ptr %ds
+  %220 = add i64 %219, 48
   %221 = inttoptr i64 %220 to ptr
-  %222 = ptrtoint ptr %214 to i64
-  %223 = add i64 %222, 8
-  %224 = inttoptr i64 %223 to ptr
-  %225 = ptrtoint ptr %214 to i64
-  %226 = add i64 %225, 0
-  %227 = inttoptr i64 %226 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %221)
-  store ptr blockaddress(@camlSwitch__entry, %209), ptr %224
-  store i64 %218, ptr %227
-  store ptr %214, ptr %217
+  %222 = load i64, ptr %221
+  store ptr %212, ptr %221
+  store ptr blockaddress(@camlSwitch__entry, %L361), ptr %218
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %215)
+  store i64 %222, ptr %212
+
   store i64 3, ptr %15
-  %228 = load i64, ptr %15
-  store i64 %228, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %229 = load ptr, ptr %ds
-  %230 = load ptr, ptr %alloc
+
+  %223 = load i64, ptr %15
+  store i64 %223, ptr %4
+
+  %224 = load i64, ptr %4
+  %225 = load i64, ptr %ds
+  %226 = load i64, ptr %alloc
+  %227 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %225, i64 %226, i64 %224) "statepoint-id"="32"
+  %228 = extractvalue { { i64, i64 }, { i64 } } %227, 0, 0
+  %229 = extractvalue { { i64, i64 }, { i64 } } %227, 0, 1
+  store i64 %228, ptr %ds
+  store i64 %229, ptr %alloc
+  %230 = extractvalue { { i64, i64 }, { i64 } } %227, 1, 0
+  store i64 %230, ptr %4
+  br label %L178
+L178:
+
   %231 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %232 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %229, ptr %230, i64 %231) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %233 = extractvalue { { ptr, ptr }, { i64 } } %232, 0, 0
-  store ptr %233, ptr %ds
-  %234 = extractvalue { { ptr, ptr }, { i64 } } %232, 0, 1
-  store ptr %234, ptr %alloc
-  %235 = extractvalue { { ptr, ptr }, { i64 } } %232, 1, 0
-  store i64 %235, ptr %4
-  br label %L174
-L174:                                                ; preds = %L163
-  %236 = load i64, ptr %4
-  store i64 %236, ptr %16
-  %237 = load i64, ptr %16
-  store i64 %237, ptr %17
-  store ptr @camlStdlib__Int__immstring64, ptr %18
-  %238 = load i64, ptr %18
-  store i64 %238, ptr %8
-  %239 = load i64, ptr %17
-  store i64 %239, ptr %9
-  %240 = load i64, ptr %8
-  %241 = load i64, ptr %9
-  %242 = load ptr, ptr %ds
-  %243 = load ptr, ptr %alloc
-  %244 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %242, ptr %243, ptr @caml_format_int, i64 poison, i64 %240, i64 %241) "statepoint-id"="32"
-  %245 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %244, 0, 0
-  store ptr %245, ptr %ds
-  %246 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %244, 0, 1
-  store ptr %246, ptr %alloc
-  %247 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %244, 1, 0
-  store ptr addrspace(1) %247, ptr %3
-  br label %L175
-L175:                                                ; preds = %L174
-  %248 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %248, ptr %19
-  %249 = load ptr addrspace(1), ptr %19
-  store ptr addrspace(1) %249, ptr %20
-  %250 = load ptr addrspace(1), ptr %20
-  store ptr addrspace(1) %250, ptr %21
-  %251 = load ptr addrspace(1), ptr %21
-  store ptr addrspace(1) %251, ptr %11
-  %252 = load i64, ptr %ds
-  %253 = add i64 %252, 48
-  %254 = inttoptr i64 %253 to ptr
-  %255 = load i64, ptr %214
-  store i64 %255, ptr %254
-   call  void @llvm.stackrestore(ptr %213)
-  br label %L181
-L166:                                                ; preds = %L163, %L174
+  store i64 %231, ptr %16
+
+  %232 = load i64, ptr %16
+  store i64 %232, ptr %17
+
+  %233 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %233, ptr %18
+
+  %234 = load i64, ptr %18
+  store i64 %234, ptr %8
+
+  %235 = load i64, ptr %17
+  store i64 %235, ptr %9
+
+  %236 = load i64, ptr %8
+  %237 = load i64, ptr %9
+  %238 = load i64, ptr %ds
+  %239 = load i64, ptr %alloc
+  %240 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %238, i64 %239, ptr @caml_format_int, i64 poison, i64 %236, i64 %237) "statepoint-id"="32"
+  %241 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %240, 0, 0
+  %242 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %240, 0, 1
+  store i64 %241, ptr %ds
+  store i64 %242, ptr %alloc
+  %243 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %240, 1, 0
+  store ptr addrspace(1) %243, ptr %3
+  br label %L179
+L179:
+
+  %244 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %244, ptr %19
+
+  %245 = load ptr addrspace(1), ptr %19
+  store ptr addrspace(1) %245, ptr %20
+
+  %246 = load ptr addrspace(1), ptr %20
+  store ptr addrspace(1) %246, ptr %21
+
+  %247 = load ptr addrspace(1), ptr %21
+  store ptr addrspace(1) %247, ptr %11
+
+  %248 = load i64, ptr %ds
+  %249 = add i64 %248, 48
+  %250 = inttoptr i64 %249 to ptr
+  %251 = load i64, ptr %212
+  store i64 %251, ptr %250
+  call  void @llvm.stackrestore(ptr %211)
+
+  br label %L185
+L170:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %256 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %256, ptr %alloc
-  store i64 %210, ptr %4
-  %257 = load i64, ptr %4
-  %258 = inttoptr i64 %257 to ptr addrspace(1)
-  store ptr addrspace(1) %258, ptr %14
-  %259 = load i64, ptr %13
-  %260 = load i64, ptr %ds
-  %261 = add i64 %260, 64
-  %262 = inttoptr i64 %261 to ptr
-  store i64 %259, ptr %262
+  %252 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %252, ptr %alloc
+  store i64 %209, ptr %4
+
+  %253 = load i64, ptr %4
+  %254 = inttoptr i64 %253 to ptr addrspace(1)
+  store ptr addrspace(1) %254, ptr %14
+
+  %255 = load i64, ptr %ds
+  %256 = add i64 %255, 64
+  %257 = inttoptr i64 %256 to ptr
+  %258 = load i64, ptr %13
+  store i64 %258, ptr %257
+
   store i64 1, ptr %22
-  %263 = load i64, ptr %22
-  store i64 %263, ptr %23
-  store ptr @camlSwitch__immstring38, ptr %24
-  %264 = load i64, ptr %24
-  store i64 %264, ptr %25
-  %265 = load i64, ptr %25
-  %266 = inttoptr i64 %265 to ptr addrspace(1)
-  store ptr addrspace(1) %266, ptr %11
-  br label %L181
-L181:                                                ; preds = %L166, %L175
-  store ptr @camlSwitch__const_block54, ptr %26
+
+  %259 = load i64, ptr %22
+  store i64 %259, ptr %23
+
+  %260 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %260, ptr %24
+
+  %261 = load i64, ptr %24
+  store i64 %261, ptr %25
+
+  %262 = load i64, ptr %25
+  %263 = inttoptr i64 %262 to ptr addrspace(1)
+  store ptr addrspace(1) %263, ptr %11
+
+  br label %L185
+L185:
+
+  %264 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %264, ptr %26
+
   store i64 1, ptr %27
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %28
-  %267 = load i64, ptr %28
-  store i64 %267, ptr %4
-  %268 = load i64, ptr %27
-  store i64 %268, ptr %6
-  %269 = load i64, ptr %26
-  store i64 %269, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %270 = load ptr, ptr %ds
-  %271 = load ptr, ptr %alloc
-  %272 = load i64, ptr %4
-  %273 = inttoptr i64 %272 to ptr addrspace(1)
-  %274 = load i64, ptr %6
-  %275 = inttoptr i64 %274 to ptr addrspace(1)
-  %276 = load i64, ptr %8
-  %277 = inttoptr i64 %276 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %278 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %270, ptr %271, ptr addrspace(1) %273, ptr addrspace(1) %275, ptr addrspace(1) %277) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %279 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %278, 0, 0
-  store ptr %279, ptr %ds
-  %280 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %278, 0, 1
-  store ptr %280, ptr %alloc
-  %281 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %278, 1, 0
-  store ptr addrspace(1) %281, ptr %3
-  br label %L183
-L183:                                                ; preds = %L181
-  %282 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %282, ptr %29
-  %283 = load ptr addrspace(1), ptr %29
-  store ptr addrspace(1) %283, ptr %30
+
+  %265 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %265, ptr %28
+
+  %266 = load i64, ptr %28
+  store i64 %266, ptr %4
+
+  %267 = load i64, ptr %27
+  store i64 %267, ptr %6
+
+  %268 = load i64, ptr %26
+  store i64 %268, ptr %8
+
+  %269 = load i64, ptr %4
+  %270 = load i64, ptr %6
+  %271 = load i64, ptr %8
+  %272 = load i64, ptr %ds
+  %273 = load i64, ptr %alloc
+  %274 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %272, i64 %273, i64 %269, i64 %270, i64 %271) "statepoint-id"="0"
+  %275 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %274, 0, 0
+  %276 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %274, 0, 1
+  store i64 %275, ptr %ds
+  store i64 %276, ptr %alloc
+  %277 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %274, 1, 0
+  store ptr addrspace(1) %277, ptr %3
+  br label %L187
+L187:
+
+  %278 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %278, ptr %29
+
+  %279 = load ptr addrspace(1), ptr %29
+  store ptr addrspace(1) %279, ptr %30
+
   store i64 3, ptr %31
-  %284 = load i64, ptr %31
-  store i64 %284, ptr %4
-  %285 = load ptr addrspace(1), ptr %11
-  store ptr addrspace(1) %285, ptr %5
-  %286 = load ptr addrspace(1), ptr %30
-  store ptr addrspace(1) %286, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %287 = load ptr, ptr %ds
-  %288 = load ptr, ptr %alloc
-  %289 = load i64, ptr %4
-  %290 = inttoptr i64 %289 to ptr addrspace(1)
-  %291 = load ptr addrspace(1), ptr %5
-  %292 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %293 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %287, ptr %288, ptr addrspace(1) %290, ptr addrspace(1) %291, ptr addrspace(1) %292) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %294 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %293, 0, 0
-  store ptr %294, ptr %ds
-  %295 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %293, 0, 1
-  store ptr %295, ptr %alloc
-  %296 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %293, 1, 0
-  %297 = ptrtoint ptr addrspace(1) %296 to i64
-  store i64 %297, ptr %4
-  br label %L184
-L184:                                                ; preds = %L183
-  %298 = load i64, ptr %4
-  store i64 %298, ptr %32
-  %299 = load i64, ptr %32
-  store i64 %299, ptr %33
-  %300 = load i64, ptr %ds
-  %301 = add i64 %300, 64
-  %302 = inttoptr i64 %301 to ptr
-  %303 = load i64, ptr %302
-  store i64 %303, ptr %35
-  %304 = load i64, ptr %35
-  store i64 %304, ptr %36
-  %305 = load ptr, ptr %ds
-  %306 = load ptr, ptr %alloc
-  %307 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %305, ptr %306) returns_twice "gc-leaf-function"="true"
-  %308 = extractvalue { { ptr, ptr }, { i32 } } %307, 0, 0
-  store ptr %308, ptr %ds
-  %309 = extractvalue { { ptr, ptr }, { i32 } } %307, 0, 1
-  store ptr %309, ptr %alloc
-  %310 = extractvalue { { ptr, ptr }, { i32 } } %307, 1, 0
-  br label %311
-311:
-  %312 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %313 = icmp eq i64 %312, 0
-  br i1 %313, label %314, label %L189
-314:
-  %315 =  call  ptr @llvm.stacksave()
-  %316 = alloca { i64, i64, i64, i64 }
-  %317 = load i64, ptr %ds
-  %318 = add i64 %317, 48
-  %319 = inttoptr i64 %318 to ptr
-  %320 = load i64, ptr %319
-  %321 = ptrtoint ptr %316 to i64
-  %322 = add i64 %321, 16
-  %323 = inttoptr i64 %322 to ptr
-  %324 = ptrtoint ptr %316 to i64
-  %325 = add i64 %324, 8
-  %326 = inttoptr i64 %325 to ptr
-  %327 = ptrtoint ptr %316 to i64
-  %328 = add i64 %327, 0
-  %329 = inttoptr i64 %328 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %323)
-  store ptr blockaddress(@camlSwitch__entry, %311), ptr %326
-  store i64 %320, ptr %329
-  store ptr %316, ptr %319
+
+  %280 = load i64, ptr %31
+  store i64 %280, ptr %4
+
+  %281 = load ptr addrspace(1), ptr %11
+  store ptr addrspace(1) %281, ptr %5
+
+  %282 = load ptr addrspace(1), ptr %30
+  store ptr addrspace(1) %282, ptr %7
+
+  %283 = load i64, ptr %4
+  %284 = load ptr addrspace(1), ptr %5
+  %285 = load ptr addrspace(1), ptr %7
+  %286 = load i64, ptr %ds
+  %287 = load i64, ptr %alloc
+  %288 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %286, i64 %287, i64 %283, ptr addrspace(1) %284, ptr addrspace(1) %285) "statepoint-id"="0"
+  %289 = extractvalue { { i64, i64 }, { i64 } } %288, 0, 0
+  %290 = extractvalue { { i64, i64 }, { i64 } } %288, 0, 1
+  store i64 %289, ptr %ds
+  store i64 %290, ptr %alloc
+  %291 = extractvalue { { i64, i64 }, { i64 } } %288, 1, 0
+  store i64 %291, ptr %4
+  br label %L188
+L188:
+
+  %292 = load i64, ptr %4
+  store i64 %292, ptr %32
+
+  %293 = load i64, ptr %32
+  store i64 %293, ptr %33
+
+  %294 = load i64, ptr %ds
+  %295 = add i64 %294, 64
+  %296 = inttoptr i64 %295 to ptr
+  %297 = load i64, ptr %296
+  store i64 %297, ptr %35
+
+  %298 = load i64, ptr %35
+  store i64 %298, ptr %36
+
+  %299 = load i64, ptr %ds
+  %300 = load i64, ptr %alloc
+  %301 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %299, i64 %300) returns_twice "gc-leaf-function"="true"
+  %302 = extractvalue { { i64, i64 }, { i32 } } %301, 0, 0
+  %303 = extractvalue { { i64, i64 }, { i32 } } %301, 0, 1
+  store i64 %302, ptr %ds
+  store i64 %303, ptr %alloc
+  %304 = extractvalue { { i64, i64 }, { i32 } } %301, 1, 0
+  br label %L363
+L363:
+  %305 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %306 = icmp eq i64 %305, 0
+  br i1 %306, label %L364, label %L193
+L364:
+  %307 = call  ptr @llvm.stacksave()
+  %308 = alloca { i64, i64, i64, i64 }
+  %309 = ptrtoint ptr %308 to i64
+  %310 = add i64 %309, 16
+  %311 = inttoptr i64 %310 to ptr
+  %312 = ptrtoint ptr %308 to i64
+  %313 = add i64 %312, 8
+  %314 = inttoptr i64 %313 to ptr
+  %315 = load i64, ptr %ds
+  %316 = add i64 %315, 48
+  %317 = inttoptr i64 %316 to ptr
+  %318 = load i64, ptr %317
+  store ptr %308, ptr %317
+  store ptr blockaddress(@camlSwitch__entry, %L363), ptr %314
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %311)
+  store i64 %318, ptr %308
+
   store i64 7, ptr %38
-  %330 = load i64, ptr %38
-  store i64 %330, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %331 = load ptr, ptr %ds
-  %332 = load ptr, ptr %alloc
-  %333 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %334 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %331, ptr %332, i64 %333) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %335 = extractvalue { { ptr, ptr }, { i64 } } %334, 0, 0
-  store ptr %335, ptr %ds
-  %336 = extractvalue { { ptr, ptr }, { i64 } } %334, 0, 1
-  store ptr %336, ptr %alloc
-  %337 = extractvalue { { ptr, ptr }, { i64 } } %334, 1, 0
-  store i64 %337, ptr %4
-  br label %L197
-L197:                                                ; preds = %L184
-  %338 = load i64, ptr %4
-  store i64 %338, ptr %39
-  %339 = load i64, ptr %39
-  store i64 %339, ptr %40
-  store ptr @camlStdlib__Int__immstring64, ptr %41
-  %340 = load i64, ptr %41
-  store i64 %340, ptr %8
-  %341 = load i64, ptr %40
-  store i64 %341, ptr %9
-  %342 = load i64, ptr %8
-  %343 = load i64, ptr %9
-  %344 = load ptr, ptr %ds
-  %345 = load ptr, ptr %alloc
-  %346 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %344, ptr %345, ptr @caml_format_int, i64 poison, i64 %342, i64 %343) "statepoint-id"="32"
-  %347 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %346, 0, 0
-  store ptr %347, ptr %ds
-  %348 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %346, 0, 1
-  store ptr %348, ptr %alloc
-  %349 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %346, 1, 0
-  store ptr addrspace(1) %349, ptr %3
-  br label %L198
-L198:                                                ; preds = %L197
-  %350 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %350, ptr %42
-  %351 = load ptr addrspace(1), ptr %42
-  store ptr addrspace(1) %351, ptr %43
-  %352 = load ptr addrspace(1), ptr %43
-  store ptr addrspace(1) %352, ptr %44
-  %353 = load ptr addrspace(1), ptr %44
-  store ptr addrspace(1) %353, ptr %34
-  %354 = load i64, ptr %ds
-  %355 = add i64 %354, 48
-  %356 = inttoptr i64 %355 to ptr
-  %357 = load i64, ptr %316
-  store i64 %357, ptr %356
-   call  void @llvm.stackrestore(ptr %315)
-  br label %L204
-L189:                                                ; preds = %L184, %L197
+
+  %319 = load i64, ptr %38
+  store i64 %319, ptr %4
+
+  %320 = load i64, ptr %4
+  %321 = load i64, ptr %ds
+  %322 = load i64, ptr %alloc
+  %323 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %321, i64 %322, i64 %320) "statepoint-id"="32"
+  %324 = extractvalue { { i64, i64 }, { i64 } } %323, 0, 0
+  %325 = extractvalue { { i64, i64 }, { i64 } } %323, 0, 1
+  store i64 %324, ptr %ds
+  store i64 %325, ptr %alloc
+  %326 = extractvalue { { i64, i64 }, { i64 } } %323, 1, 0
+  store i64 %326, ptr %4
+  br label %L201
+L201:
+
+  %327 = load i64, ptr %4
+  store i64 %327, ptr %39
+
+  %328 = load i64, ptr %39
+  store i64 %328, ptr %40
+
+  %329 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %329, ptr %41
+
+  %330 = load i64, ptr %41
+  store i64 %330, ptr %8
+
+  %331 = load i64, ptr %40
+  store i64 %331, ptr %9
+
+  %332 = load i64, ptr %8
+  %333 = load i64, ptr %9
+  %334 = load i64, ptr %ds
+  %335 = load i64, ptr %alloc
+  %336 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %334, i64 %335, ptr @caml_format_int, i64 poison, i64 %332, i64 %333) "statepoint-id"="32"
+  %337 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %336, 0, 0
+  %338 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %336, 0, 1
+  store i64 %337, ptr %ds
+  store i64 %338, ptr %alloc
+  %339 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %336, 1, 0
+  store ptr addrspace(1) %339, ptr %3
+  br label %L202
+L202:
+
+  %340 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %340, ptr %42
+
+  %341 = load ptr addrspace(1), ptr %42
+  store ptr addrspace(1) %341, ptr %43
+
+  %342 = load ptr addrspace(1), ptr %43
+  store ptr addrspace(1) %342, ptr %44
+
+  %343 = load ptr addrspace(1), ptr %44
+  store ptr addrspace(1) %343, ptr %34
+
+  %344 = load i64, ptr %ds
+  %345 = add i64 %344, 48
+  %346 = inttoptr i64 %345 to ptr
+  %347 = load i64, ptr %308
+  store i64 %347, ptr %346
+  call  void @llvm.stackrestore(ptr %307)
+
+  br label %L208
+L193:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %358 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %358, ptr %alloc
-  store i64 %312, ptr %4
-  %359 = load i64, ptr %4
-  %360 = inttoptr i64 %359 to ptr addrspace(1)
-  store ptr addrspace(1) %360, ptr %37
-  %361 = load i64, ptr %36
-  %362 = load i64, ptr %ds
-  %363 = add i64 %362, 64
-  %364 = inttoptr i64 %363 to ptr
-  store i64 %361, ptr %364
+  %348 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %348, ptr %alloc
+  store i64 %305, ptr %4
+
+  %349 = load i64, ptr %4
+  %350 = inttoptr i64 %349 to ptr addrspace(1)
+  store ptr addrspace(1) %350, ptr %37
+
+  %351 = load i64, ptr %ds
+  %352 = add i64 %351, 64
+  %353 = inttoptr i64 %352 to ptr
+  %354 = load i64, ptr %36
+  store i64 %354, ptr %353
+
   store i64 1, ptr %45
-  %365 = load i64, ptr %45
-  store i64 %365, ptr %46
-  store ptr @camlSwitch__immstring38, ptr %47
-  %366 = load i64, ptr %47
-  store i64 %366, ptr %48
-  %367 = load i64, ptr %48
-  %368 = inttoptr i64 %367 to ptr addrspace(1)
-  store ptr addrspace(1) %368, ptr %34
-  br label %L204
-L204:                                                ; preds = %L189, %L198
-  store ptr @camlSwitch__const_block54, ptr %49
+
+  %355 = load i64, ptr %45
+  store i64 %355, ptr %46
+
+  %356 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %356, ptr %47
+
+  %357 = load i64, ptr %47
+  store i64 %357, ptr %48
+
+  %358 = load i64, ptr %48
+  %359 = inttoptr i64 %358 to ptr addrspace(1)
+  store ptr addrspace(1) %359, ptr %34
+
+  br label %L208
+L208:
+
+  %360 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %360, ptr %49
+
   store i64 1, ptr %50
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %51
-  %369 = load i64, ptr %51
-  store i64 %369, ptr %4
-  %370 = load i64, ptr %50
-  store i64 %370, ptr %6
-  %371 = load i64, ptr %49
-  store i64 %371, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %372 = load ptr, ptr %ds
-  %373 = load ptr, ptr %alloc
-  %374 = load i64, ptr %4
-  %375 = inttoptr i64 %374 to ptr addrspace(1)
-  %376 = load i64, ptr %6
-  %377 = inttoptr i64 %376 to ptr addrspace(1)
-  %378 = load i64, ptr %8
-  %379 = inttoptr i64 %378 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %380 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %372, ptr %373, ptr addrspace(1) %375, ptr addrspace(1) %377, ptr addrspace(1) %379) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %381 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %380, 0, 0
-  store ptr %381, ptr %ds
-  %382 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %380, 0, 1
-  store ptr %382, ptr %alloc
-  %383 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %380, 1, 0
-  store ptr addrspace(1) %383, ptr %3
-  br label %L206
-L206:                                                ; preds = %L204
-  %384 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %384, ptr %52
-  %385 = load ptr addrspace(1), ptr %52
-  store ptr addrspace(1) %385, ptr %53
+
+  %361 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %361, ptr %51
+
+  %362 = load i64, ptr %51
+  store i64 %362, ptr %4
+
+  %363 = load i64, ptr %50
+  store i64 %363, ptr %6
+
+  %364 = load i64, ptr %49
+  store i64 %364, ptr %8
+
+  %365 = load i64, ptr %4
+  %366 = load i64, ptr %6
+  %367 = load i64, ptr %8
+  %368 = load i64, ptr %ds
+  %369 = load i64, ptr %alloc
+  %370 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %368, i64 %369, i64 %365, i64 %366, i64 %367) "statepoint-id"="0"
+  %371 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %370, 0, 0
+  %372 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %370, 0, 1
+  store i64 %371, ptr %ds
+  store i64 %372, ptr %alloc
+  %373 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %370, 1, 0
+  store ptr addrspace(1) %373, ptr %3
+  br label %L210
+L210:
+
+  %374 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %374, ptr %52
+
+  %375 = load ptr addrspace(1), ptr %52
+  store ptr addrspace(1) %375, ptr %53
+
   store i64 7, ptr %54
-  %386 = load i64, ptr %54
-  store i64 %386, ptr %4
-  %387 = load ptr addrspace(1), ptr %34
-  store ptr addrspace(1) %387, ptr %5
-  %388 = load ptr addrspace(1), ptr %53
-  store ptr addrspace(1) %388, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %389 = load ptr, ptr %ds
-  %390 = load ptr, ptr %alloc
-  %391 = load i64, ptr %4
-  %392 = inttoptr i64 %391 to ptr addrspace(1)
-  %393 = load ptr addrspace(1), ptr %5
-  %394 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %395 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %389, ptr %390, ptr addrspace(1) %392, ptr addrspace(1) %393, ptr addrspace(1) %394) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %396 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %395, 0, 0
-  store ptr %396, ptr %ds
-  %397 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %395, 0, 1
-  store ptr %397, ptr %alloc
-  %398 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %395, 1, 0
-  %399 = ptrtoint ptr addrspace(1) %398 to i64
-  store i64 %399, ptr %4
-  br label %L207
-L207:                                                ; preds = %L206
-  %400 = load i64, ptr %4
-  store i64 %400, ptr %55
-  %401 = load i64, ptr %55
-  store i64 %401, ptr %56
-  %402 = load i64, ptr %ds
-  %403 = add i64 %402, 64
-  %404 = inttoptr i64 %403 to ptr
-  %405 = load i64, ptr %404
-  store i64 %405, ptr %58
-  %406 = load i64, ptr %58
-  store i64 %406, ptr %59
-  %407 = load ptr, ptr %ds
-  %408 = load ptr, ptr %alloc
-  %409 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %407, ptr %408) returns_twice "gc-leaf-function"="true"
-  %410 = extractvalue { { ptr, ptr }, { i32 } } %409, 0, 0
-  store ptr %410, ptr %ds
-  %411 = extractvalue { { ptr, ptr }, { i32 } } %409, 0, 1
-  store ptr %411, ptr %alloc
-  %412 = extractvalue { { ptr, ptr }, { i32 } } %409, 1, 0
-  br label %413
-413:
-  %414 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %415 = icmp eq i64 %414, 0
-  br i1 %415, label %416, label %L212
-416:
-  %417 =  call  ptr @llvm.stacksave()
-  %418 = alloca { i64, i64, i64, i64 }
-  %419 = load i64, ptr %ds
-  %420 = add i64 %419, 48
-  %421 = inttoptr i64 %420 to ptr
-  %422 = load i64, ptr %421
-  %423 = ptrtoint ptr %418 to i64
-  %424 = add i64 %423, 16
-  %425 = inttoptr i64 %424 to ptr
-  %426 = ptrtoint ptr %418 to i64
-  %427 = add i64 %426, 8
-  %428 = inttoptr i64 %427 to ptr
-  %429 = ptrtoint ptr %418 to i64
-  %430 = add i64 %429, 0
-  %431 = inttoptr i64 %430 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %425)
-  store ptr blockaddress(@camlSwitch__entry, %413), ptr %428
-  store i64 %422, ptr %431
-  store ptr %418, ptr %421
+
+  %376 = load i64, ptr %54
+  store i64 %376, ptr %4
+
+  %377 = load ptr addrspace(1), ptr %34
+  store ptr addrspace(1) %377, ptr %5
+
+  %378 = load ptr addrspace(1), ptr %53
+  store ptr addrspace(1) %378, ptr %7
+
+  %379 = load i64, ptr %4
+  %380 = load ptr addrspace(1), ptr %5
+  %381 = load ptr addrspace(1), ptr %7
+  %382 = load i64, ptr %ds
+  %383 = load i64, ptr %alloc
+  %384 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %382, i64 %383, i64 %379, ptr addrspace(1) %380, ptr addrspace(1) %381) "statepoint-id"="0"
+  %385 = extractvalue { { i64, i64 }, { i64 } } %384, 0, 0
+  %386 = extractvalue { { i64, i64 }, { i64 } } %384, 0, 1
+  store i64 %385, ptr %ds
+  store i64 %386, ptr %alloc
+  %387 = extractvalue { { i64, i64 }, { i64 } } %384, 1, 0
+  store i64 %387, ptr %4
+  br label %L211
+L211:
+
+  %388 = load i64, ptr %4
+  store i64 %388, ptr %55
+
+  %389 = load i64, ptr %55
+  store i64 %389, ptr %56
+
+  %390 = load i64, ptr %ds
+  %391 = add i64 %390, 64
+  %392 = inttoptr i64 %391 to ptr
+  %393 = load i64, ptr %392
+  store i64 %393, ptr %58
+
+  %394 = load i64, ptr %58
+  store i64 %394, ptr %59
+
+  %395 = load i64, ptr %ds
+  %396 = load i64, ptr %alloc
+  %397 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %395, i64 %396) returns_twice "gc-leaf-function"="true"
+  %398 = extractvalue { { i64, i64 }, { i32 } } %397, 0, 0
+  %399 = extractvalue { { i64, i64 }, { i32 } } %397, 0, 1
+  store i64 %398, ptr %ds
+  store i64 %399, ptr %alloc
+  %400 = extractvalue { { i64, i64 }, { i32 } } %397, 1, 0
+  br label %L365
+L365:
+  %401 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %402 = icmp eq i64 %401, 0
+  br i1 %402, label %L366, label %L216
+L366:
+  %403 = call  ptr @llvm.stacksave()
+  %404 = alloca { i64, i64, i64, i64 }
+  %405 = ptrtoint ptr %404 to i64
+  %406 = add i64 %405, 16
+  %407 = inttoptr i64 %406 to ptr
+  %408 = ptrtoint ptr %404 to i64
+  %409 = add i64 %408, 8
+  %410 = inttoptr i64 %409 to ptr
+  %411 = load i64, ptr %ds
+  %412 = add i64 %411, 48
+  %413 = inttoptr i64 %412 to ptr
+  %414 = load i64, ptr %413
+  store ptr %404, ptr %413
+  store ptr blockaddress(@camlSwitch__entry, %L365), ptr %410
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %407)
+  store i64 %414, ptr %404
+
   store i64 11, ptr %61
-  %432 = load i64, ptr %61
-  store i64 %432, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %433 = load ptr, ptr %ds
-  %434 = load ptr, ptr %alloc
-  %435 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %436 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %433, ptr %434, i64 %435) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %437 = extractvalue { { ptr, ptr }, { i64 } } %436, 0, 0
-  store ptr %437, ptr %ds
-  %438 = extractvalue { { ptr, ptr }, { i64 } } %436, 0, 1
-  store ptr %438, ptr %alloc
-  %439 = extractvalue { { ptr, ptr }, { i64 } } %436, 1, 0
-  store i64 %439, ptr %4
-  br label %L220
-L220:                                                ; preds = %L207
-  %440 = load i64, ptr %4
-  store i64 %440, ptr %62
-  %441 = load i64, ptr %62
-  store i64 %441, ptr %63
-  store ptr @camlStdlib__Int__immstring64, ptr %64
-  %442 = load i64, ptr %64
-  store i64 %442, ptr %8
-  %443 = load i64, ptr %63
-  store i64 %443, ptr %9
-  %444 = load i64, ptr %8
-  %445 = load i64, ptr %9
-  %446 = load ptr, ptr %ds
-  %447 = load ptr, ptr %alloc
-  %448 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %446, ptr %447, ptr @caml_format_int, i64 poison, i64 %444, i64 %445) "statepoint-id"="32"
-  %449 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %448, 0, 0
-  store ptr %449, ptr %ds
-  %450 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %448, 0, 1
-  store ptr %450, ptr %alloc
-  %451 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %448, 1, 0
-  store ptr addrspace(1) %451, ptr %3
-  br label %L221
-L221:                                                ; preds = %L220
-  %452 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %452, ptr %65
-  %453 = load ptr addrspace(1), ptr %65
-  store ptr addrspace(1) %453, ptr %66
-  %454 = load ptr addrspace(1), ptr %66
-  store ptr addrspace(1) %454, ptr %67
-  %455 = load ptr addrspace(1), ptr %67
-  store ptr addrspace(1) %455, ptr %57
-  %456 = load i64, ptr %ds
-  %457 = add i64 %456, 48
-  %458 = inttoptr i64 %457 to ptr
-  %459 = load i64, ptr %418
-  store i64 %459, ptr %458
-   call  void @llvm.stackrestore(ptr %417)
-  br label %L227
-L212:                                                ; preds = %L207, %L220
+
+  %415 = load i64, ptr %61
+  store i64 %415, ptr %4
+
+  %416 = load i64, ptr %4
+  %417 = load i64, ptr %ds
+  %418 = load i64, ptr %alloc
+  %419 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %417, i64 %418, i64 %416) "statepoint-id"="32"
+  %420 = extractvalue { { i64, i64 }, { i64 } } %419, 0, 0
+  %421 = extractvalue { { i64, i64 }, { i64 } } %419, 0, 1
+  store i64 %420, ptr %ds
+  store i64 %421, ptr %alloc
+  %422 = extractvalue { { i64, i64 }, { i64 } } %419, 1, 0
+  store i64 %422, ptr %4
+  br label %L224
+L224:
+
+  %423 = load i64, ptr %4
+  store i64 %423, ptr %62
+
+  %424 = load i64, ptr %62
+  store i64 %424, ptr %63
+
+  %425 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %425, ptr %64
+
+  %426 = load i64, ptr %64
+  store i64 %426, ptr %8
+
+  %427 = load i64, ptr %63
+  store i64 %427, ptr %9
+
+  %428 = load i64, ptr %8
+  %429 = load i64, ptr %9
+  %430 = load i64, ptr %ds
+  %431 = load i64, ptr %alloc
+  %432 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %430, i64 %431, ptr @caml_format_int, i64 poison, i64 %428, i64 %429) "statepoint-id"="32"
+  %433 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %432, 0, 0
+  %434 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %432, 0, 1
+  store i64 %433, ptr %ds
+  store i64 %434, ptr %alloc
+  %435 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %432, 1, 0
+  store ptr addrspace(1) %435, ptr %3
+  br label %L225
+L225:
+
+  %436 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %436, ptr %65
+
+  %437 = load ptr addrspace(1), ptr %65
+  store ptr addrspace(1) %437, ptr %66
+
+  %438 = load ptr addrspace(1), ptr %66
+  store ptr addrspace(1) %438, ptr %67
+
+  %439 = load ptr addrspace(1), ptr %67
+  store ptr addrspace(1) %439, ptr %57
+
+  %440 = load i64, ptr %ds
+  %441 = add i64 %440, 48
+  %442 = inttoptr i64 %441 to ptr
+  %443 = load i64, ptr %404
+  store i64 %443, ptr %442
+  call  void @llvm.stackrestore(ptr %403)
+
+  br label %L231
+L216:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %460 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %460, ptr %alloc
-  store i64 %414, ptr %4
-  %461 = load i64, ptr %4
-  %462 = inttoptr i64 %461 to ptr addrspace(1)
-  store ptr addrspace(1) %462, ptr %60
-  %463 = load i64, ptr %59
-  %464 = load i64, ptr %ds
-  %465 = add i64 %464, 64
-  %466 = inttoptr i64 %465 to ptr
-  store i64 %463, ptr %466
+  %444 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %444, ptr %alloc
+  store i64 %401, ptr %4
+
+  %445 = load i64, ptr %4
+  %446 = inttoptr i64 %445 to ptr addrspace(1)
+  store ptr addrspace(1) %446, ptr %60
+
+  %447 = load i64, ptr %ds
+  %448 = add i64 %447, 64
+  %449 = inttoptr i64 %448 to ptr
+  %450 = load i64, ptr %59
+  store i64 %450, ptr %449
+
   store i64 1, ptr %68
-  %467 = load i64, ptr %68
-  store i64 %467, ptr %69
-  store ptr @camlSwitch__immstring38, ptr %70
-  %468 = load i64, ptr %70
-  store i64 %468, ptr %71
-  %469 = load i64, ptr %71
-  %470 = inttoptr i64 %469 to ptr addrspace(1)
-  store ptr addrspace(1) %470, ptr %57
-  br label %L227
-L227:                                                ; preds = %L212, %L221
-  store ptr @camlSwitch__const_block54, ptr %72
+
+  %451 = load i64, ptr %68
+  store i64 %451, ptr %69
+
+  %452 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %452, ptr %70
+
+  %453 = load i64, ptr %70
+  store i64 %453, ptr %71
+
+  %454 = load i64, ptr %71
+  %455 = inttoptr i64 %454 to ptr addrspace(1)
+  store ptr addrspace(1) %455, ptr %57
+
+  br label %L231
+L231:
+
+  %456 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %456, ptr %72
+
   store i64 1, ptr %73
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %74
-  %471 = load i64, ptr %74
-  store i64 %471, ptr %4
-  %472 = load i64, ptr %73
-  store i64 %472, ptr %6
-  %473 = load i64, ptr %72
-  store i64 %473, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %474 = load ptr, ptr %ds
-  %475 = load ptr, ptr %alloc
-  %476 = load i64, ptr %4
-  %477 = inttoptr i64 %476 to ptr addrspace(1)
-  %478 = load i64, ptr %6
-  %479 = inttoptr i64 %478 to ptr addrspace(1)
-  %480 = load i64, ptr %8
-  %481 = inttoptr i64 %480 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %482 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %474, ptr %475, ptr addrspace(1) %477, ptr addrspace(1) %479, ptr addrspace(1) %481) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %483 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %482, 0, 0
-  store ptr %483, ptr %ds
-  %484 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %482, 0, 1
-  store ptr %484, ptr %alloc
-  %485 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %482, 1, 0
-  store ptr addrspace(1) %485, ptr %3
-  br label %L229
-L229:                                                ; preds = %L227
-  %486 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %486, ptr %75
-  %487 = load ptr addrspace(1), ptr %75
-  store ptr addrspace(1) %487, ptr %76
+
+  %457 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %457, ptr %74
+
+  %458 = load i64, ptr %74
+  store i64 %458, ptr %4
+
+  %459 = load i64, ptr %73
+  store i64 %459, ptr %6
+
+  %460 = load i64, ptr %72
+  store i64 %460, ptr %8
+
+  %461 = load i64, ptr %4
+  %462 = load i64, ptr %6
+  %463 = load i64, ptr %8
+  %464 = load i64, ptr %ds
+  %465 = load i64, ptr %alloc
+  %466 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %464, i64 %465, i64 %461, i64 %462, i64 %463) "statepoint-id"="0"
+  %467 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %466, 0, 0
+  %468 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %466, 0, 1
+  store i64 %467, ptr %ds
+  store i64 %468, ptr %alloc
+  %469 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %466, 1, 0
+  store ptr addrspace(1) %469, ptr %3
+  br label %L233
+L233:
+
+  %470 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %470, ptr %75
+
+  %471 = load ptr addrspace(1), ptr %75
+  store ptr addrspace(1) %471, ptr %76
+
   store i64 11, ptr %77
-  %488 = load i64, ptr %77
-  store i64 %488, ptr %4
-  %489 = load ptr addrspace(1), ptr %57
-  store ptr addrspace(1) %489, ptr %5
-  %490 = load ptr addrspace(1), ptr %76
-  store ptr addrspace(1) %490, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %491 = load ptr, ptr %ds
-  %492 = load ptr, ptr %alloc
-  %493 = load i64, ptr %4
-  %494 = inttoptr i64 %493 to ptr addrspace(1)
-  %495 = load ptr addrspace(1), ptr %5
-  %496 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %497 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %491, ptr %492, ptr addrspace(1) %494, ptr addrspace(1) %495, ptr addrspace(1) %496) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %498 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %497, 0, 0
-  store ptr %498, ptr %ds
-  %499 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %497, 0, 1
-  store ptr %499, ptr %alloc
-  %500 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %497, 1, 0
-  %501 = ptrtoint ptr addrspace(1) %500 to i64
-  store i64 %501, ptr %4
-  br label %L230
-L230:                                                ; preds = %L229
-  %502 = load i64, ptr %4
-  store i64 %502, ptr %78
-  %503 = load i64, ptr %78
-  store i64 %503, ptr %79
-  %504 = load i64, ptr %ds
-  %505 = add i64 %504, 64
+
+  %472 = load i64, ptr %77
+  store i64 %472, ptr %4
+
+  %473 = load ptr addrspace(1), ptr %57
+  store ptr addrspace(1) %473, ptr %5
+
+  %474 = load ptr addrspace(1), ptr %76
+  store ptr addrspace(1) %474, ptr %7
+
+  %475 = load i64, ptr %4
+  %476 = load ptr addrspace(1), ptr %5
+  %477 = load ptr addrspace(1), ptr %7
+  %478 = load i64, ptr %ds
+  %479 = load i64, ptr %alloc
+  %480 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %478, i64 %479, i64 %475, ptr addrspace(1) %476, ptr addrspace(1) %477) "statepoint-id"="0"
+  %481 = extractvalue { { i64, i64 }, { i64 } } %480, 0, 0
+  %482 = extractvalue { { i64, i64 }, { i64 } } %480, 0, 1
+  store i64 %481, ptr %ds
+  store i64 %482, ptr %alloc
+  %483 = extractvalue { { i64, i64 }, { i64 } } %480, 1, 0
+  store i64 %483, ptr %4
+  br label %L234
+L234:
+
+  %484 = load i64, ptr %4
+  store i64 %484, ptr %78
+
+  %485 = load i64, ptr %78
+  store i64 %485, ptr %79
+
+  %486 = load i64, ptr %ds
+  %487 = add i64 %486, 64
+  %488 = inttoptr i64 %487 to ptr
+  %489 = load i64, ptr %488
+  store i64 %489, ptr %81
+
+  %490 = load i64, ptr %81
+  store i64 %490, ptr %82
+
+  %491 = load i64, ptr %ds
+  %492 = load i64, ptr %alloc
+  %493 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %491, i64 %492) returns_twice "gc-leaf-function"="true"
+  %494 = extractvalue { { i64, i64 }, { i32 } } %493, 0, 0
+  %495 = extractvalue { { i64, i64 }, { i32 } } %493, 0, 1
+  store i64 %494, ptr %ds
+  store i64 %495, ptr %alloc
+  %496 = extractvalue { { i64, i64 }, { i32 } } %493, 1, 0
+  br label %L367
+L367:
+  %497 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %498 = icmp eq i64 %497, 0
+  br i1 %498, label %L368, label %L239
+L368:
+  %499 = call  ptr @llvm.stacksave()
+  %500 = alloca { i64, i64, i64, i64 }
+  %501 = ptrtoint ptr %500 to i64
+  %502 = add i64 %501, 16
+  %503 = inttoptr i64 %502 to ptr
+  %504 = ptrtoint ptr %500 to i64
+  %505 = add i64 %504, 8
   %506 = inttoptr i64 %505 to ptr
-  %507 = load i64, ptr %506
-  store i64 %507, ptr %81
-  %508 = load i64, ptr %81
-  store i64 %508, ptr %82
-  %509 = load ptr, ptr %ds
-  %510 = load ptr, ptr %alloc
-  %511 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %509, ptr %510) returns_twice "gc-leaf-function"="true"
-  %512 = extractvalue { { ptr, ptr }, { i32 } } %511, 0, 0
-  store ptr %512, ptr %ds
-  %513 = extractvalue { { ptr, ptr }, { i32 } } %511, 0, 1
-  store ptr %513, ptr %alloc
-  %514 = extractvalue { { ptr, ptr }, { i32 } } %511, 1, 0
-  br label %515
-515:
-  %516 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %517 = icmp eq i64 %516, 0
-  br i1 %517, label %518, label %L235
-518:
-  %519 =  call  ptr @llvm.stacksave()
-  %520 = alloca { i64, i64, i64, i64 }
-  %521 = load i64, ptr %ds
-  %522 = add i64 %521, 48
-  %523 = inttoptr i64 %522 to ptr
-  %524 = load i64, ptr %523
-  %525 = ptrtoint ptr %520 to i64
-  %526 = add i64 %525, 16
-  %527 = inttoptr i64 %526 to ptr
-  %528 = ptrtoint ptr %520 to i64
-  %529 = add i64 %528, 8
-  %530 = inttoptr i64 %529 to ptr
-  %531 = ptrtoint ptr %520 to i64
-  %532 = add i64 %531, 0
-  %533 = inttoptr i64 %532 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %527)
-  store ptr blockaddress(@camlSwitch__entry, %515), ptr %530
-  store i64 %524, ptr %533
-  store ptr %520, ptr %523
+  %507 = load i64, ptr %ds
+  %508 = add i64 %507, 48
+  %509 = inttoptr i64 %508 to ptr
+  %510 = load i64, ptr %509
+  store ptr %500, ptr %509
+  store ptr blockaddress(@camlSwitch__entry, %L367), ptr %506
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %503)
+  store i64 %510, ptr %500
+
   store i64 15, ptr %84
-  %534 = load i64, ptr %84
-  store i64 %534, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %535 = load ptr, ptr %ds
-  %536 = load ptr, ptr %alloc
-  %537 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %538 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %535, ptr %536, i64 %537) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %539 = extractvalue { { ptr, ptr }, { i64 } } %538, 0, 0
-  store ptr %539, ptr %ds
-  %540 = extractvalue { { ptr, ptr }, { i64 } } %538, 0, 1
-  store ptr %540, ptr %alloc
-  %541 = extractvalue { { ptr, ptr }, { i64 } } %538, 1, 0
-  store i64 %541, ptr %4
-  br label %L243
-L243:                                                ; preds = %L230
-  %542 = load i64, ptr %4
-  store i64 %542, ptr %85
-  %543 = load i64, ptr %85
-  store i64 %543, ptr %86
-  store ptr @camlStdlib__Int__immstring64, ptr %87
-  %544 = load i64, ptr %87
-  store i64 %544, ptr %8
-  %545 = load i64, ptr %86
-  store i64 %545, ptr %9
-  %546 = load i64, ptr %8
-  %547 = load i64, ptr %9
-  %548 = load ptr, ptr %ds
-  %549 = load ptr, ptr %alloc
-  %550 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %548, ptr %549, ptr @caml_format_int, i64 poison, i64 %546, i64 %547) "statepoint-id"="32"
-  %551 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %550, 0, 0
-  store ptr %551, ptr %ds
-  %552 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %550, 0, 1
-  store ptr %552, ptr %alloc
-  %553 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %550, 1, 0
-  store ptr addrspace(1) %553, ptr %3
-  br label %L244
-L244:                                                ; preds = %L243
-  %554 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %554, ptr %88
-  %555 = load ptr addrspace(1), ptr %88
-  store ptr addrspace(1) %555, ptr %89
-  %556 = load ptr addrspace(1), ptr %89
-  store ptr addrspace(1) %556, ptr %90
-  %557 = load ptr addrspace(1), ptr %90
-  store ptr addrspace(1) %557, ptr %80
-  %558 = load i64, ptr %ds
-  %559 = add i64 %558, 48
-  %560 = inttoptr i64 %559 to ptr
-  %561 = load i64, ptr %520
-  store i64 %561, ptr %560
-   call  void @llvm.stackrestore(ptr %519)
-  br label %L250
-L235:                                                ; preds = %L230, %L243
+
+  %511 = load i64, ptr %84
+  store i64 %511, ptr %4
+
+  %512 = load i64, ptr %4
+  %513 = load i64, ptr %ds
+  %514 = load i64, ptr %alloc
+  %515 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %513, i64 %514, i64 %512) "statepoint-id"="32"
+  %516 = extractvalue { { i64, i64 }, { i64 } } %515, 0, 0
+  %517 = extractvalue { { i64, i64 }, { i64 } } %515, 0, 1
+  store i64 %516, ptr %ds
+  store i64 %517, ptr %alloc
+  %518 = extractvalue { { i64, i64 }, { i64 } } %515, 1, 0
+  store i64 %518, ptr %4
+  br label %L247
+L247:
+
+  %519 = load i64, ptr %4
+  store i64 %519, ptr %85
+
+  %520 = load i64, ptr %85
+  store i64 %520, ptr %86
+
+  %521 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %521, ptr %87
+
+  %522 = load i64, ptr %87
+  store i64 %522, ptr %8
+
+  %523 = load i64, ptr %86
+  store i64 %523, ptr %9
+
+  %524 = load i64, ptr %8
+  %525 = load i64, ptr %9
+  %526 = load i64, ptr %ds
+  %527 = load i64, ptr %alloc
+  %528 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %526, i64 %527, ptr @caml_format_int, i64 poison, i64 %524, i64 %525) "statepoint-id"="32"
+  %529 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %528, 0, 0
+  %530 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %528, 0, 1
+  store i64 %529, ptr %ds
+  store i64 %530, ptr %alloc
+  %531 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %528, 1, 0
+  store ptr addrspace(1) %531, ptr %3
+  br label %L248
+L248:
+
+  %532 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %532, ptr %88
+
+  %533 = load ptr addrspace(1), ptr %88
+  store ptr addrspace(1) %533, ptr %89
+
+  %534 = load ptr addrspace(1), ptr %89
+  store ptr addrspace(1) %534, ptr %90
+
+  %535 = load ptr addrspace(1), ptr %90
+  store ptr addrspace(1) %535, ptr %80
+
+  %536 = load i64, ptr %ds
+  %537 = add i64 %536, 48
+  %538 = inttoptr i64 %537 to ptr
+  %539 = load i64, ptr %500
+  store i64 %539, ptr %538
+  call  void @llvm.stackrestore(ptr %499)
+
+  br label %L254
+L239:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %562 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %562, ptr %alloc
-  store i64 %516, ptr %4
-  %563 = load i64, ptr %4
-  %564 = inttoptr i64 %563 to ptr addrspace(1)
-  store ptr addrspace(1) %564, ptr %83
-  %565 = load i64, ptr %82
-  %566 = load i64, ptr %ds
-  %567 = add i64 %566, 64
-  %568 = inttoptr i64 %567 to ptr
-  store i64 %565, ptr %568
+  %540 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %540, ptr %alloc
+  store i64 %497, ptr %4
+
+  %541 = load i64, ptr %4
+  %542 = inttoptr i64 %541 to ptr addrspace(1)
+  store ptr addrspace(1) %542, ptr %83
+
+  %543 = load i64, ptr %ds
+  %544 = add i64 %543, 64
+  %545 = inttoptr i64 %544 to ptr
+  %546 = load i64, ptr %82
+  store i64 %546, ptr %545
+
   store i64 1, ptr %91
-  %569 = load i64, ptr %91
-  store i64 %569, ptr %92
-  store ptr @camlSwitch__immstring38, ptr %93
-  %570 = load i64, ptr %93
-  store i64 %570, ptr %94
-  %571 = load i64, ptr %94
-  %572 = inttoptr i64 %571 to ptr addrspace(1)
-  store ptr addrspace(1) %572, ptr %80
-  br label %L250
-L250:                                                ; preds = %L235, %L244
-  store ptr @camlSwitch__const_block54, ptr %95
+
+  %547 = load i64, ptr %91
+  store i64 %547, ptr %92
+
+  %548 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %548, ptr %93
+
+  %549 = load i64, ptr %93
+  store i64 %549, ptr %94
+
+  %550 = load i64, ptr %94
+  %551 = inttoptr i64 %550 to ptr addrspace(1)
+  store ptr addrspace(1) %551, ptr %80
+
+  br label %L254
+L254:
+
+  %552 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %552, ptr %95
+
   store i64 1, ptr %96
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %97
-  %573 = load i64, ptr %97
-  store i64 %573, ptr %4
-  %574 = load i64, ptr %96
-  store i64 %574, ptr %6
-  %575 = load i64, ptr %95
-  store i64 %575, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %576 = load ptr, ptr %ds
-  %577 = load ptr, ptr %alloc
-  %578 = load i64, ptr %4
-  %579 = inttoptr i64 %578 to ptr addrspace(1)
-  %580 = load i64, ptr %6
-  %581 = inttoptr i64 %580 to ptr addrspace(1)
-  %582 = load i64, ptr %8
-  %583 = inttoptr i64 %582 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %584 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %576, ptr %577, ptr addrspace(1) %579, ptr addrspace(1) %581, ptr addrspace(1) %583) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %585 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %584, 0, 0
-  store ptr %585, ptr %ds
-  %586 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %584, 0, 1
-  store ptr %586, ptr %alloc
-  %587 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %584, 1, 0
-  store ptr addrspace(1) %587, ptr %3
-  br label %L252
-L252:                                                ; preds = %L250
-  %588 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %588, ptr %98
-  %589 = load ptr addrspace(1), ptr %98
-  store ptr addrspace(1) %589, ptr %99
+
+  %553 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %553, ptr %97
+
+  %554 = load i64, ptr %97
+  store i64 %554, ptr %4
+
+  %555 = load i64, ptr %96
+  store i64 %555, ptr %6
+
+  %556 = load i64, ptr %95
+  store i64 %556, ptr %8
+
+  %557 = load i64, ptr %4
+  %558 = load i64, ptr %6
+  %559 = load i64, ptr %8
+  %560 = load i64, ptr %ds
+  %561 = load i64, ptr %alloc
+  %562 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %560, i64 %561, i64 %557, i64 %558, i64 %559) "statepoint-id"="0"
+  %563 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %562, 0, 0
+  %564 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %562, 0, 1
+  store i64 %563, ptr %ds
+  store i64 %564, ptr %alloc
+  %565 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %562, 1, 0
+  store ptr addrspace(1) %565, ptr %3
+  br label %L256
+L256:
+
+  %566 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %566, ptr %98
+
+  %567 = load ptr addrspace(1), ptr %98
+  store ptr addrspace(1) %567, ptr %99
+
   store i64 15, ptr %100
-  %590 = load i64, ptr %100
-  store i64 %590, ptr %4
-  %591 = load ptr addrspace(1), ptr %80
-  store ptr addrspace(1) %591, ptr %5
-  %592 = load ptr addrspace(1), ptr %99
-  store ptr addrspace(1) %592, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %593 = load ptr, ptr %ds
-  %594 = load ptr, ptr %alloc
-  %595 = load i64, ptr %4
-  %596 = inttoptr i64 %595 to ptr addrspace(1)
-  %597 = load ptr addrspace(1), ptr %5
-  %598 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %599 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %593, ptr %594, ptr addrspace(1) %596, ptr addrspace(1) %597, ptr addrspace(1) %598) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %600 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %599, 0, 0
-  store ptr %600, ptr %ds
-  %601 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %599, 0, 1
-  store ptr %601, ptr %alloc
-  %602 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %599, 1, 0
-  %603 = ptrtoint ptr addrspace(1) %602 to i64
-  store i64 %603, ptr %4
-  br label %L253
-L253:                                                ; preds = %L252
-  %604 = load i64, ptr %4
-  store i64 %604, ptr %101
-  %605 = load i64, ptr %101
-  store i64 %605, ptr %102
-  %606 = load i64, ptr %ds
-  %607 = add i64 %606, 64
-  %608 = inttoptr i64 %607 to ptr
-  %609 = load i64, ptr %608
-  store i64 %609, ptr %104
-  %610 = load i64, ptr %104
-  store i64 %610, ptr %105
-  %611 = load ptr, ptr %ds
-  %612 = load ptr, ptr %alloc
-  %613 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %611, ptr %612) returns_twice "gc-leaf-function"="true"
-  %614 = extractvalue { { ptr, ptr }, { i32 } } %613, 0, 0
-  store ptr %614, ptr %ds
-  %615 = extractvalue { { ptr, ptr }, { i32 } } %613, 0, 1
-  store ptr %615, ptr %alloc
-  %616 = extractvalue { { ptr, ptr }, { i32 } } %613, 1, 0
-  br label %617
-617:
-  %618 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %619 = icmp eq i64 %618, 0
-  br i1 %619, label %620, label %L258
-620:
-  %621 =  call  ptr @llvm.stacksave()
-  %622 = alloca { i64, i64, i64, i64 }
-  %623 = load i64, ptr %ds
-  %624 = add i64 %623, 48
-  %625 = inttoptr i64 %624 to ptr
-  %626 = load i64, ptr %625
-  %627 = ptrtoint ptr %622 to i64
-  %628 = add i64 %627, 16
-  %629 = inttoptr i64 %628 to ptr
-  %630 = ptrtoint ptr %622 to i64
-  %631 = add i64 %630, 8
-  %632 = inttoptr i64 %631 to ptr
-  %633 = ptrtoint ptr %622 to i64
-  %634 = add i64 %633, 0
-  %635 = inttoptr i64 %634 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %629)
-  store ptr blockaddress(@camlSwitch__entry, %617), ptr %632
-  store i64 %626, ptr %635
-  store ptr %622, ptr %625
+
+  %568 = load i64, ptr %100
+  store i64 %568, ptr %4
+
+  %569 = load ptr addrspace(1), ptr %80
+  store ptr addrspace(1) %569, ptr %5
+
+  %570 = load ptr addrspace(1), ptr %99
+  store ptr addrspace(1) %570, ptr %7
+
+  %571 = load i64, ptr %4
+  %572 = load ptr addrspace(1), ptr %5
+  %573 = load ptr addrspace(1), ptr %7
+  %574 = load i64, ptr %ds
+  %575 = load i64, ptr %alloc
+  %576 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %574, i64 %575, i64 %571, ptr addrspace(1) %572, ptr addrspace(1) %573) "statepoint-id"="0"
+  %577 = extractvalue { { i64, i64 }, { i64 } } %576, 0, 0
+  %578 = extractvalue { { i64, i64 }, { i64 } } %576, 0, 1
+  store i64 %577, ptr %ds
+  store i64 %578, ptr %alloc
+  %579 = extractvalue { { i64, i64 }, { i64 } } %576, 1, 0
+  store i64 %579, ptr %4
+  br label %L257
+L257:
+
+  %580 = load i64, ptr %4
+  store i64 %580, ptr %101
+
+  %581 = load i64, ptr %101
+  store i64 %581, ptr %102
+
+  %582 = load i64, ptr %ds
+  %583 = add i64 %582, 64
+  %584 = inttoptr i64 %583 to ptr
+  %585 = load i64, ptr %584
+  store i64 %585, ptr %104
+
+  %586 = load i64, ptr %104
+  store i64 %586, ptr %105
+
+  %587 = load i64, ptr %ds
+  %588 = load i64, ptr %alloc
+  %589 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %587, i64 %588) returns_twice "gc-leaf-function"="true"
+  %590 = extractvalue { { i64, i64 }, { i32 } } %589, 0, 0
+  %591 = extractvalue { { i64, i64 }, { i32 } } %589, 0, 1
+  store i64 %590, ptr %ds
+  store i64 %591, ptr %alloc
+  %592 = extractvalue { { i64, i64 }, { i32 } } %589, 1, 0
+  br label %L369
+L369:
+  %593 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %594 = icmp eq i64 %593, 0
+  br i1 %594, label %L370, label %L262
+L370:
+  %595 = call  ptr @llvm.stacksave()
+  %596 = alloca { i64, i64, i64, i64 }
+  %597 = ptrtoint ptr %596 to i64
+  %598 = add i64 %597, 16
+  %599 = inttoptr i64 %598 to ptr
+  %600 = ptrtoint ptr %596 to i64
+  %601 = add i64 %600, 8
+  %602 = inttoptr i64 %601 to ptr
+  %603 = load i64, ptr %ds
+  %604 = add i64 %603, 48
+  %605 = inttoptr i64 %604 to ptr
+  %606 = load i64, ptr %605
+  store ptr %596, ptr %605
+  store ptr blockaddress(@camlSwitch__entry, %L369), ptr %602
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %599)
+  store i64 %606, ptr %596
+
   store i64 19, ptr %107
-  %636 = load i64, ptr %107
-  store i64 %636, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %637 = load ptr, ptr %ds
-  %638 = load ptr, ptr %alloc
-  %639 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %640 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %637, ptr %638, i64 %639) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %641 = extractvalue { { ptr, ptr }, { i64 } } %640, 0, 0
-  store ptr %641, ptr %ds
-  %642 = extractvalue { { ptr, ptr }, { i64 } } %640, 0, 1
-  store ptr %642, ptr %alloc
-  %643 = extractvalue { { ptr, ptr }, { i64 } } %640, 1, 0
-  store i64 %643, ptr %4
-  br label %L266
-L266:                                                ; preds = %L253
-  %644 = load i64, ptr %4
-  store i64 %644, ptr %108
-  %645 = load i64, ptr %108
-  store i64 %645, ptr %109
-  store ptr @camlStdlib__Int__immstring64, ptr %110
-  %646 = load i64, ptr %110
-  store i64 %646, ptr %8
-  %647 = load i64, ptr %109
-  store i64 %647, ptr %9
-  %648 = load i64, ptr %8
-  %649 = load i64, ptr %9
-  %650 = load ptr, ptr %ds
-  %651 = load ptr, ptr %alloc
-  %652 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %650, ptr %651, ptr @caml_format_int, i64 poison, i64 %648, i64 %649) "statepoint-id"="32"
-  %653 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %652, 0, 0
-  store ptr %653, ptr %ds
-  %654 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %652, 0, 1
-  store ptr %654, ptr %alloc
-  %655 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %652, 1, 0
-  store ptr addrspace(1) %655, ptr %3
-  br label %L267
-L267:                                                ; preds = %L266
-  %656 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %656, ptr %111
-  %657 = load ptr addrspace(1), ptr %111
-  store ptr addrspace(1) %657, ptr %112
-  %658 = load ptr addrspace(1), ptr %112
-  store ptr addrspace(1) %658, ptr %113
-  %659 = load ptr addrspace(1), ptr %113
-  store ptr addrspace(1) %659, ptr %103
-  %660 = load i64, ptr %ds
-  %661 = add i64 %660, 48
-  %662 = inttoptr i64 %661 to ptr
-  %663 = load i64, ptr %622
-  store i64 %663, ptr %662
-   call  void @llvm.stackrestore(ptr %621)
-  br label %L273
-L258:                                                ; preds = %L253, %L266
+
+  %607 = load i64, ptr %107
+  store i64 %607, ptr %4
+
+  %608 = load i64, ptr %4
+  %609 = load i64, ptr %ds
+  %610 = load i64, ptr %alloc
+  %611 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %609, i64 %610, i64 %608) "statepoint-id"="32"
+  %612 = extractvalue { { i64, i64 }, { i64 } } %611, 0, 0
+  %613 = extractvalue { { i64, i64 }, { i64 } } %611, 0, 1
+  store i64 %612, ptr %ds
+  store i64 %613, ptr %alloc
+  %614 = extractvalue { { i64, i64 }, { i64 } } %611, 1, 0
+  store i64 %614, ptr %4
+  br label %L270
+L270:
+
+  %615 = load i64, ptr %4
+  store i64 %615, ptr %108
+
+  %616 = load i64, ptr %108
+  store i64 %616, ptr %109
+
+  %617 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %617, ptr %110
+
+  %618 = load i64, ptr %110
+  store i64 %618, ptr %8
+
+  %619 = load i64, ptr %109
+  store i64 %619, ptr %9
+
+  %620 = load i64, ptr %8
+  %621 = load i64, ptr %9
+  %622 = load i64, ptr %ds
+  %623 = load i64, ptr %alloc
+  %624 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %622, i64 %623, ptr @caml_format_int, i64 poison, i64 %620, i64 %621) "statepoint-id"="32"
+  %625 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %624, 0, 0
+  %626 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %624, 0, 1
+  store i64 %625, ptr %ds
+  store i64 %626, ptr %alloc
+  %627 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %624, 1, 0
+  store ptr addrspace(1) %627, ptr %3
+  br label %L271
+L271:
+
+  %628 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %628, ptr %111
+
+  %629 = load ptr addrspace(1), ptr %111
+  store ptr addrspace(1) %629, ptr %112
+
+  %630 = load ptr addrspace(1), ptr %112
+  store ptr addrspace(1) %630, ptr %113
+
+  %631 = load ptr addrspace(1), ptr %113
+  store ptr addrspace(1) %631, ptr %103
+
+  %632 = load i64, ptr %ds
+  %633 = add i64 %632, 48
+  %634 = inttoptr i64 %633 to ptr
+  %635 = load i64, ptr %596
+  store i64 %635, ptr %634
+  call  void @llvm.stackrestore(ptr %595)
+
+  br label %L277
+L262:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %664 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %664, ptr %alloc
-  store i64 %618, ptr %4
-  %665 = load i64, ptr %4
-  %666 = inttoptr i64 %665 to ptr addrspace(1)
-  store ptr addrspace(1) %666, ptr %106
-  %667 = load i64, ptr %105
-  %668 = load i64, ptr %ds
-  %669 = add i64 %668, 64
-  %670 = inttoptr i64 %669 to ptr
-  store i64 %667, ptr %670
+  %636 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %636, ptr %alloc
+  store i64 %593, ptr %4
+
+  %637 = load i64, ptr %4
+  %638 = inttoptr i64 %637 to ptr addrspace(1)
+  store ptr addrspace(1) %638, ptr %106
+
+  %639 = load i64, ptr %ds
+  %640 = add i64 %639, 64
+  %641 = inttoptr i64 %640 to ptr
+  %642 = load i64, ptr %105
+  store i64 %642, ptr %641
+
   store i64 1, ptr %114
-  %671 = load i64, ptr %114
-  store i64 %671, ptr %115
-  store ptr @camlSwitch__immstring38, ptr %116
-  %672 = load i64, ptr %116
-  store i64 %672, ptr %117
-  %673 = load i64, ptr %117
-  %674 = inttoptr i64 %673 to ptr addrspace(1)
-  store ptr addrspace(1) %674, ptr %103
-  br label %L273
-L273:                                                ; preds = %L258, %L267
-  store ptr @camlSwitch__const_block54, ptr %118
+
+  %643 = load i64, ptr %114
+  store i64 %643, ptr %115
+
+  %644 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %644, ptr %116
+
+  %645 = load i64, ptr %116
+  store i64 %645, ptr %117
+
+  %646 = load i64, ptr %117
+  %647 = inttoptr i64 %646 to ptr addrspace(1)
+  store ptr addrspace(1) %647, ptr %103
+
+  br label %L277
+L277:
+
+  %648 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %648, ptr %118
+
   store i64 1, ptr %119
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %120
-  %675 = load i64, ptr %120
-  store i64 %675, ptr %4
-  %676 = load i64, ptr %119
-  store i64 %676, ptr %6
-  %677 = load i64, ptr %118
-  store i64 %677, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %678 = load ptr, ptr %ds
-  %679 = load ptr, ptr %alloc
-  %680 = load i64, ptr %4
-  %681 = inttoptr i64 %680 to ptr addrspace(1)
-  %682 = load i64, ptr %6
-  %683 = inttoptr i64 %682 to ptr addrspace(1)
-  %684 = load i64, ptr %8
-  %685 = inttoptr i64 %684 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %686 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %678, ptr %679, ptr addrspace(1) %681, ptr addrspace(1) %683, ptr addrspace(1) %685) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %687 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %686, 0, 0
-  store ptr %687, ptr %ds
-  %688 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %686, 0, 1
-  store ptr %688, ptr %alloc
-  %689 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %686, 1, 0
-  store ptr addrspace(1) %689, ptr %3
-  br label %L275
-L275:                                                ; preds = %L273
-  %690 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %690, ptr %121
-  %691 = load ptr addrspace(1), ptr %121
-  store ptr addrspace(1) %691, ptr %122
+
+  %649 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %649, ptr %120
+
+  %650 = load i64, ptr %120
+  store i64 %650, ptr %4
+
+  %651 = load i64, ptr %119
+  store i64 %651, ptr %6
+
+  %652 = load i64, ptr %118
+  store i64 %652, ptr %8
+
+  %653 = load i64, ptr %4
+  %654 = load i64, ptr %6
+  %655 = load i64, ptr %8
+  %656 = load i64, ptr %ds
+  %657 = load i64, ptr %alloc
+  %658 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %656, i64 %657, i64 %653, i64 %654, i64 %655) "statepoint-id"="0"
+  %659 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %658, 0, 0
+  %660 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %658, 0, 1
+  store i64 %659, ptr %ds
+  store i64 %660, ptr %alloc
+  %661 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %658, 1, 0
+  store ptr addrspace(1) %661, ptr %3
+  br label %L279
+L279:
+
+  %662 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %662, ptr %121
+
+  %663 = load ptr addrspace(1), ptr %121
+  store ptr addrspace(1) %663, ptr %122
+
   store i64 19, ptr %123
-  %692 = load i64, ptr %123
-  store i64 %692, ptr %4
-  %693 = load ptr addrspace(1), ptr %103
-  store ptr addrspace(1) %693, ptr %5
-  %694 = load ptr addrspace(1), ptr %122
-  store ptr addrspace(1) %694, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %695 = load ptr, ptr %ds
-  %696 = load ptr, ptr %alloc
-  %697 = load i64, ptr %4
-  %698 = inttoptr i64 %697 to ptr addrspace(1)
-  %699 = load ptr addrspace(1), ptr %5
-  %700 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %701 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %695, ptr %696, ptr addrspace(1) %698, ptr addrspace(1) %699, ptr addrspace(1) %700) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %702 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %701, 0, 0
-  store ptr %702, ptr %ds
-  %703 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %701, 0, 1
-  store ptr %703, ptr %alloc
-  %704 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %701, 1, 0
-  %705 = ptrtoint ptr addrspace(1) %704 to i64
-  store i64 %705, ptr %4
-  br label %L276
-L276:                                                ; preds = %L275
-  %706 = load i64, ptr %4
-  store i64 %706, ptr %124
-  %707 = load i64, ptr %124
-  store i64 %707, ptr %125
-  %708 = load i64, ptr %ds
-  %709 = add i64 %708, 64
-  %710 = inttoptr i64 %709 to ptr
-  %711 = load i64, ptr %710
-  store i64 %711, ptr %127
-  %712 = load i64, ptr %127
-  store i64 %712, ptr %128
-  %713 = load ptr, ptr %ds
-  %714 = load ptr, ptr %alloc
-  %715 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %713, ptr %714) returns_twice "gc-leaf-function"="true"
-  %716 = extractvalue { { ptr, ptr }, { i32 } } %715, 0, 0
-  store ptr %716, ptr %ds
-  %717 = extractvalue { { ptr, ptr }, { i32 } } %715, 0, 1
-  store ptr %717, ptr %alloc
-  %718 = extractvalue { { ptr, ptr }, { i32 } } %715, 1, 0
-  br label %719
-719:
-  %720 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %721 = icmp eq i64 %720, 0
-  br i1 %721, label %722, label %L281
-722:
-  %723 =  call  ptr @llvm.stacksave()
-  %724 = alloca { i64, i64, i64, i64 }
-  %725 = load i64, ptr %ds
-  %726 = add i64 %725, 48
-  %727 = inttoptr i64 %726 to ptr
-  %728 = load i64, ptr %727
-  %729 = ptrtoint ptr %724 to i64
-  %730 = add i64 %729, 16
-  %731 = inttoptr i64 %730 to ptr
-  %732 = ptrtoint ptr %724 to i64
-  %733 = add i64 %732, 8
-  %734 = inttoptr i64 %733 to ptr
-  %735 = ptrtoint ptr %724 to i64
-  %736 = add i64 %735, 0
-  %737 = inttoptr i64 %736 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %731)
-  store ptr blockaddress(@camlSwitch__entry, %719), ptr %734
-  store i64 %728, ptr %737
-  store ptr %724, ptr %727
+
+  %664 = load i64, ptr %123
+  store i64 %664, ptr %4
+
+  %665 = load ptr addrspace(1), ptr %103
+  store ptr addrspace(1) %665, ptr %5
+
+  %666 = load ptr addrspace(1), ptr %122
+  store ptr addrspace(1) %666, ptr %7
+
+  %667 = load i64, ptr %4
+  %668 = load ptr addrspace(1), ptr %5
+  %669 = load ptr addrspace(1), ptr %7
+  %670 = load i64, ptr %ds
+  %671 = load i64, ptr %alloc
+  %672 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %670, i64 %671, i64 %667, ptr addrspace(1) %668, ptr addrspace(1) %669) "statepoint-id"="0"
+  %673 = extractvalue { { i64, i64 }, { i64 } } %672, 0, 0
+  %674 = extractvalue { { i64, i64 }, { i64 } } %672, 0, 1
+  store i64 %673, ptr %ds
+  store i64 %674, ptr %alloc
+  %675 = extractvalue { { i64, i64 }, { i64 } } %672, 1, 0
+  store i64 %675, ptr %4
+  br label %L280
+L280:
+
+  %676 = load i64, ptr %4
+  store i64 %676, ptr %124
+
+  %677 = load i64, ptr %124
+  store i64 %677, ptr %125
+
+  %678 = load i64, ptr %ds
+  %679 = add i64 %678, 64
+  %680 = inttoptr i64 %679 to ptr
+  %681 = load i64, ptr %680
+  store i64 %681, ptr %127
+
+  %682 = load i64, ptr %127
+  store i64 %682, ptr %128
+
+  %683 = load i64, ptr %ds
+  %684 = load i64, ptr %alloc
+  %685 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %683, i64 %684) returns_twice "gc-leaf-function"="true"
+  %686 = extractvalue { { i64, i64 }, { i32 } } %685, 0, 0
+  %687 = extractvalue { { i64, i64 }, { i32 } } %685, 0, 1
+  store i64 %686, ptr %ds
+  store i64 %687, ptr %alloc
+  %688 = extractvalue { { i64, i64 }, { i32 } } %685, 1, 0
+  br label %L371
+L371:
+  %689 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %690 = icmp eq i64 %689, 0
+  br i1 %690, label %L372, label %L285
+L372:
+  %691 = call  ptr @llvm.stacksave()
+  %692 = alloca { i64, i64, i64, i64 }
+  %693 = ptrtoint ptr %692 to i64
+  %694 = add i64 %693, 16
+  %695 = inttoptr i64 %694 to ptr
+  %696 = ptrtoint ptr %692 to i64
+  %697 = add i64 %696, 8
+  %698 = inttoptr i64 %697 to ptr
+  %699 = load i64, ptr %ds
+  %700 = add i64 %699, 48
+  %701 = inttoptr i64 %700 to ptr
+  %702 = load i64, ptr %701
+  store ptr %692, ptr %701
+  store ptr blockaddress(@camlSwitch__entry, %L371), ptr %698
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %695)
+  store i64 %702, ptr %692
+
   store i64 5, ptr %130
-  %738 = load i64, ptr %130
-  store i64 %738, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %739 = load ptr, ptr %ds
-  %740 = load ptr, ptr %alloc
-  %741 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %742 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %739, ptr %740, i64 %741) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %743 = extractvalue { { ptr, ptr }, { i64 } } %742, 0, 0
-  store ptr %743, ptr %ds
-  %744 = extractvalue { { ptr, ptr }, { i64 } } %742, 0, 1
-  store ptr %744, ptr %alloc
-  %745 = extractvalue { { ptr, ptr }, { i64 } } %742, 1, 0
-  store i64 %745, ptr %4
-  br label %L289
-L289:                                                ; preds = %L276
-  %746 = load i64, ptr %4
-  store i64 %746, ptr %131
-  %747 = load i64, ptr %131
-  store i64 %747, ptr %132
-  store ptr @camlStdlib__Int__immstring64, ptr %133
-  %748 = load i64, ptr %133
-  store i64 %748, ptr %8
-  %749 = load i64, ptr %132
-  store i64 %749, ptr %9
-  %750 = load i64, ptr %8
-  %751 = load i64, ptr %9
-  %752 = load ptr, ptr %ds
-  %753 = load ptr, ptr %alloc
-  %754 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %752, ptr %753, ptr @caml_format_int, i64 poison, i64 %750, i64 %751) "statepoint-id"="32"
-  %755 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %754, 0, 0
-  store ptr %755, ptr %ds
-  %756 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %754, 0, 1
-  store ptr %756, ptr %alloc
-  %757 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %754, 1, 0
-  store ptr addrspace(1) %757, ptr %3
-  br label %L290
-L290:                                                ; preds = %L289
-  %758 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %758, ptr %134
-  %759 = load ptr addrspace(1), ptr %134
-  store ptr addrspace(1) %759, ptr %135
-  %760 = load ptr addrspace(1), ptr %135
-  store ptr addrspace(1) %760, ptr %136
-  %761 = load ptr addrspace(1), ptr %136
-  store ptr addrspace(1) %761, ptr %126
-  %762 = load i64, ptr %ds
-  %763 = add i64 %762, 48
-  %764 = inttoptr i64 %763 to ptr
-  %765 = load i64, ptr %724
-  store i64 %765, ptr %764
-   call  void @llvm.stackrestore(ptr %723)
-  br label %L296
-L281:                                                ; preds = %L276, %L289
+
+  %703 = load i64, ptr %130
+  store i64 %703, ptr %4
+
+  %704 = load i64, ptr %4
+  %705 = load i64, ptr %ds
+  %706 = load i64, ptr %alloc
+  %707 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %705, i64 %706, i64 %704) "statepoint-id"="32"
+  %708 = extractvalue { { i64, i64 }, { i64 } } %707, 0, 0
+  %709 = extractvalue { { i64, i64 }, { i64 } } %707, 0, 1
+  store i64 %708, ptr %ds
+  store i64 %709, ptr %alloc
+  %710 = extractvalue { { i64, i64 }, { i64 } } %707, 1, 0
+  store i64 %710, ptr %4
+  br label %L293
+L293:
+
+  %711 = load i64, ptr %4
+  store i64 %711, ptr %131
+
+  %712 = load i64, ptr %131
+  store i64 %712, ptr %132
+
+  %713 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %713, ptr %133
+
+  %714 = load i64, ptr %133
+  store i64 %714, ptr %8
+
+  %715 = load i64, ptr %132
+  store i64 %715, ptr %9
+
+  %716 = load i64, ptr %8
+  %717 = load i64, ptr %9
+  %718 = load i64, ptr %ds
+  %719 = load i64, ptr %alloc
+  %720 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %718, i64 %719, ptr @caml_format_int, i64 poison, i64 %716, i64 %717) "statepoint-id"="32"
+  %721 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %720, 0, 0
+  %722 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %720, 0, 1
+  store i64 %721, ptr %ds
+  store i64 %722, ptr %alloc
+  %723 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %720, 1, 0
+  store ptr addrspace(1) %723, ptr %3
+  br label %L294
+L294:
+
+  %724 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %724, ptr %134
+
+  %725 = load ptr addrspace(1), ptr %134
+  store ptr addrspace(1) %725, ptr %135
+
+  %726 = load ptr addrspace(1), ptr %135
+  store ptr addrspace(1) %726, ptr %136
+
+  %727 = load ptr addrspace(1), ptr %136
+  store ptr addrspace(1) %727, ptr %126
+
+  %728 = load i64, ptr %ds
+  %729 = add i64 %728, 48
+  %730 = inttoptr i64 %729 to ptr
+  %731 = load i64, ptr %692
+  store i64 %731, ptr %730
+  call  void @llvm.stackrestore(ptr %691)
+
+  br label %L300
+L285:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %766 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %766, ptr %alloc
-  store i64 %720, ptr %4
-  %767 = load i64, ptr %4
-  %768 = inttoptr i64 %767 to ptr addrspace(1)
-  store ptr addrspace(1) %768, ptr %129
-  %769 = load i64, ptr %128
-  %770 = load i64, ptr %ds
-  %771 = add i64 %770, 64
-  %772 = inttoptr i64 %771 to ptr
-  store i64 %769, ptr %772
+  %732 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %732, ptr %alloc
+  store i64 %689, ptr %4
+
+  %733 = load i64, ptr %4
+  %734 = inttoptr i64 %733 to ptr addrspace(1)
+  store ptr addrspace(1) %734, ptr %129
+
+  %735 = load i64, ptr %ds
+  %736 = add i64 %735, 64
+  %737 = inttoptr i64 %736 to ptr
+  %738 = load i64, ptr %128
+  store i64 %738, ptr %737
+
   store i64 1, ptr %137
-  %773 = load i64, ptr %137
-  store i64 %773, ptr %138
-  store ptr @camlSwitch__immstring38, ptr %139
-  %774 = load i64, ptr %139
-  store i64 %774, ptr %140
-  %775 = load i64, ptr %140
-  %776 = inttoptr i64 %775 to ptr addrspace(1)
-  store ptr addrspace(1) %776, ptr %126
-  br label %L296
-L296:                                                ; preds = %L281, %L290
-  store ptr @camlSwitch__const_block54, ptr %141
+
+  %739 = load i64, ptr %137
+  store i64 %739, ptr %138
+
+  %740 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %740, ptr %139
+
+  %741 = load i64, ptr %139
+  store i64 %741, ptr %140
+
+  %742 = load i64, ptr %140
+  %743 = inttoptr i64 %742 to ptr addrspace(1)
+  store ptr addrspace(1) %743, ptr %126
+
+  br label %L300
+L300:
+
+  %744 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %744, ptr %141
+
   store i64 1, ptr %142
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %143
-  %777 = load i64, ptr %143
-  store i64 %777, ptr %4
-  %778 = load i64, ptr %142
-  store i64 %778, ptr %6
-  %779 = load i64, ptr %141
-  store i64 %779, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %780 = load ptr, ptr %ds
-  %781 = load ptr, ptr %alloc
-  %782 = load i64, ptr %4
-  %783 = inttoptr i64 %782 to ptr addrspace(1)
-  %784 = load i64, ptr %6
-  %785 = inttoptr i64 %784 to ptr addrspace(1)
-  %786 = load i64, ptr %8
-  %787 = inttoptr i64 %786 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %788 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %780, ptr %781, ptr addrspace(1) %783, ptr addrspace(1) %785, ptr addrspace(1) %787) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %789 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %788, 0, 0
-  store ptr %789, ptr %ds
-  %790 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %788, 0, 1
-  store ptr %790, ptr %alloc
-  %791 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %788, 1, 0
-  store ptr addrspace(1) %791, ptr %3
-  br label %L298
-L298:                                                ; preds = %L296
-  %792 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %792, ptr %144
-  %793 = load ptr addrspace(1), ptr %144
-  store ptr addrspace(1) %793, ptr %145
+
+  %745 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %745, ptr %143
+
+  %746 = load i64, ptr %143
+  store i64 %746, ptr %4
+
+  %747 = load i64, ptr %142
+  store i64 %747, ptr %6
+
+  %748 = load i64, ptr %141
+  store i64 %748, ptr %8
+
+  %749 = load i64, ptr %4
+  %750 = load i64, ptr %6
+  %751 = load i64, ptr %8
+  %752 = load i64, ptr %ds
+  %753 = load i64, ptr %alloc
+  %754 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %752, i64 %753, i64 %749, i64 %750, i64 %751) "statepoint-id"="0"
+  %755 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %754, 0, 0
+  %756 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %754, 0, 1
+  store i64 %755, ptr %ds
+  store i64 %756, ptr %alloc
+  %757 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %754, 1, 0
+  store ptr addrspace(1) %757, ptr %3
+  br label %L302
+L302:
+
+  %758 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %758, ptr %144
+
+  %759 = load ptr addrspace(1), ptr %144
+  store ptr addrspace(1) %759, ptr %145
+
   store i64 5, ptr %146
-  %794 = load i64, ptr %146
-  store i64 %794, ptr %4
-  %795 = load ptr addrspace(1), ptr %126
-  store ptr addrspace(1) %795, ptr %5
-  %796 = load ptr addrspace(1), ptr %145
-  store ptr addrspace(1) %796, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %797 = load ptr, ptr %ds
-  %798 = load ptr, ptr %alloc
-  %799 = load i64, ptr %4
-  %800 = inttoptr i64 %799 to ptr addrspace(1)
-  %801 = load ptr addrspace(1), ptr %5
-  %802 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %803 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %797, ptr %798, ptr addrspace(1) %800, ptr addrspace(1) %801, ptr addrspace(1) %802) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %804 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %803, 0, 0
-  store ptr %804, ptr %ds
-  %805 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %803, 0, 1
-  store ptr %805, ptr %alloc
-  %806 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %803, 1, 0
-  %807 = ptrtoint ptr addrspace(1) %806 to i64
-  store i64 %807, ptr %4
-  br label %L299
-L299:                                                ; preds = %L298
-  %808 = load i64, ptr %4
-  store i64 %808, ptr %147
-  %809 = load i64, ptr %147
-  store i64 %809, ptr %148
-  %810 = load i64, ptr %ds
-  %811 = add i64 %810, 64
-  %812 = inttoptr i64 %811 to ptr
-  %813 = load i64, ptr %812
-  store i64 %813, ptr %150
-  %814 = load i64, ptr %150
-  store i64 %814, ptr %151
-  %815 = load ptr, ptr %ds
-  %816 = load ptr, ptr %alloc
-  %817 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %815, ptr %816) returns_twice "gc-leaf-function"="true"
-  %818 = extractvalue { { ptr, ptr }, { i32 } } %817, 0, 0
-  store ptr %818, ptr %ds
-  %819 = extractvalue { { ptr, ptr }, { i32 } } %817, 0, 1
-  store ptr %819, ptr %alloc
-  %820 = extractvalue { { ptr, ptr }, { i32 } } %817, 1, 0
-  br label %821
-821:
-  %822 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %823 = icmp eq i64 %822, 0
-  br i1 %823, label %824, label %L304
-824:
-  %825 =  call  ptr @llvm.stacksave()
-  %826 = alloca { i64, i64, i64, i64 }
-  %827 = load i64, ptr %ds
-  %828 = add i64 %827, 48
-  %829 = inttoptr i64 %828 to ptr
-  %830 = load i64, ptr %829
-  %831 = ptrtoint ptr %826 to i64
-  %832 = add i64 %831, 16
-  %833 = inttoptr i64 %832 to ptr
-  %834 = ptrtoint ptr %826 to i64
-  %835 = add i64 %834, 8
-  %836 = inttoptr i64 %835 to ptr
-  %837 = ptrtoint ptr %826 to i64
-  %838 = add i64 %837, 0
-  %839 = inttoptr i64 %838 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %833)
-  store ptr blockaddress(@camlSwitch__entry, %821), ptr %836
-  store i64 %830, ptr %839
-  store ptr %826, ptr %829
+
+  %760 = load i64, ptr %146
+  store i64 %760, ptr %4
+
+  %761 = load ptr addrspace(1), ptr %126
+  store ptr addrspace(1) %761, ptr %5
+
+  %762 = load ptr addrspace(1), ptr %145
+  store ptr addrspace(1) %762, ptr %7
+
+  %763 = load i64, ptr %4
+  %764 = load ptr addrspace(1), ptr %5
+  %765 = load ptr addrspace(1), ptr %7
+  %766 = load i64, ptr %ds
+  %767 = load i64, ptr %alloc
+  %768 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %766, i64 %767, i64 %763, ptr addrspace(1) %764, ptr addrspace(1) %765) "statepoint-id"="0"
+  %769 = extractvalue { { i64, i64 }, { i64 } } %768, 0, 0
+  %770 = extractvalue { { i64, i64 }, { i64 } } %768, 0, 1
+  store i64 %769, ptr %ds
+  store i64 %770, ptr %alloc
+  %771 = extractvalue { { i64, i64 }, { i64 } } %768, 1, 0
+  store i64 %771, ptr %4
+  br label %L303
+L303:
+
+  %772 = load i64, ptr %4
+  store i64 %772, ptr %147
+
+  %773 = load i64, ptr %147
+  store i64 %773, ptr %148
+
+  %774 = load i64, ptr %ds
+  %775 = add i64 %774, 64
+  %776 = inttoptr i64 %775 to ptr
+  %777 = load i64, ptr %776
+  store i64 %777, ptr %150
+
+  %778 = load i64, ptr %150
+  store i64 %778, ptr %151
+
+  %779 = load i64, ptr %ds
+  %780 = load i64, ptr %alloc
+  %781 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %779, i64 %780) returns_twice "gc-leaf-function"="true"
+  %782 = extractvalue { { i64, i64 }, { i32 } } %781, 0, 0
+  %783 = extractvalue { { i64, i64 }, { i32 } } %781, 0, 1
+  store i64 %782, ptr %ds
+  store i64 %783, ptr %alloc
+  %784 = extractvalue { { i64, i64 }, { i32 } } %781, 1, 0
+  br label %L373
+L373:
+  %785 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %786 = icmp eq i64 %785, 0
+  br i1 %786, label %L374, label %L308
+L374:
+  %787 = call  ptr @llvm.stacksave()
+  %788 = alloca { i64, i64, i64, i64 }
+  %789 = ptrtoint ptr %788 to i64
+  %790 = add i64 %789, 16
+  %791 = inttoptr i64 %790 to ptr
+  %792 = ptrtoint ptr %788 to i64
+  %793 = add i64 %792, 8
+  %794 = inttoptr i64 %793 to ptr
+  %795 = load i64, ptr %ds
+  %796 = add i64 %795, 48
+  %797 = inttoptr i64 %796 to ptr
+  %798 = load i64, ptr %797
+  store ptr %788, ptr %797
+  store ptr blockaddress(@camlSwitch__entry, %L373), ptr %794
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %791)
+  store i64 %798, ptr %788
+
   store i64 1, ptr %153
-  %840 = load i64, ptr %153
-  store i64 %840, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %841 = load ptr, ptr %ds
-  %842 = load ptr, ptr %alloc
-  %843 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %844 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %841, ptr %842, i64 %843) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %845 = extractvalue { { ptr, ptr }, { i64 } } %844, 0, 0
-  store ptr %845, ptr %ds
-  %846 = extractvalue { { ptr, ptr }, { i64 } } %844, 0, 1
-  store ptr %846, ptr %alloc
-  %847 = extractvalue { { ptr, ptr }, { i64 } } %844, 1, 0
-  store i64 %847, ptr %4
-  br label %L312
-L312:                                                ; preds = %L299
-  %848 = load i64, ptr %4
-  store i64 %848, ptr %154
-  %849 = load i64, ptr %154
-  store i64 %849, ptr %155
-  store ptr @camlStdlib__Int__immstring64, ptr %156
-  %850 = load i64, ptr %156
-  store i64 %850, ptr %8
-  %851 = load i64, ptr %155
-  store i64 %851, ptr %9
-  %852 = load i64, ptr %8
-  %853 = load i64, ptr %9
-  %854 = load ptr, ptr %ds
-  %855 = load ptr, ptr %alloc
-  %856 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %854, ptr %855, ptr @caml_format_int, i64 poison, i64 %852, i64 %853) "statepoint-id"="32"
-  %857 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %856, 0, 0
-  store ptr %857, ptr %ds
-  %858 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %856, 0, 1
-  store ptr %858, ptr %alloc
-  %859 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %856, 1, 0
-  store ptr addrspace(1) %859, ptr %3
-  br label %L313
-L313:                                                ; preds = %L312
-  %860 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %860, ptr %157
-  %861 = load ptr addrspace(1), ptr %157
-  store ptr addrspace(1) %861, ptr %158
-  %862 = load ptr addrspace(1), ptr %158
-  store ptr addrspace(1) %862, ptr %159
-  %863 = load ptr addrspace(1), ptr %159
-  store ptr addrspace(1) %863, ptr %149
-  %864 = load i64, ptr %ds
-  %865 = add i64 %864, 48
-  %866 = inttoptr i64 %865 to ptr
-  %867 = load i64, ptr %826
-  store i64 %867, ptr %866
-   call  void @llvm.stackrestore(ptr %825)
-  br label %L319
-L304:                                                ; preds = %L299, %L312
+
+  %799 = load i64, ptr %153
+  store i64 %799, ptr %4
+
+  %800 = load i64, ptr %4
+  %801 = load i64, ptr %ds
+  %802 = load i64, ptr %alloc
+  %803 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %801, i64 %802, i64 %800) "statepoint-id"="32"
+  %804 = extractvalue { { i64, i64 }, { i64 } } %803, 0, 0
+  %805 = extractvalue { { i64, i64 }, { i64 } } %803, 0, 1
+  store i64 %804, ptr %ds
+  store i64 %805, ptr %alloc
+  %806 = extractvalue { { i64, i64 }, { i64 } } %803, 1, 0
+  store i64 %806, ptr %4
+  br label %L316
+L316:
+
+  %807 = load i64, ptr %4
+  store i64 %807, ptr %154
+
+  %808 = load i64, ptr %154
+  store i64 %808, ptr %155
+
+  %809 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %809, ptr %156
+
+  %810 = load i64, ptr %156
+  store i64 %810, ptr %8
+
+  %811 = load i64, ptr %155
+  store i64 %811, ptr %9
+
+  %812 = load i64, ptr %8
+  %813 = load i64, ptr %9
+  %814 = load i64, ptr %ds
+  %815 = load i64, ptr %alloc
+  %816 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %814, i64 %815, ptr @caml_format_int, i64 poison, i64 %812, i64 %813) "statepoint-id"="32"
+  %817 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %816, 0, 0
+  %818 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %816, 0, 1
+  store i64 %817, ptr %ds
+  store i64 %818, ptr %alloc
+  %819 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %816, 1, 0
+  store ptr addrspace(1) %819, ptr %3
+  br label %L317
+L317:
+
+  %820 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %820, ptr %157
+
+  %821 = load ptr addrspace(1), ptr %157
+  store ptr addrspace(1) %821, ptr %158
+
+  %822 = load ptr addrspace(1), ptr %158
+  store ptr addrspace(1) %822, ptr %159
+
+  %823 = load ptr addrspace(1), ptr %159
+  store ptr addrspace(1) %823, ptr %149
+
+  %824 = load i64, ptr %ds
+  %825 = add i64 %824, 48
+  %826 = inttoptr i64 %825 to ptr
+  %827 = load i64, ptr %788
+  store i64 %827, ptr %826
+  call  void @llvm.stackrestore(ptr %787)
+
+  br label %L323
+L308:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %868 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %868, ptr %alloc
-  store i64 %822, ptr %4
-  %869 = load i64, ptr %4
-  %870 = inttoptr i64 %869 to ptr addrspace(1)
-  store ptr addrspace(1) %870, ptr %152
-  %871 = load i64, ptr %151
-  %872 = load i64, ptr %ds
-  %873 = add i64 %872, 64
-  %874 = inttoptr i64 %873 to ptr
-  store i64 %871, ptr %874
+  %828 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %828, ptr %alloc
+  store i64 %785, ptr %4
+
+  %829 = load i64, ptr %4
+  %830 = inttoptr i64 %829 to ptr addrspace(1)
+  store ptr addrspace(1) %830, ptr %152
+
+  %831 = load i64, ptr %ds
+  %832 = add i64 %831, 64
+  %833 = inttoptr i64 %832 to ptr
+  %834 = load i64, ptr %151
+  store i64 %834, ptr %833
+
   store i64 1, ptr %160
-  %875 = load i64, ptr %160
-  store i64 %875, ptr %161
-  store ptr @camlSwitch__immstring38, ptr %162
-  %876 = load i64, ptr %162
-  store i64 %876, ptr %163
-  %877 = load i64, ptr %163
-  %878 = inttoptr i64 %877 to ptr addrspace(1)
-  store ptr addrspace(1) %878, ptr %149
-  br label %L319
-L319:                                                ; preds = %L304, %L313
-  store ptr @camlSwitch__const_block54, ptr %164
+
+  %835 = load i64, ptr %160
+  store i64 %835, ptr %161
+
+  %836 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %836, ptr %162
+
+  %837 = load i64, ptr %162
+  store i64 %837, ptr %163
+
+  %838 = load i64, ptr %163
+  %839 = inttoptr i64 %838 to ptr addrspace(1)
+  store ptr addrspace(1) %839, ptr %149
+
+  br label %L323
+L323:
+
+  %840 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %840, ptr %164
+
   store i64 1, ptr %165
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %166
-  %879 = load i64, ptr %166
-  store i64 %879, ptr %4
-  %880 = load i64, ptr %165
-  store i64 %880, ptr %6
-  %881 = load i64, ptr %164
-  store i64 %881, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %882 = load ptr, ptr %ds
-  %883 = load ptr, ptr %alloc
-  %884 = load i64, ptr %4
-  %885 = inttoptr i64 %884 to ptr addrspace(1)
-  %886 = load i64, ptr %6
-  %887 = inttoptr i64 %886 to ptr addrspace(1)
-  %888 = load i64, ptr %8
-  %889 = inttoptr i64 %888 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %890 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %882, ptr %883, ptr addrspace(1) %885, ptr addrspace(1) %887, ptr addrspace(1) %889) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %891 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %890, 0, 0
-  store ptr %891, ptr %ds
-  %892 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %890, 0, 1
-  store ptr %892, ptr %alloc
-  %893 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %890, 1, 0
-  store ptr addrspace(1) %893, ptr %3
-  br label %L321
-L321:                                                ; preds = %L319
-  %894 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %894, ptr %167
-  %895 = load ptr addrspace(1), ptr %167
-  store ptr addrspace(1) %895, ptr %168
+
+  %841 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %841, ptr %166
+
+  %842 = load i64, ptr %166
+  store i64 %842, ptr %4
+
+  %843 = load i64, ptr %165
+  store i64 %843, ptr %6
+
+  %844 = load i64, ptr %164
+  store i64 %844, ptr %8
+
+  %845 = load i64, ptr %4
+  %846 = load i64, ptr %6
+  %847 = load i64, ptr %8
+  %848 = load i64, ptr %ds
+  %849 = load i64, ptr %alloc
+  %850 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %848, i64 %849, i64 %845, i64 %846, i64 %847) "statepoint-id"="0"
+  %851 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %850, 0, 0
+  %852 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %850, 0, 1
+  store i64 %851, ptr %ds
+  store i64 %852, ptr %alloc
+  %853 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %850, 1, 0
+  store ptr addrspace(1) %853, ptr %3
+  br label %L325
+L325:
+
+  %854 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %854, ptr %167
+
+  %855 = load ptr addrspace(1), ptr %167
+  store ptr addrspace(1) %855, ptr %168
+
   store i64 1, ptr %169
-  %896 = load i64, ptr %169
-  store i64 %896, ptr %4
-  %897 = load ptr addrspace(1), ptr %149
-  store ptr addrspace(1) %897, ptr %5
-  %898 = load ptr addrspace(1), ptr %168
-  store ptr addrspace(1) %898, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %899 = load ptr, ptr %ds
-  %900 = load ptr, ptr %alloc
-  %901 = load i64, ptr %4
-  %902 = inttoptr i64 %901 to ptr addrspace(1)
-  %903 = load ptr addrspace(1), ptr %5
-  %904 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %905 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %899, ptr %900, ptr addrspace(1) %902, ptr addrspace(1) %903, ptr addrspace(1) %904) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %906 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %905, 0, 0
-  store ptr %906, ptr %ds
-  %907 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %905, 0, 1
-  store ptr %907, ptr %alloc
-  %908 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %905, 1, 0
-  %909 = ptrtoint ptr addrspace(1) %908 to i64
-  store i64 %909, ptr %4
-  br label %L322
-L322:                                                ; preds = %L321
-  %910 = load i64, ptr %4
-  store i64 %910, ptr %170
-  %911 = load i64, ptr %170
-  store i64 %911, ptr %171
-  %912 = load i64, ptr %ds
-  %913 = add i64 %912, 64
-  %914 = inttoptr i64 %913 to ptr
-  %915 = load i64, ptr %914
-  store i64 %915, ptr %173
-  %916 = load i64, ptr %173
-  store i64 %916, ptr %174
-  %917 = load ptr, ptr %ds
-  %918 = load ptr, ptr %alloc
-  %919 =  call cc 104 { { ptr, ptr }, { i32 } } @wrap_try(ptr %917, ptr %918) returns_twice "gc-leaf-function"="true"
-  %920 = extractvalue { { ptr, ptr }, { i32 } } %919, 0, 0
-  store ptr %920, ptr %ds
-  %921 = extractvalue { { ptr, ptr }, { i32 } } %919, 0, 1
-  store ptr %921, ptr %alloc
-  %922 = extractvalue { { ptr, ptr }, { i32 } } %919, 1, 0
-  br label %923
-923:
-  %924 = call i64 asm sideeffect "mov %rax, $0", "=r"()
-  %925 = icmp eq i64 %924, 0
-  br i1 %925, label %926, label %L327
-926:
-  %927 =  call  ptr @llvm.stacksave()
-  %928 = alloca { i64, i64, i64, i64 }
-  %929 = load i64, ptr %ds
-  %930 = add i64 %929, 48
-  %931 = inttoptr i64 %930 to ptr
-  %932 = load i64, ptr %931
-  %933 = ptrtoint ptr %928 to i64
-  %934 = add i64 %933, 16
-  %935 = inttoptr i64 %934 to ptr
-  %936 = ptrtoint ptr %928 to i64
-  %937 = add i64 %936, 8
-  %938 = inttoptr i64 %937 to ptr
-  %939 = ptrtoint ptr %928 to i64
-  %940 = add i64 %939, 0
-  %941 = inttoptr i64 %940 to ptr
-  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %935)
-  store ptr blockaddress(@camlSwitch__entry, %923), ptr %938
-  store i64 %932, ptr %941
-  store ptr %928, ptr %931
+
+  %856 = load i64, ptr %169
+  store i64 %856, ptr %4
+
+  %857 = load ptr addrspace(1), ptr %149
+  store ptr addrspace(1) %857, ptr %5
+
+  %858 = load ptr addrspace(1), ptr %168
+  store ptr addrspace(1) %858, ptr %7
+
+  %859 = load i64, ptr %4
+  %860 = load ptr addrspace(1), ptr %5
+  %861 = load ptr addrspace(1), ptr %7
+  %862 = load i64, ptr %ds
+  %863 = load i64, ptr %alloc
+  %864 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %862, i64 %863, i64 %859, ptr addrspace(1) %860, ptr addrspace(1) %861) "statepoint-id"="0"
+  %865 = extractvalue { { i64, i64 }, { i64 } } %864, 0, 0
+  %866 = extractvalue { { i64, i64 }, { i64 } } %864, 0, 1
+  store i64 %865, ptr %ds
+  store i64 %866, ptr %alloc
+  %867 = extractvalue { { i64, i64 }, { i64 } } %864, 1, 0
+  store i64 %867, ptr %4
+  br label %L326
+L326:
+
+  %868 = load i64, ptr %4
+  store i64 %868, ptr %170
+
+  %869 = load i64, ptr %170
+  store i64 %869, ptr %171
+
+  %870 = load i64, ptr %ds
+  %871 = add i64 %870, 64
+  %872 = inttoptr i64 %871 to ptr
+  %873 = load i64, ptr %872
+  store i64 %873, ptr %173
+
+  %874 = load i64, ptr %173
+  store i64 %874, ptr %174
+
+  %875 = load i64, ptr %ds
+  %876 = load i64, ptr %alloc
+  %877 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %875, i64 %876) returns_twice "gc-leaf-function"="true"
+  %878 = extractvalue { { i64, i64 }, { i32 } } %877, 0, 0
+  %879 = extractvalue { { i64, i64 }, { i32 } } %877, 0, 1
+  store i64 %878, ptr %ds
+  store i64 %879, ptr %alloc
+  %880 = extractvalue { { i64, i64 }, { i32 } } %877, 1, 0
+  br label %L375
+L375:
+  %881 = call i64 asm sideeffect "mov %rax, $0", "=r"()
+  %882 = icmp eq i64 %881, 0
+  br i1 %882, label %L376, label %L331
+L376:
+  %883 = call  ptr @llvm.stacksave()
+  %884 = alloca { i64, i64, i64, i64 }
+  %885 = ptrtoint ptr %884 to i64
+  %886 = add i64 %885, 16
+  %887 = inttoptr i64 %886 to ptr
+  %888 = ptrtoint ptr %884 to i64
+  %889 = add i64 %888, 8
+  %890 = inttoptr i64 %889 to ptr
+  %891 = load i64, ptr %ds
+  %892 = add i64 %891, 48
+  %893 = inttoptr i64 %892 to ptr
+  %894 = load i64, ptr %893
+  store ptr %884, ptr %893
+  store ptr blockaddress(@camlSwitch__entry, %L375), ptr %890
+  call void asm sideeffect "mov %rbp, ($0)", "r"(ptr %887)
+  store i64 %894, ptr %884
+
   store i64 201, ptr %176
-  %942 = load i64, ptr %176
-  store i64 %942, ptr %4
-  ; regs: [pin:anon:I/0[%rax]], callsite_types.args: [[VI]], funcdef_types.args: [[VI]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[VI]]
-  %943 = load ptr, ptr %ds
-  %944 = load ptr, ptr %alloc
-  %945 = load i64, ptr %4
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %946 =  call cc 104 { { ptr, ptr }, { i64 } } @camlSwitch__next_HIDE_STAMP(ptr %943, ptr %944, i64 %945) "statepoint-id"="40"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %947 = extractvalue { { ptr, ptr }, { i64 } } %946, 0, 0
-  store ptr %947, ptr %ds
-  %948 = extractvalue { { ptr, ptr }, { i64 } } %946, 0, 1
-  store ptr %948, ptr %alloc
-  %949 = extractvalue { { ptr, ptr }, { i64 } } %946, 1, 0
-  store i64 %949, ptr %4
-  br label %L335
-L335:                                                ; preds = %L322
-  %950 = load i64, ptr %4
-  store i64 %950, ptr %177
-  %951 = load i64, ptr %177
-  store i64 %951, ptr %178
-  store ptr @camlStdlib__Int__immstring64, ptr %179
-  %952 = load i64, ptr %179
-  store i64 %952, ptr %8
-  %953 = load i64, ptr %178
-  store i64 %953, ptr %9
-  %954 = load i64, ptr %8
-  %955 = load i64, ptr %9
-  %956 = load ptr, ptr %ds
-  %957 = load ptr, ptr %alloc
-  %958 =  call cc 105 { { ptr, ptr }, { ptr addrspace(1) } } @caml_c_call(ptr %956, ptr %957, ptr @caml_format_int, i64 poison, i64 %954, i64 %955) "statepoint-id"="32"
-  %959 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %958, 0, 0
-  store ptr %959, ptr %ds
-  %960 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %958, 0, 1
-  store ptr %960, ptr %alloc
-  %961 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %958, 1, 0
-  store ptr addrspace(1) %961, ptr %3
-  br label %L336
-L336:                                                ; preds = %L335
-  %962 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %962, ptr %180
-  %963 = load ptr addrspace(1), ptr %180
-  store ptr addrspace(1) %963, ptr %181
-  %964 = load ptr addrspace(1), ptr %181
-  store ptr addrspace(1) %964, ptr %182
-  %965 = load ptr addrspace(1), ptr %182
-  store ptr addrspace(1) %965, ptr %172
-  %966 = load i64, ptr %ds
-  %967 = add i64 %966, 48
-  %968 = inttoptr i64 %967 to ptr
-  %969 = load i64, ptr %928
-  store i64 %969, ptr %968
-   call  void @llvm.stackrestore(ptr %927)
-  br label %L342
-L327:                                                ; preds = %L322, %L335
+
+  %895 = load i64, ptr %176
+  store i64 %895, ptr %4
+
+  %896 = load i64, ptr %4
+  %897 = load i64, ptr %ds
+  %898 = load i64, ptr %alloc
+  %899 = call cc 104 { { i64, i64 }, { i64 } } @camlSwitch__next_HIDE_STAMP(i64 %897, i64 %898, i64 %896) "statepoint-id"="32"
+  %900 = extractvalue { { i64, i64 }, { i64 } } %899, 0, 0
+  %901 = extractvalue { { i64, i64 }, { i64 } } %899, 0, 1
+  store i64 %900, ptr %ds
+  store i64 %901, ptr %alloc
+  %902 = extractvalue { { i64, i64 }, { i64 } } %899, 1, 0
+  store i64 %902, ptr %4
+  br label %L339
+L339:
+
+  %903 = load i64, ptr %4
+  store i64 %903, ptr %177
+
+  %904 = load i64, ptr %177
+  store i64 %904, ptr %178
+
+  %905 = ptrtoint ptr @camlStdlib__Int__immstring64 to i64
+  store i64 %905, ptr %179
+
+  %906 = load i64, ptr %179
+  store i64 %906, ptr %8
+
+  %907 = load i64, ptr %178
+  store i64 %907, ptr %9
+
+  %908 = load i64, ptr %8
+  %909 = load i64, ptr %9
+  %910 = load i64, ptr %ds
+  %911 = load i64, ptr %alloc
+  %912 = call cc 105 { { i64, i64 }, { ptr addrspace(1) } } @caml_c_call(i64 %910, i64 %911, ptr @caml_format_int, i64 poison, i64 %908, i64 %909) "statepoint-id"="32"
+  %913 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %912, 0, 0
+  %914 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %912, 0, 1
+  store i64 %913, ptr %ds
+  store i64 %914, ptr %alloc
+  %915 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %912, 1, 0
+  store ptr addrspace(1) %915, ptr %3
+  br label %L340
+L340:
+
+  %916 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %916, ptr %180
+
+  %917 = load ptr addrspace(1), ptr %180
+  store ptr addrspace(1) %917, ptr %181
+
+  %918 = load ptr addrspace(1), ptr %181
+  store ptr addrspace(1) %918, ptr %182
+
+  %919 = load ptr addrspace(1), ptr %182
+  store ptr addrspace(1) %919, ptr %172
+
+  %920 = load i64, ptr %ds
+  %921 = add i64 %920, 48
+  %922 = inttoptr i64 %921 to ptr
+  %923 = load i64, ptr %884
+  store i64 %923, ptr %922
+  call  void @llvm.stackrestore(ptr %883)
+
+  br label %L346
+L331:
   call void asm sideeffect "pop %rbp; addq $$8, %rsp", ""()
-  %970 = call i64 asm sideeffect "movq %r15, $0", "=r"()
-  store i64 %970, ptr %alloc
-  store i64 %924, ptr %4
-  %971 = load i64, ptr %4
-  %972 = inttoptr i64 %971 to ptr addrspace(1)
-  store ptr addrspace(1) %972, ptr %175
-  %973 = load i64, ptr %174
-  %974 = load i64, ptr %ds
-  %975 = add i64 %974, 64
-  %976 = inttoptr i64 %975 to ptr
-  store i64 %973, ptr %976
+  %924 = call i64 asm sideeffect "movq %r15, $0", "=r"()
+  store i64 %924, ptr %alloc
+  store i64 %881, ptr %4
+
+  %925 = load i64, ptr %4
+  %926 = inttoptr i64 %925 to ptr addrspace(1)
+  store ptr addrspace(1) %926, ptr %175
+
+  %927 = load i64, ptr %ds
+  %928 = add i64 %927, 64
+  %929 = inttoptr i64 %928 to ptr
+  %930 = load i64, ptr %174
+  store i64 %930, ptr %929
+
   store i64 1, ptr %183
-  %977 = load i64, ptr %183
-  store i64 %977, ptr %184
-  store ptr @camlSwitch__immstring38, ptr %185
-  %978 = load i64, ptr %185
-  store i64 %978, ptr %186
-  %979 = load i64, ptr %186
-  %980 = inttoptr i64 %979 to ptr addrspace(1)
-  store ptr addrspace(1) %980, ptr %172
-  br label %L342
-L342:                                                ; preds = %L327, %L336
-  store ptr @camlSwitch__const_block54, ptr %187
+
+  %931 = load i64, ptr %183
+  store i64 %931, ptr %184
+
+  %932 = ptrtoint ptr @camlSwitch__immstring38 to i64
+  store i64 %932, ptr %185
+
+  %933 = load i64, ptr %185
+  store i64 %933, ptr %186
+
+  %934 = load i64, ptr %186
+  %935 = inttoptr i64 %934 to ptr addrspace(1)
+  store ptr addrspace(1) %935, ptr %172
+
+  br label %L346
+L346:
+
+  %936 = ptrtoint ptr @camlSwitch__const_block54 to i64
+  store i64 %936, ptr %187
+
   store i64 1, ptr %188
-  store ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550, ptr %189
-  %981 = load i64, ptr %189
-  store i64 %981, ptr %4
-  %982 = load i64, ptr %188
-  store i64 %982, ptr %6
-  %983 = load i64, ptr %187
-  store i64 %983, ptr %8
-  ; regs: [pin:anon:I/0[%rax], pin:anon:I/1[%rbx], pin:anon:I/2[%rdi]], callsite_types.args: [[V], [VI], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[V]], funcdef_types.res: [[V]]
-  %984 = load ptr, ptr %ds
-  %985 = load ptr, ptr %alloc
-  %986 = load i64, ptr %4
-  %987 = inttoptr i64 %986 to ptr addrspace(1)
-  %988 = load i64, ptr %6
-  %989 = inttoptr i64 %988 to ptr addrspace(1)
-  %990 = load i64, ptr %8
-  %991 = inttoptr i64 %990 to ptr addrspace(1)
-  ; res_regs: [pin:anon:V/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %992 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr %984, ptr %985, ptr addrspace(1) %987, ptr addrspace(1) %989, ptr addrspace(1) %991) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %993 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %992, 0, 0
-  store ptr %993, ptr %ds
-  %994 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %992, 0, 1
-  store ptr %994, ptr %alloc
-  %995 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %992, 1, 0
-  store ptr addrspace(1) %995, ptr %3
-  br label %L344
-L344:                                                ; preds = %L342
-  %996 = load ptr addrspace(1), ptr %3
-  store ptr addrspace(1) %996, ptr %190
-  %997 = load ptr addrspace(1), ptr %190
-  store ptr addrspace(1) %997, ptr %191
+
+  %937 = ptrtoint ptr @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 to i64
+  store i64 %937, ptr %189
+
+  %938 = load i64, ptr %189
+  store i64 %938, ptr %4
+
+  %939 = load i64, ptr %188
+  store i64 %939, ptr %6
+
+  %940 = load i64, ptr %187
+  store i64 %940, ptr %8
+
+  %941 = load i64, ptr %4
+  %942 = load i64, ptr %6
+  %943 = load i64, ptr %8
+  %944 = load i64, ptr %ds
+  %945 = load i64, ptr %alloc
+  %946 = call cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(i64 %944, i64 %945, i64 %941, i64 %942, i64 %943) "statepoint-id"="0"
+  %947 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %946, 0, 0
+  %948 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %946, 0, 1
+  store i64 %947, ptr %ds
+  store i64 %948, ptr %alloc
+  %949 = extractvalue { { i64, i64 }, { ptr addrspace(1) } } %946, 1, 0
+  store ptr addrspace(1) %949, ptr %3
+  br label %L348
+L348:
+
+  %950 = load ptr addrspace(1), ptr %3
+  store ptr addrspace(1) %950, ptr %190
+
+  %951 = load ptr addrspace(1), ptr %190
+  store ptr addrspace(1) %951, ptr %191
+
   store i64 201, ptr %192
-  %998 = load i64, ptr %192
-  store i64 %998, ptr %4
-  %999 = load ptr addrspace(1), ptr %172
-  store ptr addrspace(1) %999, ptr %5
-  %1000 = load ptr addrspace(1), ptr %191
-  store ptr addrspace(1) %1000, ptr %7
-  ; regs: [pin:anon:I/0[%rax], pin:anon:V/1[%rbx], pin:anon:V/2[%rdi]], callsite_types.args: [[VI], [V], [V]], funcdef_types.args: [[V], [V], [V]]
-  ; callsite_types.res: [[VI]], funcdef_types.res: [[V]]
-  %1001 = load ptr, ptr %ds
-  %1002 = load ptr, ptr %alloc
-  %1003 = load i64, ptr %4
-  %1004 = inttoptr i64 %1003 to ptr addrspace(1)
-  %1005 = load ptr addrspace(1), ptr %5
-  %1006 = load ptr addrspace(1), ptr %7
-  ; res_regs: [pin:anon:I/0[%rax]]
-  call void asm sideeffect "push %rbp", "~{rsp}"()
-  %1007 =  call cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @caml_apply2(ptr %1001, ptr %1002, ptr addrspace(1) %1004, ptr addrspace(1) %1005, ptr addrspace(1) %1006) "statepoint-id"="8"
-  call void asm sideeffect "pop %rbp", "~{rsp}"()
-  %1008 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %1007, 0, 0
-  store ptr %1008, ptr %ds
-  %1009 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %1007, 0, 1
-  store ptr %1009, ptr %alloc
-  %1010 = extractvalue { { ptr, ptr }, { ptr addrspace(1) } } %1007, 1, 0
-  %1011 = ptrtoint ptr addrspace(1) %1010 to i64
-  store i64 %1011, ptr %4
-  br label %L345
-L345:                                                ; preds = %L344
-  %1012 = load i64, ptr %4
-  store i64 %1012, ptr %193
-  %1013 = load i64, ptr %193
-  store i64 %1013, ptr %194
-  store ptr @camlSwitch, ptr %195
-  %1014 = load i64, ptr %195
-  store i64 %1014, ptr %196
-  %1015 = load i64, ptr %196
-  %1016 = inttoptr i64 %1015 to ptr addrspace(1)
-  store ptr addrspace(1) %1016, ptr %10
+
+  %952 = load i64, ptr %192
+  store i64 %952, ptr %4
+
+  %953 = load ptr addrspace(1), ptr %172
+  store ptr addrspace(1) %953, ptr %5
+
+  %954 = load ptr addrspace(1), ptr %191
+  store ptr addrspace(1) %954, ptr %7
+
+  %955 = load i64, ptr %4
+  %956 = load ptr addrspace(1), ptr %5
+  %957 = load ptr addrspace(1), ptr %7
+  %958 = load i64, ptr %ds
+  %959 = load i64, ptr %alloc
+  %960 = call cc 104 { { i64, i64 }, { i64 } } @caml_apply2(i64 %958, i64 %959, i64 %955, ptr addrspace(1) %956, ptr addrspace(1) %957) "statepoint-id"="0"
+  %961 = extractvalue { { i64, i64 }, { i64 } } %960, 0, 0
+  %962 = extractvalue { { i64, i64 }, { i64 } } %960, 0, 1
+  store i64 %961, ptr %ds
+  store i64 %962, ptr %alloc
+  %963 = extractvalue { { i64, i64 }, { i64 } } %960, 1, 0
+  store i64 %963, ptr %4
+  br label %L349
+L349:
+
+  %964 = load i64, ptr %4
+  store i64 %964, ptr %193
+
+  %965 = load i64, ptr %193
+  store i64 %965, ptr %194
+
+  %966 = ptrtoint ptr @camlSwitch to i64
+  store i64 %966, ptr %195
+
+  %967 = load i64, ptr %195
+  store i64 %967, ptr %196
+
+  %968 = load i64, ptr %196
+  %969 = inttoptr i64 %968 to ptr addrspace(1)
+  store ptr addrspace(1) %969, ptr %10
+
   store i64 1, ptr %197
-  %1017 = load i64, ptr %197
-  store i64 %1017, ptr %4
-  %1018 = extractvalue { { { ptr, ptr }, { ptr addrspace(1) } } } poison, 0
-  %1019 = load ptr, ptr %ds
-  %1020 = insertvalue { { ptr, ptr }, { ptr addrspace(1) } } %1018, ptr %1019, 0, 0
-  %1021 = load ptr, ptr %alloc
-  %1022 = insertvalue { { ptr, ptr }, { ptr addrspace(1) } } %1020, ptr %1021, 0, 1
-  %1023 = load i64, ptr %4
-  %1024 = inttoptr i64 %1023 to ptr addrspace(1)
-  %1025 = insertvalue { { ptr, ptr }, { ptr addrspace(1) } } %1022, ptr addrspace(1) %1024, 1, 0
-  ret { { ptr, ptr }, { ptr addrspace(1) } } %1025
+
+  %970 = load i64, ptr %197
+  store i64 %970, ptr %4
+
+
+  %971 = load ptr addrspace(1), ptr %4
+  %972 = load i64, ptr %ds
+  %973 = load i64, ptr %alloc
+  %974 = insertvalue { { i64, i64 }, { ptr addrspace(1) } } poison, i64 %972, 0, 0
+  %975 = insertvalue { { i64, i64 }, { ptr addrspace(1) } } %974, i64 %973, 0, 1
+  %976 = insertvalue { { i64, i64 }, { ptr addrspace(1) } } %975, ptr addrspace(1) %971, 1, 0
+  ret { { i64, i64 }, { ptr addrspace(1) } } %976
 }
 
-declare cc 104 { { ptr, ptr }, { ptr addrspace(1) } } @camlCamlinternalFormat__make_printf_HIDE_STAMP(ptr, ptr, ptr addrspace(1), ptr addrspace(1), ptr addrspace(1)) gc "statepoint-example"
-declare  void @llvm.stackrestore(ptr)
-declare  ptr @llvm.stacksave()
-declare i64 @llvm.read_register.i64(metadata)
-declare void @llvm.write_register.i64(metadata, i64)
-declare i32 @llvm.eh.ocaml.try()
-define private cc 104 {ptr, ptr, i32} @wrap_try(ptr %r14, ptr %r15) returns_twice noinline {
-  %1 = call i32 @llvm.eh.ocaml.try()
-  %t1 = extractvalue {{ptr, ptr, i32}} poison, 0
-  %t2 = insertvalue {ptr, ptr, i32} %t1, ptr %r14, 0
-  %t3 = insertvalue {ptr, ptr, i32} %t2, ptr %r15, 1
-  %t4 = insertvalue {ptr, ptr, i32} %t3, i32 %1, 2
-  ret {ptr, ptr, i32} %t4
+define private cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline  {
+  %3 = call  i32 @llvm.eh.ocaml.try()
+  %4 = insertvalue { { i64, i64 }, { i32 } } poison, i32 %3, 1, 0
+  %5 = insertvalue { { i64, i64 }, { i32 } } %4, i64 %0, 0, 0
+  %6 = insertvalue { { i64, i64 }, { i32 } } %5, i64 %1, 0, 1
+  ret { { i64, i64 }, { i32 } } %6
 }
 
+define   void @camlSwitch__code_end()   {
+  unreachable
+}
+
+@camlSwitch__data_begin = global {  } {  }, section ".data", align 8
+@camlSwitch__gc_roots = global { i64 } { i64 0 }, section ".data", align 8
+@header.camlSwitch = global i64 2816, section ".data", align 8
+@camlSwitch = global { ptr, ptr } { ptr @camlSwitch__next_2, ptr @camlSwitch__test_next_3 }, section ".data", align 8
+@header.camlSwitch__test_next_3 = global i64 3063, section ".data", align 8
+@camlSwitch__test_next_3 = global { ptr, i64 } { ptr @camlSwitch__test_next_HIDE_STAMP, i64 108086391056891909 }, section ".data", align 8
+@header.camlSwitch__next_2 = global i64 3063, section ".data", align 8
+@camlSwitch__next_2 = global { ptr, i64 } { ptr @camlSwitch__next_HIDE_STAMP, i64 108086391056891909 }, section ".data", align 8
+@header.camlSwitch__const_block54 = global i64 2827, section ".data", align 8
+@camlSwitch__const_block54 = global { ptr, ptr } { ptr @camlSwitch__immstring42, ptr @camlSwitch__const_block52 }, section ".data", align 8
+@header.camlSwitch__const_block52 = global i64 4868, section ".data", align 8
+@camlSwitch__const_block52 = global { i64, i64, i64, ptr } { i64 1, i64 1, i64 1, ptr @camlSwitch__const_block50 }, section ".data", align 8
+@header.camlSwitch__const_block50 = global i64 2827, section ".data", align 8
+@camlSwitch__const_block50 = global { ptr, ptr } { ptr @camlSwitch__immstring44, ptr @camlSwitch__const_block48 }, section ".data", align 8
+@header.camlSwitch__const_block48 = global i64 2818, section ".data", align 8
+@camlSwitch__const_block48 = global { i64, ptr } { i64 1, ptr @camlSwitch__const_block46 }, section ".data", align 8
+@header.camlSwitch__const_block46 = global i64 2828, section ".data", align 8
+@camlSwitch__const_block46 = global { i64, i64 } { i64 21, i64 1 }, section ".data", align 8
+@header.camlSwitch__immstring44 = global i64 2044, section ".data", align 8
+@camlSwitch__immstring44 = global { [ 3 x i8 ], [ 4 x i8 ], i8 } { [ 3 x i8 ] c"\20\3d\20", [ 4 x i8 ] zeroinitializer, i8 4 }, section ".data", align 8
+@header.camlSwitch__immstring42 = global i64 2044, section ".data", align 8
+@camlSwitch__immstring42 = global { [ 5 x i8 ], [ 2 x i8 ], i8 } { [ 5 x i8 ] c"\6e\65\78\74\20", [ 2 x i8 ] zeroinitializer, i8 2 }, section ".data", align 8
+@header.camlSwitch__immstring38 = global i64 3068, section ".data", align 8
+@camlSwitch__immstring38 = global { [ 9 x i8 ], [ 6 x i8 ], i8 } { [ 9 x i8 ] c"\6e\6f\74\20\66\6f\75\6e\64", [ 6 x i8 ] zeroinitializer, i8 6 }, section ".data", align 8
+@header.camlSwitch__Pmakeblock20 = global i64 2816, section ".data", align 8
+@camlSwitch__Pmakeblock20 = global { ptr, ptr } { ptr @caml_exn_Match_failure, ptr @camlSwitch__const_block17 }, section ".data", align 8
+@header.camlSwitch__const_block17 = global i64 3840, section ".data", align 8
+@camlSwitch__const_block17 = global { ptr, i64, i64 } { ptr @camlSwitch__immstring15, i64 5, i64 5 }, section ".data", align 8
+@header.camlSwitch__immstring15 = global i64 3068, section ".data", align 8
+@camlSwitch__immstring15 = global { [ 9 x i8 ], [ 6 x i8 ], i8 } { [ 9 x i8 ] c"\73\77\69\74\63\68\2e\6d\6c", [ 6 x i8 ] zeroinitializer, i8 6 }, section ".data", align 8
+@camlCamlinternalFormat__make_printf_HIDE_STAMP = external global ptr
 @camlStdlib__Format__fn$5b$2fworkspace_root$2fformat.ml$3a1458$2c4$2d$2d66$5d_550 = external global ptr
 @camlStdlib__Int__immstring64 = external global ptr
 @caml_apply2 = external global ptr
@@ -2206,6 +2470,8 @@ define private cc 104 {ptr, ptr, i32} @wrap_try(ptr %r14, ptr %r15) returns_twic
 @caml_exn_Match_failure = external global ptr
 @caml_format_int = external global ptr
 @caml_raise_exn = external global ptr
+@camlSwitch__data_end = global {  } {  }, section ".data", align 8
 
-@camlSwitch__data_end = global {  } {  }, align 8, section ".data"
-define void @camlSwitch__code_end() { unreachable }
+declare i32 @llvm.eh.ocaml.try()
+declare void @llvm.stackrestore(ptr)
+declare ptr @llvm.stacksave()
