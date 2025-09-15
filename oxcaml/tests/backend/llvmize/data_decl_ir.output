@@ -1,10 +1,10 @@
 source_filename = "data_decl.ml"
 
-define   void @camlData_decl__code_begin()   {
+define   void @camlData_decl__code_begin()  {
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlData_decl__f_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlData_decl__f_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -100,7 +100,7 @@ L107:
   ret { { i64, i64 }, { i64 } } %46
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlData_decl__g_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlData_decl__g_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -201,7 +201,7 @@ L116:
   ret { { i64, i64 }, { i64 } } %50
 }
 
-define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlData_decl__entry(i64 %0, i64 %1)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlData_decl__entry(i64 %0, i64 %1) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -627,15 +627,14 @@ L139:
   ret { { i64, i64 }, { ptr addrspace(1) } } %217
 }
 
-define private cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline  {
-  %3 = call  i32 @llvm.eh.ocaml.try()
-  %4 = insertvalue { { i64, i64 }, { i32 } } poison, i32 %3, 1, 0
-  %5 = insertvalue { { i64, i64 }, { i32 } } %4, i64 %0, 0, 0
-  %6 = insertvalue { { i64, i64 }, { i32 } } %5, i64 %1, 0, 1
-  ret { { i64, i64 }, { i32 } } %6
+define private cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline {
+  %3 = insertvalue { { i64, i64 }, { i64 } } poison, i64 0, 1, 0
+  %4 = insertvalue { { i64, i64 }, { i64 } } %3, i64 %0, 0, 0
+  %5 = insertvalue { { i64, i64 }, { i64 } } %4, i64 %1, 0, 1
+  ret { { i64, i64 }, { i64 } } %5
 }
 
-define   void @camlData_decl__code_end()   {
+define   void @camlData_decl__code_end()  {
   unreachable
 }
 
@@ -687,4 +686,3 @@ define   void @camlData_decl__code_end()   {
 @caml_ml_output_char = external global ptr
 @camlData_decl__data_end = global {  } {  }, section ".data", align 8
 
-declare i32 @llvm.eh.ocaml.try()

@@ -92,8 +92,8 @@ let fail_if_not ?msg name cond =
   if not cond
   then match msg with None -> fail name | Some msg -> fail_msg ~name "%s" msg
 
-let not_implemented_aux print_ins ?msg i =
-  fail_msg "Llvmize: unimplemented instruction: %a %a" print_ins i
+let not_implemented_aux pp_instr ?msg i =
+  fail_msg "Llvmize: unimplemented instruction: %a %a" pp_instr i
     (Format.pp_print_option
        ~none:(fun ppf () -> Format.fprintf ppf "(no msg)")
        (fun ppf msg -> Format.fprintf ppf "(%s)" msg))
@@ -424,7 +424,18 @@ module Llvm_ir = struct
 
     let to_string t = Format.asprintf "%a" pp_t t
 
-    let compare t1 t2 = String.compare (to_string t1) (to_string t2)
+    let order = function
+      | Cold | Gc_leaf_function | Noinline | Returns_twice | Statepoint_id _ ->
+        0
+      | Gc _ -> 10
+    (* [Gc] is not really an attribute, so it must occur after all attributes.
+       It is included here because it basically behaves like one. *)
+
+    let compare t1 t2 =
+      let order_compare = Int.compare (order t1) (order t2) in
+      if order_compare <> 0
+      then order_compare
+      else String.compare (to_string t1) (to_string t2)
   end
 
   module Calling_conventions = struct
@@ -746,6 +757,7 @@ module Llvm_ir = struct
 
     let assert' name cond = fail_if_not ("Instruction." ^ name) cond
 
+    (* [None] when the operation doesn't have a result *)
     let op_res_type = function
       (* Terminators return no value *)
       | Ret _ | Br _ | Br_cond _ | Switch _ | Unreachable -> None
@@ -829,7 +841,7 @@ module Llvm_ir = struct
       let arg1_type = Value.get_type arg1 in
       let arg2_type = Value.get_type arg2 in
       assert' "icmp" (Type.equal arg1_type arg2_type);
-      assert' "icmp" (Type.is_int arg1_type || Type.is_ptr arg1_type);
+      assert' "icmp" (Type.is_int arg1_type);
       Icmp { cond; arg1; arg2 }
 
     let fcmp cond ~arg1 ~arg2 =
@@ -1003,7 +1015,6 @@ module Llvm_ir = struct
         cc : Calling_conventions.t;
         attrs : Fn_attr.t list;
         private_ : bool;
-        gc : string option;
         dbg : Debuginfo.t;
         mutable body_rev : slot list
       }
@@ -1015,7 +1026,7 @@ module Llvm_ir = struct
 
     let add_comment t comment = t.body_rev <- Comment comment :: t.body_rev
 
-    let pp_t ppf { name; args; res; cc; attrs; private_; gc; dbg; body_rev } =
+    let pp_t ppf { name; args; res; cc; attrs; private_; dbg; body_rev } =
       let open F in
       (* Definition line *)
       pp_dbg_comment ~newline:true ppf (Ident.to_string_hum name) dbg;
@@ -1024,10 +1035,9 @@ module Llvm_ir = struct
         pp_print_list ~pp_sep:pp_comma (fun ppf (typ, ident) ->
             fprintf ppf "%a %a" Type.pp_t typ Ident.pp_t ident)
       in
-      let pp_gc = pp_print_option (fun ppf s -> fprintf ppf "gc %S" s) in
-      pp_line ppf "define %a %a %a %a(%a) %a %a {" pp_private ()
+      pp_line ppf "define %a %a %a %a(%a) %a {" pp_private ()
         Calling_conventions.pp_t cc Type.Or_void.pp_t res Ident.pp_t name
-        pp_args args Fn_attr.pp_t_list attrs pp_gc gc;
+        pp_args args Fn_attr.pp_t_list attrs;
       (* Body *)
       let body = List.rev body_rev in
       List.iter
@@ -1050,7 +1060,7 @@ module Llvm_ir = struct
           funcdef : funcdef
         }
 
-      let create ~name ~args ~res ~cc ~attrs ~gc ~dbg ~private_ =
+      let create ~name ~args ~res ~cc ~attrs ~dbg ~private_ =
         let ident_gen = Ident.Gen.create () in
         let name = Ident.global name in
         let args =
@@ -1060,7 +1070,7 @@ module Llvm_ir = struct
            entry label. *)
         Ident.Gen.get_fresh ident_gen |> ignore;
         let funcdef =
-          { name; args; res; cc; attrs; private_; gc; dbg; body_rev = [] }
+          { name; args; res; cc; attrs; private_; dbg; body_rev = [] }
         in
         { ident_gen; funcdef }
 
@@ -1129,8 +1139,8 @@ module Llvm_ir = struct
           }
       | External of string
 
-    let constant ?(section = Some ".data") ?(align = Some 8) ?(private_ = false)
-        name value =
+    let constant ?(section = Some ".data") ?(align = Some Arch.size_addr)
+        ?(private_ = false) name value =
       Constant { name; value; section; align; private_ }
 
     let external_ name = External name
@@ -1172,7 +1182,7 @@ type c_call_wrapper =
 type trap_block_info =
   { trap_block : LL.Value.t;
     stacksave_ptr : LL.Value.t;
-    payload : LL.Value.t
+    exn_bucket : LL.Value.t
   }
 
 type fun_info =
@@ -1302,7 +1312,7 @@ let add_function_def t fundef = t.function_defs <- fundef :: t.function_defs
 let add_data_def t data_def = t.data_defs <- data_def :: t.data_defs
 
 let complete_func_def t =
-  add_function_def t (LL.Function.Emitter.get_fun (get_fun_info t).emitter);
+  add_function_def t (E.get_fun (get_fun_info t).emitter);
   t.current_fun_info <- None
 
 (* CR yusumez: Consider making a new GCStrategy for OxCaml in LLVM *)
@@ -1412,13 +1422,14 @@ let store_into_reg t reg to_store =
   let to_store = cast t to_store (T.of_reg reg) in
   emit_ins_no_res t (I.store ~ptr ~to_store)
 
-let load_domainstate_addr ?ds_loc ?(typ = T.ptr) ?(offset = 0) t ds_field =
+let load_domainstate_addr ?ds_loc ?(offset = 0) t ds_field =
+  let typ = T.ptr in
   let ds =
     match ds_loc with
     | None -> emit_ins t (I.load ~ptr:domainstate_ptr ~typ:T.i64)
     | Some ds_loc -> ds_loc
   in
-  let offset = offset + (Domainstate.idx_of_field ds_field * 8) in
+  let offset = offset + (Domainstate.idx_of_field ds_field * Arch.size_addr) in
   do_offset t ds typ offset
 
 let load_address t addr_mode base typ =
@@ -1685,11 +1696,11 @@ let extcall t (i : Cfg.terminator Cfg.instruction) ~func_symbol ~alloc
 let raise_ t (i : Cfg.terminator Cfg.instruction)
     (raise_kind : Lambda.raise_kind) =
   let call_raise raise_fn_name =
-    let payload = load_reg_to_temp t i.arg.(0) in
+    let exn_bucket = load_reg_to_temp t i.arg.(0) in
     add_referenced_symbol t raise_fn_name;
     call_simple
       ~attrs:(gc_attr ~can_call_gc:true t i)
-      ~cc:Ocaml t raise_fn_name [payload] []
+      ~cc:Ocaml t raise_fn_name [exn_bucket] []
     |> ignore;
     emit_ins_no_res t I.unreachable
   in
@@ -1706,15 +1717,16 @@ let raise_ t (i : Cfg.terminator Cfg.instruction)
     in
     (* Pop trap block from linked list in the domain *)
     emit_ins_no_res t (I.store ~ptr:exn_sp_ptr ~to_store:prev_exn_sp);
-    (* Get payload *)
-    let payload = load_reg_to_temp t i.arg.(0) in
+    (* Get exn bucket *)
+    let exn_bucket = load_reg_to_temp t i.arg.(0) in
     (* Pop trap block from stack + set my sp *)
     let new_sp = do_offset t trap_block T.i64 16 in
     write_rsp t new_sp;
-    (* Put payload in RAX and jump to handler *)
+    (* Put exn bucket in RAX and jump to handler *)
     emit_ins_no_res t
       (I.inline_asm ~asm:"movq $0, %rax; jmpq *$1" ~constraints:"r,r,~{rax}"
-         ~args:[payload; handler_addr] ~res_type:T.Or_void.void ~sideeffect:true);
+         ~args:[exn_bucket; handler_addr] ~res_type:T.Or_void.void
+         ~sideeffect:true);
     emit_ins_no_res t I.unreachable
   | Raise_regular ->
     let backtrace_pos = load_domainstate_addr t Domain_backtrace_pos in
@@ -1969,7 +1981,9 @@ let intrinsic t (i : Cfg.basic Cfg.instruction) intrinsic_name =
       emit_ins t (I.extractelement ~vector:arg ~index:(V.of_int 0))
     | Int { width_in_bits = 64 }, Int { width_in_bits = 32 } ->
       emit_ins t (I.convert Trunc ~arg ~to_)
-    | _ -> Misc.fatal_error "Llvmize: unexpected reg types in intrinsic"
+    | _ ->
+      fail_msg ~name:"intrinsic" "unexpected reg types in do_conv: %a -> %a"
+        T.pp_t from T.pp_t to_
   in
   let do_intrinsic_call name arg_types res_type =
     (* Sometimes, we get unit arguments for intrinsics with no arguments. We use
@@ -2285,14 +2299,11 @@ let emit_basic t (i : Cfg.basic Cfg.instruction) =
   match i.desc with
   | Op op -> basic_op t i op
   | Prologue | Epilogue | Reloadretaddr -> () (* LLVM handles these for us *)
-  | Stack_check _ ->
-    if Config.no_stack_checks || not !Oxcaml_flags.cfg_stack_checks
-    then () (* Don't emit stack checks *)
-    else not_implemented_basic ~msg:"stack check" i
+  | Stack_check _ -> fail_msg "unexpected instruction: stack check"
   | Poptrap { lbl_handler } -> (
     match Label.Tbl.find_opt (get_fun_info t).trap_blocks lbl_handler with
     | None -> fail_msg "unbalanced trap pop"
-    | Some { trap_block; stacksave_ptr; payload = _ } ->
+    | Some { trap_block; stacksave_ptr; exn_bucket = _ } ->
       (* Restore previous exn handler sp (top word on trap block) *)
       let exn_sp_ptr = load_domainstate_addr t Domain_exn_handler in
       let prev_exn_sp = emit_ins t (I.load ~ptr:trap_block ~typ:T.i64) in
@@ -2332,26 +2343,26 @@ let emit_basic t (i : Cfg.basic Cfg.instruction) =
        first). *)
     call_simple
       ~attrs:[Returns_twice; Gc_leaf_function]
-      ~cc:Ocaml t "wrap_try" [] [T.i32]
+      ~cc:Ocaml t "wrap_try" [] [T.i64]
     |> ignore (* Note that we don't need the returned identifier here. *);
     (* Record label here - we will jump here for the handler *)
     let try_and_exn_entry = V.of_label (Cmm.new_label ()) in
     emit_ins_no_res t (I.br try_and_exn_entry);
     emit_label t try_and_exn_entry;
-    (* Extract the result of the call, or the exception payload. *)
-    let payload =
+    (* Extract the result of the call, or the exception bucket. *)
+    let exn_bucket =
       emit_ins t
         (I.inline_asm ~asm:"mov %rax, $0" ~constraints:"=r" ~args:[]
            ~res_type:(Some T.i64) ~sideeffect:true)
     in
     (* If it's nonzero, we have an exception. Otherwise, go to the try block. *)
-    let payload_is_zero =
-      emit_ins t (I.icmp Ieq ~arg1:payload ~arg2:(V.of_int 0))
+    let exn_bucket_is_zero =
+      emit_ins t (I.icmp Ieq ~arg1:exn_bucket ~arg2:(V.of_int 0))
     in
     let try_label = V.of_label (Cmm.new_label ()) in
     let exn_label = V.of_label lbl_handler in
     emit_ins_no_res t
-      (I.br_cond ~cond:payload_is_zero ~ifso:try_label ~ifnot:exn_label);
+      (I.br_cond ~cond:exn_bucket_is_zero ~ifso:try_label ~ifnot:exn_label);
     (* Enter try block from this point onwards. *)
     emit_label t try_label;
     (* Save state of stack *)
@@ -2383,7 +2394,7 @@ let emit_basic t (i : Cfg.basic Cfg.instruction) =
     | Some _ -> fail_msg "multiple pushtraps for the same handler"
     | None ->
       Label.Tbl.add (get_fun_info t).trap_blocks lbl_handler
-        { trap_block; stacksave_ptr; payload })
+        { trap_block; stacksave_ptr; exn_bucket })
 
 (* Cfg translation entry *)
 
@@ -2409,7 +2420,13 @@ let reg_listed_in_signature (reg : Reg.t) =
   | Unknown -> fail "reg_listed_in_signature"
 
 let fun_attrs ~fun_has_try codegen_options =
-  let exn_attrs : LL.Fn_attr.t list = if fun_has_try then [Noinline] else [] in
+  let open LL.Fn_attr in
+  let exn_attrs =
+    if fun_has_try
+    then [Noinline] (* We need this for the statepoint-id trick to work *)
+    else []
+  in
+  let gc_attrs = [Gc gc_name] in
   let codegen_attrs =
     List.concat_map
       (fun opt : LL.Fn_attr.t list ->
@@ -2420,7 +2437,7 @@ let fun_attrs ~fun_has_try codegen_options =
           [] (* CR gyorsh: translate and communicate to llvm backend *))
       codegen_options
   in
-  exn_attrs @ codegen_attrs |> List.sort_uniq LL.Fn_attr.compare
+  exn_attrs @ gc_attrs @ codegen_attrs |> List.sort_uniq LL.Fn_attr.compare
 
 (* Returns argument registers listed in the signature *)
 let prepare_fun_info t (cfg : Cfg.t) =
@@ -2450,9 +2467,8 @@ let prepare_fun_info t (cfg : Cfg.t) =
   let res_type = make_ret_type_of_machtype fun_ret_type in
   let attrs = fun_attrs ~fun_has_try fun_codegen_options in
   let emitter =
-    LL.Function.Emitter.create ~name:fun_name ~args:arg_types
-      ~res:(Some res_type) ~cc:Ocaml ~attrs ~gc:(Some gc_name) ~dbg:fun_dbg
-      ~private_:false
+    E.create ~name:fun_name ~args:arg_types ~res:(Some res_type) ~cc:Ocaml
+      ~attrs ~dbg:fun_dbg ~private_:false
   in
   reset_fun_info t emitter;
   arg_regs
@@ -2533,7 +2549,7 @@ let trap_handler_entry t (block : Cfg.basic_block) label =
   with
   | Some (i, Op Move) -> (
     match Label.Tbl.find_opt (get_fun_info t).trap_blocks label with
-    | Some { payload; _ } ->
+    | Some { exn_bucket; _ } ->
       (* Restore RBP (+ remove padding) *)
       emit_ins_no_res t
         (I.inline_asm ~asm:"pop %rbp; addq $$8, %rsp" ~constraints:"" ~args:[]
@@ -2545,8 +2561,8 @@ let trap_handler_entry t (block : Cfg.basic_block) label =
              ~res_type:(Some T.i64) ~sideeffect:true)
       in
       emit_ins_no_res t (I.store ~ptr:allocation_ptr ~to_store:new_alloc_ptr);
-      (* Move payload to appropriate temp *)
-      store_into_reg t i.arg.(0) payload
+      (* Move exn bucket to appropriate temp *)
+      store_into_reg t i.arg.(0) exn_bucket
     | None -> ())
   | _ ->
     fail_msg ~name:"trap_handler_entry"
@@ -2565,9 +2581,7 @@ let cfg (cl : CL.t) =
   let cfg = CL.cfg cl in
   reject_addr_regs cfg.fun_args "fun args";
   let arg_regs = prepare_fun_info t cfg in
-  let arg_values =
-    LL.Function.Emitter.get_args_as_values (get_fun_info t).emitter
-  in
+  let arg_values = E.get_args_as_values (get_fun_info t).emitter in
   alloca_regs t cfg arg_values arg_regs;
   DLL.iter ~f:(emit_block t cfg) layout;
   add_defined_symbol t cfg.fun_name;
@@ -2705,14 +2719,13 @@ let define_c_call_wrappers t =
       let wrapper_res_type = make_ret_type c_res_types in
       let wrapper_arg_types = make_arg_types c_arg_types in
       let emitter =
-        LL.Function.Emitter.create ~name:wrapper_name ~args:wrapper_arg_types
-          ~res:(Some wrapper_res_type) ~cc:Ocaml ~attrs:[Noinline] ~gc:None
+        E.create ~name:wrapper_name ~args:wrapper_arg_types
+          ~res:(Some wrapper_res_type) ~cc:Ocaml ~attrs:[Noinline]
           ~dbg:Debuginfo.none ~private_:true
       in
       reset_fun_info t emitter;
       let runtime_args, c_fun_args =
-        List.split_at (List.length runtime_regs)
-          (LL.Function.Emitter.get_args_as_values emitter)
+        List.split_at (List.length runtime_regs) (E.get_args_as_values emitter)
       in
       let ds = List.nth runtime_args domainstate_idx in
       let c_sp =
@@ -2740,18 +2753,14 @@ let define_c_call_wrappers t =
 
 let define_wrap_try t =
   let arg_types = make_arg_types [] in
-  let res_type = make_ret_type [T.i32] in
+  let res_type = make_ret_type [T.i64] in
   let emitter =
-    LL.Function.Emitter.create ~name:"wrap_try" ~args:arg_types
-      ~res:(Some res_type) ~cc:Ocaml ~attrs:[Returns_twice; Noinline] ~gc:None
-      ~dbg:Debuginfo.none ~private_:true
+    E.create ~name:"wrap_try" ~args:arg_types ~res:(Some res_type) ~cc:Ocaml
+      ~attrs:[Returns_twice; Noinline] ~dbg:Debuginfo.none ~private_:true
   in
   reset_fun_info t emitter;
-  let runtime_args =
-    LL.Function.Emitter.get_args_as_values emitter
-    (* All are runtime regs *)
-  in
-  let try_res = call_llvm_intrinsic t "eh.ocaml.try" [] T.i32 in
+  let runtime_args = E.get_args_as_values emitter (* All are runtime regs *) in
+  let try_res = V.of_int ~typ:T.i64 0 in
   let res =
     assemble_struct t res_type
       (([1; 0], try_res) :: List.mapi (fun i v -> [0; i], v) runtime_args)
@@ -2761,8 +2770,8 @@ let define_wrap_try t =
 
 let define_empty_function t name =
   let emitter =
-    LL.Function.Emitter.create ~name ~args:[] ~res:T.Or_void.void ~cc:Default
-      ~attrs:[] ~gc:None ~dbg:Debuginfo.none ~private_:false
+    E.create ~name ~args:[] ~res:T.Or_void.void ~cc:Default ~attrs:[]
+      ~dbg:Debuginfo.none ~private_:false
   in
   reset_fun_info t emitter;
   emit_ins_no_res t I.unreachable;
@@ -2782,8 +2791,12 @@ let define_auxiliary_functions t =
 
 (* Interface with the rest of the compiler *)
 
+let needs_stack_checks () =
+  (not Config.no_stack_checks) && !Oxcaml_flags.cfg_stack_checks
+
 (* Create LLVM IR file for the current compilation unit. *)
 let init ~output_prefix ~ppf_dump =
+  if needs_stack_checks () then fail_msg "stack checks not supported";
   let llvmir_filename = output_prefix ^ ".ll" in
   current_compilation_unit := Some (create ~llvmir_filename ~ppf_dump)
 

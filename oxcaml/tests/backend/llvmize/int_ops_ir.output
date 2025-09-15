@@ -1,10 +1,10 @@
 source_filename = "int_ops.ml"
 
-define   void @camlInt_ops__code_begin()   {
+define   void @camlInt_ops__code_begin()  {
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__add_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__add_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -80,7 +80,7 @@ L101:
   ret { { i64, i64 }, { i64 } } %39
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__sub_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__sub_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -156,7 +156,7 @@ L109:
   ret { { i64, i64 }, { i64 } } %39
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mul_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mul_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -249,7 +249,7 @@ L117:
   ret { { i64, i64 }, { i64 } } %48
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__div_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__div_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -417,7 +417,7 @@ L149:
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mod__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mod__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -561,7 +561,7 @@ L174:
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__land__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__land__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -629,7 +629,7 @@ L179:
   ret { { i64, i64 }, { i64 } } %35
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lor__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lor__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -697,7 +697,7 @@ L186:
   ret { { i64, i64 }, { i64 } } %35
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lxor__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lxor__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -773,7 +773,7 @@ L193:
   ret { { i64, i64 }, { i64 } } %39
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lnot__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lnot__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -830,7 +830,7 @@ L201:
   ret { { i64, i64 }, { i64 } } %28
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsl__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsl__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -927,7 +927,7 @@ L207:
   ret { { i64, i64 }, { i64 } } %50
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsr__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsr__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1016,7 +1016,7 @@ L217:
   ret { { i64, i64 }, { i64 } } %46
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__asr__HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__asr__HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1105,7 +1105,7 @@ L226:
   ret { { i64, i64 }, { i64 } } %46
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__add_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__add_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1154,7 +1154,7 @@ L235:
   ret { { i64, i64 }, { i64 } } %24
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__sub_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__sub_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1203,7 +1203,7 @@ L240:
   ret { { i64, i64 }, { i64 } } %24
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mul_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mul_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1260,7 +1260,7 @@ L245:
   ret { { i64, i64 }, { i64 } } %28
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__div_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__div_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1362,7 +1362,7 @@ L251:
   ret { { i64, i64 }, { i64 } } %51
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mod_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__mod_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1477,7 +1477,7 @@ L262:
   ret { { i64, i64 }, { i64 } } %58
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__land_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__land_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1526,7 +1526,7 @@ L274:
   ret { { i64, i64 }, { i64 } } %24
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lor_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lor_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1575,7 +1575,7 @@ L279:
   ret { { i64, i64 }, { i64 } } %24
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lxor_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lxor_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1632,7 +1632,7 @@ L284:
   ret { { i64, i64 }, { i64 } } %28
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsl_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsl_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1689,7 +1689,7 @@ L290:
   ret { { i64, i64 }, { i64 } } %28
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsr_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__lsr_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1746,7 +1746,7 @@ L296:
   ret { { i64, i64 }, { i64 } } %28
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__asr_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__asr_imm_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1803,7 +1803,7 @@ L302:
   ret { { i64, i64 }, { i64 } } %28
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__popcnt_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__popcnt_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1897,7 +1897,7 @@ L308:
   ret { { i64, i64 }, { i64 } } %47
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__ctz_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__ctz_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1999,7 +1999,7 @@ L318:
   ret { { i64, i64 }, { i64 } } %51
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__clz_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlInt_ops__clz_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -2101,7 +2101,7 @@ L329:
   ret { { i64, i64 }, { i64 } } %51
 }
 
-define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlInt_ops__entry(i64 %0, i64 %1)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlInt_ops__entry(i64 %0, i64 %1) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -2142,15 +2142,14 @@ L343:
   ret { { i64, i64 }, { ptr addrspace(1) } } %18
 }
 
-define private cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline  {
-  %3 = call  i32 @llvm.eh.ocaml.try()
-  %4 = insertvalue { { i64, i64 }, { i32 } } poison, i32 %3, 1, 0
-  %5 = insertvalue { { i64, i64 }, { i32 } } %4, i64 %0, 0, 0
-  %6 = insertvalue { { i64, i64 }, { i32 } } %5, i64 %1, 0, 1
-  ret { { i64, i64 }, { i32 } } %6
+define private cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline {
+  %3 = insertvalue { { i64, i64 }, { i64 } } poison, i64 0, 1, 0
+  %4 = insertvalue { { i64, i64 }, { i64 } } %3, i64 %0, 0, 0
+  %5 = insertvalue { { i64, i64 }, { i64 } } %4, i64 %1, 0, 1
+  ret { { i64, i64 }, { i64 } } %5
 }
 
-define   void @camlInt_ops__code_end()   {
+define   void @camlInt_ops__code_end()  {
   unreachable
 }
 
@@ -2222,4 +2221,3 @@ define   void @camlInt_ops__code_end()   {
 declare i64 @llvm.ctlz.i64(i64)
 declare i64 @llvm.ctpop.i64(i64)
 declare i64 @llvm.cttz.i64(i64)
-declare i32 @llvm.eh.ocaml.try()

@@ -1,6 +1,6 @@
 source_filename = "exn_part2.ml"
 
-define   void @camlExn_part2__code_begin()   {
+define   void @camlExn_part2__code_begin()  {
   unreachable
 }
 
@@ -91,12 +91,12 @@ L101:
 
   %61 = load i64, ptr %ds
   %62 = load i64, ptr %alloc
-  %63 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %61, i64 %62) returns_twice "gc-leaf-function"="true"
-  %64 = extractvalue { { i64, i64 }, { i32 } } %63, 0, 0
-  %65 = extractvalue { { i64, i64 }, { i32 } } %63, 0, 1
+  %63 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %61, i64 %62) returns_twice "gc-leaf-function"="true"
+  %64 = extractvalue { { i64, i64 }, { i64 } } %63, 0, 0
+  %65 = extractvalue { { i64, i64 }, { i64 } } %63, 0, 1
   store i64 %64, ptr %ds
   store i64 %65, ptr %alloc
-  %66 = extractvalue { { i64, i64 }, { i32 } } %63, 1, 0
+  %66 = extractvalue { { i64, i64 }, { i64 } } %63, 1, 0
   br label %L142
 L142:
   %67 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -460,12 +460,12 @@ L146:
 
   %46 = load i64, ptr %ds
   %47 = load i64, ptr %alloc
-  %48 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %46, i64 %47) returns_twice "gc-leaf-function"="true"
-  %49 = extractvalue { { i64, i64 }, { i32 } } %48, 0, 0
-  %50 = extractvalue { { i64, i64 }, { i32 } } %48, 0, 1
+  %48 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %46, i64 %47) returns_twice "gc-leaf-function"="true"
+  %49 = extractvalue { { i64, i64 }, { i64 } } %48, 0, 0
+  %50 = extractvalue { { i64, i64 }, { i64 } } %48, 0, 1
   store i64 %49, ptr %ds
   store i64 %50, ptr %alloc
-  %51 = extractvalue { { i64, i64 }, { i32 } } %48, 1, 0
+  %51 = extractvalue { { i64, i64 }, { i64 } } %48, 1, 0
   br label %L176
 L176:
   %52 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -717,12 +717,12 @@ L180:
 
   %56 = load i64, ptr %ds
   %57 = load i64, ptr %alloc
-  %58 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %56, i64 %57) returns_twice "gc-leaf-function"="true"
-  %59 = extractvalue { { i64, i64 }, { i32 } } %58, 0, 0
-  %60 = extractvalue { { i64, i64 }, { i32 } } %58, 0, 1
+  %58 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %56, i64 %57) returns_twice "gc-leaf-function"="true"
+  %59 = extractvalue { { i64, i64 }, { i64 } } %58, 0, 0
+  %60 = extractvalue { { i64, i64 }, { i64 } } %58, 0, 1
   store i64 %59, ptr %ds
   store i64 %60, ptr %alloc
-  %61 = extractvalue { { i64, i64 }, { i32 } } %58, 1, 0
+  %61 = extractvalue { { i64, i64 }, { i64 } } %58, 1, 0
   br label %L218
 L218:
   %62 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -981,7 +981,7 @@ L214:
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExn_part2__raise_1_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExn_part2__raise_1_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1070,7 +1070,7 @@ L226:
   ret { { i64, i64 }, { i64 } } %46
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExn_part2__raise_2_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExn_part2__raise_2_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1120,7 +1120,7 @@ L229:
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExn_part2__raise_3_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExn_part2__raise_3_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -1299,12 +1299,12 @@ L241:
 
   %100 = load i64, ptr %ds
   %101 = load i64, ptr %alloc
-  %102 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %100, i64 %101) returns_twice "gc-leaf-function"="true"
-  %103 = extractvalue { { i64, i64 }, { i32 } } %102, 0, 0
-  %104 = extractvalue { { i64, i64 }, { i32 } } %102, 0, 1
+  %102 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %100, i64 %101) returns_twice "gc-leaf-function"="true"
+  %103 = extractvalue { { i64, i64 }, { i64 } } %102, 0, 0
+  %104 = extractvalue { { i64, i64 }, { i64 } } %102, 0, 1
   store i64 %103, ptr %ds
   store i64 %104, ptr %alloc
-  %105 = extractvalue { { i64, i64 }, { i32 } } %102, 1, 0
+  %105 = extractvalue { { i64, i64 }, { i64 } } %102, 1, 0
   br label %L332
 L332:
   %106 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -1390,12 +1390,12 @@ L257:
 
   %148 = load i64, ptr %ds
   %149 = load i64, ptr %alloc
-  %150 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %148, i64 %149) returns_twice "gc-leaf-function"="true"
-  %151 = extractvalue { { i64, i64 }, { i32 } } %150, 0, 0
-  %152 = extractvalue { { i64, i64 }, { i32 } } %150, 0, 1
+  %150 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %148, i64 %149) returns_twice "gc-leaf-function"="true"
+  %151 = extractvalue { { i64, i64 }, { i64 } } %150, 0, 0
+  %152 = extractvalue { { i64, i64 }, { i64 } } %150, 0, 1
   store i64 %151, ptr %ds
   store i64 %152, ptr %alloc
-  %153 = extractvalue { { i64, i64 }, { i32 } } %150, 1, 0
+  %153 = extractvalue { { i64, i64 }, { i64 } } %150, 1, 0
   br label %L334
 L334:
   %154 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -1481,12 +1481,12 @@ L273:
 
   %196 = load i64, ptr %ds
   %197 = load i64, ptr %alloc
-  %198 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %196, i64 %197) returns_twice "gc-leaf-function"="true"
-  %199 = extractvalue { { i64, i64 }, { i32 } } %198, 0, 0
-  %200 = extractvalue { { i64, i64 }, { i32 } } %198, 0, 1
+  %198 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %196, i64 %197) returns_twice "gc-leaf-function"="true"
+  %199 = extractvalue { { i64, i64 }, { i64 } } %198, 0, 0
+  %200 = extractvalue { { i64, i64 }, { i64 } } %198, 0, 1
   store i64 %199, ptr %ds
   store i64 %200, ptr %alloc
-  %201 = extractvalue { { i64, i64 }, { i32 } } %198, 1, 0
+  %201 = extractvalue { { i64, i64 }, { i64 } } %198, 1, 0
   br label %L336
 L336:
   %202 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -1899,12 +1899,12 @@ L347:
 
   %39 = load i64, ptr %ds
   %40 = load i64, ptr %alloc
-  %41 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %39, i64 %40) returns_twice "gc-leaf-function"="true"
-  %42 = extractvalue { { i64, i64 }, { i32 } } %41, 0, 0
-  %43 = extractvalue { { i64, i64 }, { i32 } } %41, 0, 1
+  %41 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %39, i64 %40) returns_twice "gc-leaf-function"="true"
+  %42 = extractvalue { { i64, i64 }, { i64 } } %41, 0, 0
+  %43 = extractvalue { { i64, i64 }, { i64 } } %41, 0, 1
   store i64 %42, ptr %ds
   store i64 %43, ptr %alloc
-  %44 = extractvalue { { i64, i64 }, { i32 } } %41, 1, 0
+  %44 = extractvalue { { i64, i64 }, { i64 } } %41, 1, 0
   br label %L394
 L394:
   %45 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -2184,12 +2184,12 @@ L400:
 
   %41 = load i64, ptr %ds
   %42 = load i64, ptr %alloc
-  %43 = call cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %41, i64 %42) returns_twice "gc-leaf-function"="true"
-  %44 = extractvalue { { i64, i64 }, { i32 } } %43, 0, 0
-  %45 = extractvalue { { i64, i64 }, { i32 } } %43, 0, 1
+  %43 = call cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %41, i64 %42) returns_twice "gc-leaf-function"="true"
+  %44 = extractvalue { { i64, i64 }, { i64 } } %43, 0, 0
+  %45 = extractvalue { { i64, i64 }, { i64 } } %43, 0, 1
   store i64 %44, ptr %ds
   store i64 %45, ptr %alloc
-  %46 = extractvalue { { i64, i64 }, { i32 } } %43, 1, 0
+  %46 = extractvalue { { i64, i64 }, { i64 } } %43, 1, 0
   br label %L426
 L426:
   %47 = call i64 asm sideeffect "mov %rax, $0", "=r"()
@@ -2417,7 +2417,7 @@ L422:
   ret { { i64, i64 }, { i64 } } %155
 }
 
-define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlExn_part2__entry(i64 %0, i64 %1)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlExn_part2__entry(i64 %0, i64 %1) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -2524,7 +2524,7 @@ L435:
   ret { { i64, i64 }, { ptr addrspace(1) } } %53
 }
 
-define private cc 104 { { i64, i64 }, { ptr addrspace(1) } } @c_call_wrapper.caml_fresh_oo_id(i64 %0, i64 %1, i64 %2) noinline  {
+define private cc 104 { { i64, i64 }, { ptr addrspace(1) } } @c_call_wrapper.caml_fresh_oo_id(i64 %0, i64 %1, i64 %2) noinline {
   %4 = add i64 %0, 104
   %5 = inttoptr i64 %4 to ptr
   %6 = load i64, ptr %5
@@ -2538,7 +2538,7 @@ define private cc 104 { { i64, i64 }, { ptr addrspace(1) } } @c_call_wrapper.cam
   ret { { i64, i64 }, { ptr addrspace(1) } } %11
 }
 
-define private cc 104 { { i64, i64 }, {  } } @c_call_wrapper.caml_initialize(i64 %0, i64 %1, i64 %2, i64 %3) noinline  {
+define private cc 104 { { i64, i64 }, {  } } @c_call_wrapper.caml_initialize(i64 %0, i64 %1, i64 %2, i64 %3) noinline {
   %5 = add i64 %0, 104
   %6 = inttoptr i64 %5 to ptr
   %7 = load i64, ptr %6
@@ -2552,15 +2552,14 @@ define private cc 104 { { i64, i64 }, {  } } @c_call_wrapper.caml_initialize(i64
   ret { { i64, i64 }, {  } } %12
 }
 
-define private cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline  {
-  %3 = call  i32 @llvm.eh.ocaml.try()
-  %4 = insertvalue { { i64, i64 }, { i32 } } poison, i32 %3, 1, 0
-  %5 = insertvalue { { i64, i64 }, { i32 } } %4, i64 %0, 0, 0
-  %6 = insertvalue { { i64, i64 }, { i32 } } %5, i64 %1, 0, 1
-  ret { { i64, i64 }, { i32 } } %6
+define private cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline {
+  %3 = insertvalue { { i64, i64 }, { i64 } } poison, i64 0, 1, 0
+  %4 = insertvalue { { i64, i64 }, { i64 } } %3, i64 %0, 0, 0
+  %5 = insertvalue { { i64, i64 }, { i64 } } %4, i64 %1, 0, 1
+  ret { { i64, i64 }, { i64 } } %5
 }
 
-define   void @camlExn_part2__code_end()   {
+define   void @camlExn_part2__code_end()  {
   unreachable
 }
 
@@ -2612,7 +2611,6 @@ define   void @camlExn_part2__code_end()   {
 @caml_reraise_exn = external global ptr
 @camlExn_part2__data_end = global {  } {  }, section ".data", align 8
 
-declare i32 @llvm.eh.ocaml.try()
 declare i64 @llvm.read_register.i64(metadata)
 declare void @llvm.stackrestore(ptr)
 declare ptr @llvm.stacksave()

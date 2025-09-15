@@ -1,10 +1,10 @@
 source_filename = "csel.ml"
 
-define   void @camlCsel__code_begin()   {
+define   void @camlCsel__code_begin()  {
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlCsel__csel_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3, i64 %4)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlCsel__csel_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3, i64 %4) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -59,7 +59,7 @@ L101:
   ret { { i64, i64 }, { i64 } } %30
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlCsel__min_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlCsel__min_HIDE_STAMP(i64 %0, i64 %1, i64 %2, i64 %3) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -109,7 +109,7 @@ L105:
   ret { { i64, i64 }, { i64 } } %27
 }
 
-define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCsel__entry(i64 %0, i64 %1)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlCsel__entry(i64 %0, i64 %1) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -723,15 +723,14 @@ L132:
   ret { { i64, i64 }, { ptr addrspace(1) } } %303
 }
 
-define private cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline  {
-  %3 = call  i32 @llvm.eh.ocaml.try()
-  %4 = insertvalue { { i64, i64 }, { i32 } } poison, i32 %3, 1, 0
-  %5 = insertvalue { { i64, i64 }, { i32 } } %4, i64 %0, 0, 0
-  %6 = insertvalue { { i64, i64 }, { i32 } } %5, i64 %1, 0, 1
-  ret { { i64, i64 }, { i32 } } %6
+define private cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline {
+  %3 = insertvalue { { i64, i64 }, { i64 } } poison, i64 0, 1, 0
+  %4 = insertvalue { { i64, i64 }, { i64 } } %3, i64 %0, 0, 0
+  %5 = insertvalue { { i64, i64 }, { i64 } } %4, i64 %1, 0, 1
+  ret { { i64, i64 }, { i64 } } %5
 }
 
-define   void @camlCsel__code_end()   {
+define   void @camlCsel__code_end()  {
   unreachable
 }
 
@@ -775,4 +774,3 @@ define   void @camlCsel__code_end()   {
 @caml_curry3 = external global ptr
 @camlCsel__data_end = global {  } {  }, section ".data", align 8
 
-declare i32 @llvm.eh.ocaml.try()

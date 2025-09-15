@@ -1,10 +1,10 @@
 source_filename = "extcalls.ml"
 
-define   void @camlExtcalls__code_begin()   {
+define   void @camlExtcalls__code_begin()  {
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_too_many_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_too_many_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -149,7 +149,7 @@ L103:
   ret { { i64, i64 }, { i64 } } %70
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_print_and_add_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_print_and_add_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -212,7 +212,7 @@ L107:
   ret { { i64, i64 }, { i64 } } %30
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_int_and_float_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_int_and_float_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -293,7 +293,7 @@ L111:
   ret { { i64, i64 }, { i64 } } %40
 }
 
-define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlExtcalls__f_HIDE_STAMP(i64 %0, i64 %1, double %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlExtcalls__f_HIDE_STAMP(i64 %0, i64 %1, double %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -333,7 +333,7 @@ L113:
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_no_return_HIDE_STAMP(i64 %0, i64 %1, i64 %2)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__call_no_return_HIDE_STAMP(i64 %0, i64 %1, i64 %2) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -378,7 +378,7 @@ L116:
   ret { { i64, i64 }, { i64 } } %20
 }
 
-define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__fn$5bextcalls.ml$3a40$2c4$2d$2d91$5d_HIDE_STAMP(i64 %0, i64 %1, ptr addrspace(1) %2, ptr addrspace(1) %3)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { i64 } } @camlExtcalls__fn$5bextcalls.ml$3a40$2c4$2d$2d91$5d_HIDE_STAMP(i64 %0, i64 %1, ptr addrspace(1) %2, ptr addrspace(1) %3) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -423,7 +423,7 @@ L119:
   unreachable
 }
 
-define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlExtcalls__entry(i64 %0, i64 %1)  gc "statepoint-example" {
+define  cc 104 { { i64, i64 }, { ptr addrspace(1) } } @camlExtcalls__entry(i64 %0, i64 %1) gc "statepoint-example" {
   %ds = alloca i64
   store i64 %0, ptr %ds
   %alloc = alloca i64
@@ -464,7 +464,7 @@ L129:
   ret { { i64, i64 }, { ptr addrspace(1) } } %18
 }
 
-define private cc 104 { { i64, i64 }, { i64 } } @c_call_wrapper.caml_flambda2_invalid(i64 %0, i64 %1, i64 %2) noinline  {
+define private cc 104 { { i64, i64 }, { i64 } } @c_call_wrapper.caml_flambda2_invalid(i64 %0, i64 %1, i64 %2) noinline {
   %4 = add i64 %0, 104
   %5 = inttoptr i64 %4 to ptr
   %6 = load i64, ptr %5
@@ -478,15 +478,14 @@ define private cc 104 { { i64, i64 }, { i64 } } @c_call_wrapper.caml_flambda2_in
   ret { { i64, i64 }, { i64 } } %11
 }
 
-define private cc 104 { { i64, i64 }, { i32 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline  {
-  %3 = call  i32 @llvm.eh.ocaml.try()
-  %4 = insertvalue { { i64, i64 }, { i32 } } poison, i32 %3, 1, 0
-  %5 = insertvalue { { i64, i64 }, { i32 } } %4, i64 %0, 0, 0
-  %6 = insertvalue { { i64, i64 }, { i32 } } %5, i64 %1, 0, 1
-  ret { { i64, i64 }, { i32 } } %6
+define private cc 104 { { i64, i64 }, { i64 } } @wrap_try(i64 %0, i64 %1) returns_twice noinline {
+  %3 = insertvalue { { i64, i64 }, { i64 } } poison, i64 0, 1, 0
+  %4 = insertvalue { { i64, i64 }, { i64 } } %3, i64 %0, 0, 0
+  %5 = insertvalue { { i64, i64 }, { i64 } } %4, i64 %1, 0, 1
+  ret { { i64, i64 }, { i64 } } %5
 }
 
-define   void @camlExtcalls__code_end()   {
+define   void @camlExtcalls__code_end()  {
   unreachable
 }
 
@@ -529,6 +528,5 @@ define   void @camlExtcalls__code_end()   {
 @too_many = external global ptr
 @camlExtcalls__data_end = global {  } {  }, section ".data", align 8
 
-declare i32 @llvm.eh.ocaml.try()
 declare i64 @llvm.read_register.i64(metadata)
 declare void @llvm.write_register.i64(metadata, i64)
