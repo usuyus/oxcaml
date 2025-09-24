@@ -193,7 +193,7 @@ L120:
   %52 = add i64 %51, 80
   %53 = inttoptr i64 %52 to ptr
   %54 = load i64, ptr %53
-  %55 = icmp slt i64 %54, %50
+  %55 = icmp sle i64 %54, %50
   %56 = call  i1 @llvm.expect.i1(i1 %55, i1 1)
   br i1 %56, label %L127, label %L126
 L126:
@@ -464,13 +464,13 @@ L147:
   %48 = load i64, ptr %ds
   %49 = inttoptr i64 %48 to ptr
   %50 = load i64, ptr %49
-  %51 = icmp ult i64 %50, %47
+  %51 = icmp ule i64 %50, %47
   %52 = call  i1 @llvm.expect.i1(i1 %51, i1 1)
   br i1 %52, label %L154, label %L153
 L153:
   %53 = load i64, ptr %ds
   %54 = load i64, ptr %alloc
-  %55 = call oxcaml_alloccc { { i64, i64 }, {  } } @caml_call_gc(i64 %53, i64 %54) "statepoint-id"="0" cold
+  %55 = call oxcaml_alloccc { { i64, i64 }, {  } } @caml_call_gc(i64 %53, i64 %54) "statepoint-id"="65537" cold
   %56 = extractvalue { { i64, i64 }, {  } } %55, 0, 0
   %57 = extractvalue { { i64, i64 }, {  } } %55, 0, 1
   store i64 %56, ptr %ds
@@ -641,13 +641,13 @@ L176:
   %13 = load i64, ptr %ds
   %14 = inttoptr i64 %13 to ptr
   %15 = load i64, ptr %14
-  %16 = icmp ult i64 %15, %12
+  %16 = icmp ule i64 %15, %12
   %17 = call  i1 @llvm.expect.i1(i1 %16, i1 1)
   br i1 %17, label %L180, label %L179
 L179:
   %18 = load i64, ptr %ds
   %19 = load i64, ptr %alloc
-  %20 = call oxcaml_alloccc { { i64, i64 }, {  } } @caml_call_gc(i64 %18, i64 %19) "statepoint-id"="0" cold
+  %20 = call oxcaml_alloccc { { i64, i64 }, {  } } @caml_call_gc(i64 %18, i64 %19) "statepoint-id"="1" cold
   %21 = extractvalue { { i64, i64 }, {  } } %20, 0, 0
   %22 = extractvalue { { i64, i64 }, {  } } %20, 0, 1
   store i64 %21, ptr %ds
